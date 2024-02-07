@@ -1,0 +1,4 @@
+repository "Tartaria y la cuarta dimension@Proyecto_Tartaria@cloud"
+  path "/"
+    br "/main"
+    co "/main"
