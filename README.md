@@ -4,3 +4,4 @@ Para consultar información de como escribir un Readme consulte [este enlace](ht
 Proyecto de fin de ciclo, juego 2D en unity con diseño steampunk y jugabilidad de un plataformas roguelike
 
 
+![alt text](image.png)
