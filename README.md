@@ -4,6 +4,6 @@ Para consultar información de como escribir un Readme consulte [este enlace](ht
 # Proyecto_Tartaria
 >[Nota]
 >
->Aqui se desarrollara la descripción del proyecto
+>Aqui se desarrollara la descripción del proyecto :+1:
 
 
