@@ -8,11 +8,11 @@ Para consultar información de como escribir un Readme consulte [este enlace](ht
 
 ## INDICE.
 ### 1. Diseño
-    - Fondos.
-    - Armas.
-    - Personajes.
-    - Enemigos.
-    - Boss.
+- Fondos.
+- Armas.
+- Personajes.
+- Enemigos.
+- Boss.
 
 ### 2. Diseño
 ### 3. Diseño
