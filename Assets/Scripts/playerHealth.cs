@@ -10,9 +10,16 @@ public class playerHealth : MonoBehaviour
     public int health;
     public int max_health;
 
+    public float iFramesCountdown;
+    private float iFrames;
+
+    private SpriteRenderer sr;
+
     private void Awake()
     {
         instance = this;
+
+        sr = GetComponent<SpriteRenderer>();
     }
 
     void Start()
@@ -23,18 +30,27 @@ public class playerHealth : MonoBehaviour
     
     void Update()
     {
-        
+        if (iFrames > 0)
+        {
+            iFrames -= Time.deltaTime;
+            if(iFrames <= 0)
+            {
+                sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1f);
+            }
+        }
     }
 
     public void DealDamageSpikes()
     {
         health = 0;
         gameObject.SetActive(false); // Hacer desaparecer el jugador
+  
     }
 
     public void DealMonsterDamage()
     {
-        health -= 30;
+
+        DealDamage(30);
 
         // HACER SWITCH DEPENDIENDO DEL NOMBRE DEL ENEMIGO PARA HACER DAÑO
         switch (health) 
@@ -67,5 +83,20 @@ public class playerHealth : MonoBehaviour
         }
     }
 
-    
+    private void DealDamage(int damage, bool knockback = true)
+    {
+        if (iFrames <= 0)
+        {
+            health = health - damage;
+            if (health > 0)
+            {
+                iFrames = iFramesCountdown;
+                if(knockback)
+                {
+                    playerMovement.instance.Knockback();
+                }
+                sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0.5f);
+            }
+        }
+    }
 }

@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
 
-public class spikeDamage : MonoBehaviour
+public class PickUpItem : MonoBehaviour
 {
-
+    public bool isObject;
 
     // Start is called before the first frame update
     void Start()
@@ -21,15 +20,12 @@ public class spikeDamage : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // COMPROBAR QUE EL JUGADOR HA TOCADO
-       if (collision.tag == "Player") 
+        if (collision.CompareTag("Player"))
         {
-            //Debug.Log("Hit");
+            if (isObject)
+            {
 
-            // FindObjectOfType<playerHealth>().DealDamageSpikes();
-
-            playerHealth.instance.DealMonsterDamage();
+            }
         }
-
     }
 }
