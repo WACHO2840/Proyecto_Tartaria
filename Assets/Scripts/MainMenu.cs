@@ -9,13 +9,13 @@ public class MainMenu : MonoBehaviour
     public void Play()
     {
         Debug.Log("Jugar");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1); // Cambiar a la siguiente escena
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+2); // Cambiar a la escena de tutorial
     }
 
     public void Settings()
     {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); // Cambiar a la siguiente escena
         Debug.Log("Ajustes");
-
     }
 
     public void Exit()
@@ -23,6 +23,18 @@ public class MainMenu : MonoBehaviour
         Debug.Log("Salir");
         Application.Quit();
     }
+
+    public void ExitSettings()
+    {
+        Debug.Log("Salir de ajustes");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1); // Cambiar a la escena de menu principal
+    }
+
+    public void Volume()
+    {
+
+    }
+
     
     
     // Start is called before the first frame update
