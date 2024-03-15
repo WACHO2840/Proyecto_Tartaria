@@ -7,28 +7,21 @@ public class playerMovement : MonoBehaviour
 {
     public static playerMovement instance;
 
-    public float speed;
-    public Rigidbody2D rb;
-    public float jumpHeight;
-    private bool isOnGround;
-    public Transform checkGround;
-    public LayerMask ground;
-
-    public SpriteRenderer sr;
-
-    public float knockbackDistance;
-    public float knockbackPower;
+    [SerializeField] Rigidbody2D rb;
+    [SerializeField] Transform checkGround;
+    [SerializeField] LayerMask ground;
+    [SerializeField] SpriteRenderer sr;
+    private float speed = 10;
+    private float jumpHeight = 10;
+    private float knockbackDistance;
+    private float knockbackPower;
     private float knockbackCounter;
+    private bool isOnGround;
+    
 
     private void Awake()
     {
         instance = this;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        sr = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -43,7 +36,6 @@ public class playerMovement : MonoBehaviour
             {
                if(isOnGround)
                 {
-                    Debug.Log("salto");
                     rb.velocity = new Vector2(rb.velocity.x, jumpHeight); // Velocidad de movimiento vertical
                 }
             }
