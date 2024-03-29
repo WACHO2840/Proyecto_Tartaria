@@ -178,8 +178,9 @@ GameObject:
   m_Component:
   - component: {fileID: 216823966}
   - component: {fileID: 216823965}
+  - component: {fileID: 216823967}
   m_Layer: 0
-  m_Name: player-idle_2
+  m_Name: player1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -252,6 +253,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &216823967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 216823964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 311e886342a8c794886e57f3f0f23edd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mensaje: Solo puedes elegir una arma, elige bien.
 --- !u!1 &400351936
 GameObject:
   m_ObjectHideFlags: 0
@@ -349,7 +363,7 @@ GameObject:
   - component: {fileID: 425731302}
   - component: {fileID: 425731301}
   m_Layer: 0
-  m_Name: player-jump_0
+  m_Name: player0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

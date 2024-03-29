@@ -4,28 +4,17 @@ using UnityEngine;
 
 public class mensajeNpc : MonoBehaviour
 {
-    private Transform target; // El objeto target (jugador)
-    private string mensaje = "Solo puedes elegir una arma, elige bien."; // Mensaje al inicio del nivel
+    public string mensaje = "Solo puedes elegir un arma, elige bien."; // Mensaje al acercarse al NPC
 
     private bool alreadySpoken = false; // Bandera para asegurar que el mensaje solo se muestre una vez
 
-    // Método que se llama al inicio del juego
-    void Start()
+    // Método que se llama cuando algo entra en el área de colisión del NPC
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (target == null)
+        if (!alreadySpoken && other.CompareTag("player-idle_2"))
         {
-            Debug.LogWarning("No se ha asignado el objeto target en el NPCController.");
-        }
-    }
-
-    // Método que se llama en cada fotograma
-    void Update()
-    {
-        if (!alreadySpoken && target != null && Vector3.Distance(transform.position, target.position) < 5f)
-        {
-            // Si el jugador está cerca y aún no se ha mostrado el mensaje
-            Debug.Log(mensaje); // Muestra el mensaje en la consola (puedes cambiar esto por una animación o un cuadro de diálogo)
-            alreadySpoken = true; // Actualiza la bandera para que no se muestre el mensaje repetidamente
+            Debug.Log(mensaje); // Mostrar el mensaje en la consola (puedes cambiar esto por otro método para mostrar el mensaje)
+            alreadySpoken = true; // Actualizar la bandera
         }
     }
 }
