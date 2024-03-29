@@ -21,6 +21,5 @@ public class cameraControl : MonoBehaviour
         // Actualiza la posición de la cámara para que coincida con la posición del objetivo,
         // pero mantén la misma coordenada Y y Z que ya tiene la cámara.
         transform.position = new Vector3(target.position.x, transform.position.y, transform.position.z);
-        
     }
 }

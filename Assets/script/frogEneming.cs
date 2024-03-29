@@ -1,26 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static Unity.IO.LowLevel.Unsafe.AsyncReadManagerMetrics;
+using Debug = UnityEngine.Debug; // Agrega esta línea para evitar la ambigüedad
 
 public class frogEneming : MonoBehaviour
 {
-    public float moveSpeed = 2f; // Velocidad de movimiento
-    public float jumpForce = 5f; // Fuerza del salto
-    public int normalAttackDamage = 5; // Daño del ataque normal
-    public int maxHealth = 10; // Vida máxima del enemigo frog
+    private float moveSpeed = 2f; // Velocidad de movimiento
+    private float jumpForce = 5f; // Fuerza del salto
+    private int normalAttackDamage = 5; // Daño del ataque normal
+    private int maxHealth = 10; // Vida máxima del enemigo frog
 
-    private Rigidbody2D rb;
     private bool facingRight = true; // Dirección inicial del enemigo
     private int currentHealth; // Vida actual del enemigo frog
     private bool isGrounded = false; // Variable para controlar si el enemigo está en el suelo
-    public Transform groundCheck; // Punto de comprobación para verificar si el enemigo está en el suelo
-    public LayerMask groundLayer; // Capa del suelo
+    private Transform groundCheck; // Punto de comprobación para verificar si el enemigo está en el suelo
+    private LayerMask groundLayer; // Capa del suelo
 
     // Inicialización
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth; // Inicializa la vida actual al valor máximo
 
         // Inicia la rutina de movimiento
@@ -30,21 +28,23 @@ public class frogEneming : MonoBehaviour
     // Método para moverse hacia adelante
     void MoveForward()
     {
-        if (facingRight)
-        {
-            rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
-        }
-        else
-        {
-            rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
-        }
+        Vector2 movement = new Vector2(moveSpeed * (facingRight ? 1 : -1), 0);
+        transform.Translate(movement * Time.deltaTime);
 
         // Comprueba si el enemigo está en el suelo para saltar
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
         if (isGrounded)
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            Jump();
         }
+    }
+
+    // Método para el salto del enemigo
+    void Jump()
+    {
+        isGrounded = false;
+        Vector2 jumpVelocity = new Vector2(0, jumpForce);
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        rb.velocity = jumpVelocity;
     }
 
     // Método para recibir daño
@@ -71,6 +71,11 @@ public class frogEneming : MonoBehaviour
         {
             // El jugador toca al enemigo, aplica daño
             ApplyDamage(normalAttackDamage);
+        }
+        else if (collision.gameObject.CompareTag("Ground"))
+        {
+            // El enemigo está en el suelo
+            isGrounded = true;
         }
     }
 

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class mensajeNpc : MonoBehaviour
 {
-    public Transform target; // El objeto target (jugador)
-    public string mensaje = "Solo puedes elegir una arma, elige bien."; // Mensaje al inicio del nivel
+    private Transform target; // El objeto target (jugador)
+    private string mensaje = "Solo puedes elegir una arma, elige bien."; // Mensaje al inicio del nivel
 
     private bool alreadySpoken = false; // Bandera para asegurar que el mensaje solo se muestre una vez
 

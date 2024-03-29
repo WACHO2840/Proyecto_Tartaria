@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class objetosIniciales : MonoBehaviour
 {
-    public GameObject objeto1;
-    public GameObject objeto2;
+    private GameObject objeto1;
+    private GameObject objeto2;
 
     private GameObject objetoSeleccionado;
 
