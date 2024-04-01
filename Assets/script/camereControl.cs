@@ -7,19 +7,34 @@ using UnityEngine;
 
 public class cameraControl : MonoBehaviour
 {
-    public Transform target;
+//     public Transform target;
+    
+//     // Start is called before the first frame update
+//     void Start()
+//     {
 
-    // Start is called before the first frame update
-    void Start()
-    {
+//     }
 
-    }
+//     // Update is called once per frame
+//     void Update()
+//     {
+//         // Actualiza la posiciï¿½n de la cï¿½mara para que coincida con la posiciï¿½n del objetivo,
+//         // pero mantï¿½n la misma coordenada Y y Z que ya tiene la cï¿½mara.
+//         transform.position = new Vector3(target.position.x, transform.position.y, transform.position.z);
+//     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        // Actualiza la posición de la cámara para que coincida con la posición del objetivo,
-        // pero mantén la misma coordenada Y y Z que ya tiene la cámara.
-        transform.position = new Vector3(target.position.x, transform.position.y, transform.position.z);
-    }
+[SerializeField] Transform player;
+[SerializeField] float minHeight, maxHeight, minWidth, maxWidth; 
+
+// Start is called before the first frame update
+void Start()
+{
+
+}
+
+// Update is called once per frame
+void Update()
+{
+    player.position = new Vector3(Mathf.Clamp(player.position.x,minWidth,maxWidth),Mathf.Clamp(player.position.y,minHeight,maxHeight),transform.position.z); // Fijar camara al jugador con limites verticales
+}
 }
