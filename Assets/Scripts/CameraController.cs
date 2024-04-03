@@ -5,8 +5,8 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     
-    public Transform player;
-    public float minHeight, maxHeight, minWidth, maxWidth; 
+    [SerializeField] Transform player;
+    [SerializeField] float minHeight, maxHeight, minWidth, maxWidth; 
 
     // Start is called before the first frame update
     void Start()
