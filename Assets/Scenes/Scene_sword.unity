@@ -205,8 +205,8 @@ Transform:
   m_GameObject: {fileID: 497733416}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0394, y: 0.2423, z: 0}
-  m_LocalScale: {x: 1.4930342, y: 1.1380694, z: 1}
+  m_LocalPosition: {x: -0.52213, y: 0.3767, z: 0}
+  m_LocalScale: {x: 0.49810725, y: 0.46457326, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 323217474}
@@ -384,7 +384,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 1563974882, guid: d0ff653f4b4d3f14dab1926a9ed3efb6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9801d7b3e73acb7408553543285b3dca, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -404,8 +404,8 @@ Transform:
   m_GameObject: {fileID: 1166571392}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.14, y: -1.45, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalPosition: {x: -0.7102, y: -1.3031, z: 0}
+  m_LocalScale: {x: 5.8709497, y: 4.2232776, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1456787805}
@@ -484,18 +484,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.07821751, y: -0.07821751}
+  m_Offset: {x: 0.03914638, y: 0.016809717}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
+    oldSize: {x: 0.16, y: 0.32}
     newSize: {x: 2, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.156435, y: 2.156435}
+  m_Size: {x: 0.3060827, y: 0.3790876}
   m_EdgeRadius: 0
 --- !u!95 &1166571398
 Animator:
@@ -701,8 +701,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1166571394}
-  smoothSpeed: 0.125
-  offset: {x: 0, y: 0, z: 0}
+  smoothSpeed: 1
+  offset: {x: 1, y: 1, z: 1}
 --- !u!1 &1881136927
 GameObject:
   m_ObjectHideFlags: 0
@@ -747,6 +747,8 @@ GameObject:
   - component: {fileID: 1882824567}
   - component: {fileID: 1882824566}
   - component: {fileID: 1882824568}
+  - component: {fileID: 1882824570}
+  - component: {fileID: 1882824569}
   m_Layer: 0
   m_Name: Tilemap
   m_TagString: Untagged
@@ -1348,6 +1350,76 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
+--- !u!66 &1882824569
+CompositeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1882824564}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_GeometryType: 0
+  m_GenerationType: 0
+  m_EdgeRadius: 0
+  m_ColliderPaths: []
+  m_CompositePaths:
+    m_Paths: []
+  m_VertexDistance: 0.0005
+  m_OffsetDistance: 0.00005
+  m_UseDelaunayMesh: 0
+  m_CompositeGameObject: {fileID: 1882824564}
+--- !u!50 &1882824570
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1882824564}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
