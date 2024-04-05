@@ -43,7 +43,7 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
-    private void DealDamagePlayer(int damage, bool knockback = true)
+    private void DealPlayerDamage(int damage, int weapon, bool knockback = true)
     {
         if (iFrames <= 0)
         {

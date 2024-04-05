@@ -15,6 +15,8 @@ public class EnemyMovement : MonoBehaviour
     private float knockbackPower;
     private float knockbackCounter;
 
+
+
     private void Awake()
     {
         instance = this;

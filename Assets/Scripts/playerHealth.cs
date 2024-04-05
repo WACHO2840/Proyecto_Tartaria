@@ -6,8 +6,7 @@ using UnityEngine;
 public class playerHealth : MonoBehaviour
 {
     public static playerHealth instance;
-
-    [SerializeField] int max_health;
+    [SerializeField] int maxHealth;
     private int health;
     private float iFramesCountdown = 10;
     private float iFrames;
@@ -21,7 +20,7 @@ public class playerHealth : MonoBehaviour
 
     void Start()
     {
-        health = max_health;
+        health = maxHealth;
     }
 
     
