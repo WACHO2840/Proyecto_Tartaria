@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -47,48 +48,12 @@ public class playerHealth : MonoBehaviour
         health = 0;
     }
 
-    public void DealMonsterDamage(string enemyName, bool knockback = false)
-    {
-        // HACER SWITCH DEPENDIENDO DEL NOMBRE DEL ENEMIGO PARA HACER DAÑO
-        switch (enemyName) 
-        { 
-            case "Enemy1":
-                DamamageFilter(knockback, 10);
-                Debug.Log(health);
-                break; 
-            case "Enemy2":
-                DamamageFilter(knockback, 13);
-                Debug.Log(health);
-                break; 
-            case "Enemy3":
-                DamamageFilter(knockback, 20);
-                break;
-            case "Enemy4":
-                DamamageFilter(knockback, 50);
-                break;
-            case "Enemy5":
-                DamamageFilter(knockback, 20);
-                break;
-            case "Boss1":
-                DamamageFilter(knockback, 33);
-                break;
-            case "Boss2":
-                DamamageFilter(knockback, 40);
-                break;
-            case "Boss3":
-                DamamageFilter(knockback, 40);
-                break;
-            default:
-                DamamageFilter(knockback, 0);
-                break;
-        }
-    }
-
-    private void DealDamage(int damage, bool knockback = false, bool slowDown = false)
+    public void DealMonsterDamage(int dmg, bool knockback = false)
     {
         if (iFrames <= 0)
         {
-            health = health - damage;
+            health -= dmg;
+            Debug.Log(health);
             if (health > 0)
             {
                 iFrames = iFramesCountdown;
@@ -98,18 +63,6 @@ public class playerHealth : MonoBehaviour
                 }
                 sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0.5f);
             }
-        }
-    }
-
-    private void DamamageFilter(bool knockback, int damage)
-    {
-        if (knockback) //Si hace contacto con su hitbox
-        {
-            DealDamage(damage, true);
-        }
-        else if (!knockback) //Si el enemigo le pega al jugador
-        {
-            DealDamage(damage, false, true);
         }
     }
 }

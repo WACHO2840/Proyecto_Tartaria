@@ -24,11 +24,7 @@ public class spikeDamage : MonoBehaviour
         // COMPROBAR QUE EL JUGADOR HA TOCADO
        if (collision.tag == "Player") 
         {
-            
-            // FindObjectOfType<playerHealth>().DealDamageSpikes();
-            //playerHealth.instance.DealDamageSpikes();
-            playerHealth.instance.DealMonsterDamage("Enemy4",true);
-            //Debug.Log("Hit");
+            playerHealth.instance.DealDamageSpikes();
         }
 
     }
