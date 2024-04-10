@@ -4,26 +4,12 @@ using UnityEngine;
 
 public class NpcBehaviour : MonoBehaviour
 {
-
-
-    // Start is called before the first frame update
-    void Start()
+    private void OnCollisionStay2D(Collision2D collision)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag == "Player") 
+        if (collision.gameObject.CompareTag("Player"))
         {
             // Hablar con el NPC 
-            if (Input.GetButtonDown("Fire1"))
+            if (Input.GetButtonDown("Jump"))
             {
                 Debug.Log("Hablando");
             }
@@ -31,5 +17,17 @@ public class NpcBehaviour : MonoBehaviour
 
             // Intercambiar con el NPC
         }
+    }
+
+    // RECIBIR DAÑO DEL JUGADOR
+    private void PlayerDammage()
+    {
+
+    }
+
+    // INTERCAMBIAR CON EL NPC
+    private void Trade()
+    {
+
     }
 }

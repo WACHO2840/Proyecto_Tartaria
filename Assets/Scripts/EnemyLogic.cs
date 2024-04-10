@@ -13,6 +13,7 @@ public class EnemyLogic : MonoBehaviour
     [SerializeField] Rigidbody2D rb; // RB Enemigo
     [SerializeField] Transform player; // GO jugador
     [SerializeField] SpriteRenderer sr; // SR Enemigo
+    private Vector2 velocidadEnemigo;
 
 
     private float detectionRange = 9f;
@@ -35,6 +36,7 @@ public class EnemyLogic : MonoBehaviour
 
     void Update()
     {
+        velocidadEnemigo = rb.velocity;
         if (!attacking)
         {
             Patrol();
