@@ -698,11 +698,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db76f41773bbb1d4c88d0cb387b60968, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 425731300}
-  minHeight: 1
-  maxHeight: 1
-  minWidth: 1
-  maxWidth: 1
+  target: {fileID: 0}
+  smoothSpeed: 0.125
+  offset: {x: 0, y: 0, z: 0}
 --- !u!1 &756099293
 GameObject:
   m_ObjectHideFlags: 0
