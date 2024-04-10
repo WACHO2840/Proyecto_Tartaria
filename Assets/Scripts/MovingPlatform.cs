@@ -9,12 +9,6 @@ public class MovingPlatform : MonoBehaviour
     public float velocidadMovimiento;
     private int siguientePlataforma = 1;
     private bool ordenPlataformas = true;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -44,6 +38,7 @@ public class MovingPlatform : MonoBehaviour
         transform.position = Vector2.MoveTowards(transform.position, puntosMovimiento[siguientePlataforma].position,velocidadMovimiento*Time.deltaTime);
     }
 
+    // CUANDO EL JUGADOR ENTRE EN LA PLATAFORMA PONERLO DE HIJO
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -53,6 +48,7 @@ public class MovingPlatform : MonoBehaviour
         
     }
 
+    // CUANDO EL JUGADOR DEJE LA PLATAFORMA QUITARLO DE HIJO
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))

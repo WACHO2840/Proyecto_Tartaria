@@ -1,15 +1,14 @@
-using System;
 using System.Collections;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playerHealth : MonoBehaviour
+public class PlayerHealth : MonoBehaviour
 {
-    public static playerHealth instance;
+    public static PlayerHealth instance;
+
     [SerializeField] int maxHealth;
     private int health;
-    private float iFramesCountdown = 10;
+    private float iFramesCountdown = 1;
     private float iFrames;
     private SpriteRenderer sr;
 
@@ -24,13 +23,13 @@ public class playerHealth : MonoBehaviour
         health = maxHealth;
     }
 
-    
+
     void Update()
     {
         if (iFrames > 0)
         {
             iFrames -= Time.deltaTime;
-            if(iFrames <= 0)
+            if (iFrames <= 0)
             {
                 sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1f);
             }
@@ -39,7 +38,7 @@ public class playerHealth : MonoBehaviour
         {
             gameObject.SetActive(false); // Hacer desaparecer el jugador
 
-                                         //Hacer saltar el canvas de fin de juego
+            //Hacer saltar el canvas de fin de juego
         }
     }
 
@@ -48,7 +47,7 @@ public class playerHealth : MonoBehaviour
         health = 0;
     }
 
-    public void DealMonsterDamage(int dmg, bool knockback = false)
+    public void DealMonsterDamage(int dmg)
     {
         if (iFrames <= 0)
         {
@@ -57,10 +56,7 @@ public class playerHealth : MonoBehaviour
             if (health > 0)
             {
                 iFrames = iFramesCountdown;
-                if(knockback)
-                {
-                    playerMovement.instance.Knockback();
-                }
+                PlayerMovement.instance.Knockback();
                 sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0.5f);
             }
         }

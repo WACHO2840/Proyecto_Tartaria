@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Security.Cryptography;
 using UnityEngine;
 
-public class playerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
-    public static playerMovement instance;
+    public static PlayerMovement instance;
 
     [SerializeField] Rigidbody2D rb;
     [SerializeField] Transform checkGround;
@@ -17,7 +16,7 @@ public class playerMovement : MonoBehaviour
     private float knockbackPower;
     private float knockbackCounter;
     private bool isOnGround;
-    
+
 
     private void Awake()
     {
@@ -27,14 +26,15 @@ public class playerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (knockbackCounter <= 0) { 
-            rb.velocity = new Vector2(speed * Input.GetAxisRaw("Horizontal"),rb.velocity.y); // Velocidad de movimiento horizontal
+        if (knockbackCounter <= 0)
+        {
+            rb.velocity = new Vector2(speed * Input.GetAxisRaw("Horizontal"), rb.velocity.y); // Velocidad de movimiento horizontal
 
-            isOnGround = Physics2D.OverlapCircle(checkGround.position,.2f,ground); 
+            isOnGround = Physics2D.OverlapCircle(checkGround.position, .2f, ground);
 
             if (Input.GetButtonDown("Jump"))
             {
-               if(isOnGround)
+                if (isOnGround)
                 {
                     rb.velocity = new Vector2(rb.velocity.x, jumpHeight); // Velocidad de movimiento vertical
                 }
@@ -42,17 +42,18 @@ public class playerMovement : MonoBehaviour
 
             if (rb.velocity.x < 0)
             {
-               sr.flipX = true; //Izquierda
+                sr.flipX = true; //Izquierda
             }
             else if (rb.velocity.x > 0)
             {
-               sr.flipX = false; //Derecha
+                sr.flipX = false; //Derecha
             }
-        } else
+        }
+        else
         {
             knockbackCounter -= Time.deltaTime;
-            
-            if(sr.flipX)
+
+            if (sr.flipX)
                 rb.velocity = new Vector2(knockbackPower, rb.velocity.y);
             else
                 rb.velocity = new Vector2(-knockbackPower, rb.velocity.y);
@@ -62,6 +63,6 @@ public class playerMovement : MonoBehaviour
     public void Knockback()
     {
         knockbackCounter = knockbackDistance;
-        rb.velocity = new Vector2(0f, knockbackPower/2);
+        rb.velocity = new Vector2(0f, knockbackPower / 2);
     }
 }

@@ -1,31 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
 
-public class spikeDamage : MonoBehaviour
+public class SpikeDamage : MonoBehaviour
 {
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // COMPROBAR QUE EL JUGADOR HA TOCADO
-       if (collision.tag == "Player") 
+        if (collision.tag == "Player")
         {
-            playerHealth.instance.DealDamageSpikes();
+            Debug.Log("PLAYER TOCADO");
+            PlayerHealth.instance.DealDamageSpikes();
         }
-
     }
 }

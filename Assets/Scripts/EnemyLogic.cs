@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
@@ -8,174 +9,135 @@ public class EnemyLogic : MonoBehaviour
     public static EnemyLogic Instance;
 
     #region Variables
-    [SerializeField] Transform[] patrolPoints;
-    [SerializeField] Rigidbody2D rb;
-    [SerializeField] Transform player;
-    [SerializeField] float knockbackDistance;
-    [SerializeField] float knockbackPower;
-    [SerializeField] float iFramesCountdown = 3;
-    [SerializeField] float inTimer;
-    [SerializeField] private float detectionRange = 6f;
-    private float iFrames;
-    private bool cooldown = true;
-    private bool inCombat = false;
-    private float inTime;
-    private SpriteRenderer sr;
-    private int currentPatrolIndex;
-    private Transform patrolTarget;
-    private float knockbackCounter;
+    [SerializeField] Transform[] patrolPoints; // Puntos de patrullaje
+    [SerializeField] Rigidbody2D rb; // RB Enemigo
+    [SerializeField] Transform player; // GO jugador
+    [SerializeField] SpriteRenderer sr; // SR Enemigo
+
+
+    private float detectionRange = 9f;
+    private int nextPatrolPoint = 0;
+    private bool patrolOrder = true; // 
+
+    private bool attacking; // Comprobar si esta persiguiendo al jugador
+
     #endregion
 
     private void Awake()
     {
-        inTime = EnemyStats.instance.movementSpeed;
-        sr = GetComponent<SpriteRenderer>();
+
     }
 
     void Start()
     {
-        patrolTarget = patrolPoints[0];
-        rb.velocity = new Vector2(EnemyStats.instance.movementSpeed, rb.velocity.y); // VELOCIDAD DE MOVIMIENTO HORIZONTAL
+
     }
 
     void Update()
     {
-        // PATRULLAR
-        if (!inCombat)
+        if (!attacking)
         {
             Patrol();
         }
 
-        // COMPROBAR SI EL JUGADOR ENTRA EN LOS LIMITES DEL PATRULLAJE PARA ATACARLO
-        if (Vector2.Distance(transform.position, player.position) < detectionRange)
-        {
-            // SI ENTRA EN EL RANGO DEL ENEMIGO CAMBIAR OBJETIVO AL JUGADOR
-            patrolTarget = player;
-            inCombat = true;
-        }
-        else
-        {
-            // SI SALE FUERA DEL RANGO CAMBIAR OBJETIVO A PATRULLAR
-            currentPatrolIndex = (currentPatrolIndex + 1) % patrolPoints.Length;
-            patrolTarget = patrolPoints[currentPatrolIndex];
-            inCombat = true;
-        }
+        AttackPlayer();
 
-        // COMPROBAR INVENCIBILIDAD DEL ENEMIGO
-        if (iFrames > 0)
+        if (rb.velocity.x < 0)
         {
-            iFrames -= Time.deltaTime;
-            if (iFrames <= 0)
-            {
-                sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1f);
-            }
+            sr.flipX = true; //Izquierda
         }
-        if (EnemyStats.instance.hp <= 0)
+        else if (rb.velocity.x > 0)
         {
-            gameObject.SetActive(false); // DESAPARECER AL JUGADOR
-                                         // PANTALLA DE FINAL DE JUEGO / VOLVER A JUGAR
-        }
-
-        // COMPROBAR SI HAY KNOCKBACK
-        if (knockbackCounter <= 0)
-        {
-            rb.velocity = new Vector2(EnemyStats.instance.movementSpeed, rb.velocity.y); // Velocidad de movimiento horizontal
-
-            // VOLTEAR SPRITE DEPENDINDO DONDE MIRA
-            if (rb.velocity.x < 0)
-            {
-                sr.flipX = true; // VOLTEAR IZQUIERDA
-            }
-            else if (rb.velocity.x > 0)
-            {
-                sr.flipX = false; // VOLTEAR DERECHA
-            }
-        }
-        else
-        {
-            knockbackCounter -= Time.deltaTime;
-
-            if (sr.flipX) // SI MIRA HACIA LA IQUIERDA, EMPUJAR DERECHA
-                rb.velocity = new Vector2(knockbackPower, rb.velocity.y);
-            else // SI MIRA HACIA LA DERECHA, EMPUJAR IZQUIERDA
-                rb.velocity = new Vector2(-knockbackPower, rb.velocity.y);
+            sr.flipX = false; //Derecha
         }
     }
 
-    // RECIBIR DAÃ‘O DEL JUGADOR
-    private void DealPlayerDamage(int damage)
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        if (iFrames <= 0)
+        if (collision.gameObject.CompareTag("Player"))
         {
-            EnemyStats.instance.hp -= damage;
-            if (EnemyStats.instance.hp > 0)
+            // INSTANCIAMOS EL ENEMIGO CON EL QUE COLISIONO
+            EnemyStats enemyStats = GetComponent<EnemyStats>();
+
+            // COMPROBAMOS QUE TENGA ENLAZADO EL SCRIPT
+            if (enemyStats != null)
             {
-                iFrames = iFramesCountdown;
-                Knockback();
-                sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0.7f);
+                PlayerHealth.instance.DealMonsterDamage(enemyStats.dmg);
+            }
+            else
+            {
+                Debug.LogWarning("El enemigo no tiene el script EnemyStats.");
             }
         }
     }
 
-    // HACER DAÃ‘O AL JUGADOR
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            
-            if (cooldown)
-            {
-                playerHealth.instance.DealMonsterDamage(EnemyStats.instance.dmg);
-                Cooldown();
-            }
-        }
-    }
-
-    // TIEMPO DE ESPERA ENTRE ATAQUES
-    private void Cooldown()
-    {
-        EnemyStats.instance.attackSpeed -= Time.deltaTime;
-        if (EnemyStats.instance.attackSpeed <= 0 && cooldown)
-        {
-            cooldown = false;
-            EnemyStats.instance.attackSpeed = inTimer;
-        }
-    }
-
-    // EMPUJAR AL ENEMIGO HACIA ATRAS
-    public void Knockback()
-    {
-        knockbackCounter = knockbackDistance;
-        rb.velocity = new Vector2(0f, knockbackPower / 2);
-    }
-
-    // PATRULLAJE ENTRE PUNTOS
     private void Patrol()
     {
-        // HACER QUE EL ENEMIGO AVANCE HACIA ADELANTE
-        transform.position = Vector2.MoveTowards(transform.position, patrolTarget.position, EnemyStats.instance.movementSpeed * Time.deltaTime);
+        EnemyStats enemyStats = GetComponent<EnemyStats>();
+        // Verificar si el componente EnemyStats está adjunto al enemigo
+        if (enemyStats != null)
+        {
+            // Cambiar la dirección de la patrulla si se alcanza el final del array
+            if (patrolOrder && nextPatrolPoint + 1 >= patrolPoints.Length)
+            {
+                patrolOrder = false;
+            }
+            // Cambiar la dirección de la patrulla si se alcanza el principio del array
+            else if (!patrolOrder && nextPatrolPoint <= 0)
+            {
+                patrolOrder = true;
+            }
 
-        // CUANDO 
-        if (Vector2.Distance(transform.position, patrolTarget.position) < 0.1f)
-        {
-            currentPatrolIndex = (currentPatrolIndex + 1) % patrolPoints.Length;
-            patrolTarget = patrolPoints[currentPatrolIndex];
-            Flip();
-        }
-    }
-   
-    // REDIRECCIONAR CUANDO LLEGA AL LIMITE DEL PATRULLAJE
-    private void Flip()
-    {
-        Vector3 rotation = transform.eulerAngles;
-        if (transform.position.x > player.position.x)
-        {
-            rotation.y = 0;
+            // Dependiendo de la dirección de la patrulla, cambiar el próximo punto de patrulla
+            if (Vector2.Distance(transform.position, patrolPoints[nextPatrolPoint].position) < 0.1f)
+            {
+                if (patrolOrder)
+                {
+                    nextPatrolPoint += 1;
+                }
+                else
+                {
+                    nextPatrolPoint -= 1;
+                }
+            }
+            // Mover al enemigo hacia el siguiente punto de patrulla
+            transform.position = Vector2.MoveTowards(transform.position, patrolPoints[nextPatrolPoint].position, enemyStats.movementSpeed * Time.deltaTime);
         }
         else
         {
-            rotation.y = -180;
+            Debug.LogWarning("El enemigo no tiene el script EnemyStats adjunto.");
         }
-        transform.eulerAngles = rotation;
+    }
+
+    private void AttackPlayer()
+    {
+        EnemyStats enemyStats = GetComponent<EnemyStats>();
+
+        if (enemyStats != null) {
+            if (player != null)
+            {
+                // Calcula la distancia entre el enemigo y el jugador
+                float playerDistance = Vector2.Distance(transform.position, player.position);
+
+                // Si la distancia es menor que la distancia de persecución, comienza a perseguir al jugador
+                if (playerDistance <= detectionRange)
+                {
+                    // Dirección hacia la que se moverá el enemigo
+                    Vector2 direccion = (player.position - transform.position).normalized;
+
+                    // Mueve al enemigo hacia el jugador
+                    transform.position = Vector2.MoveTowards(transform.position, player.position, enemyStats.movementSpeed * Time.deltaTime);
+                
+                    attacking = true;
+                }
+                else
+                {
+                    attacking = false;
+                }
+            }
+        }
     }
 }
+
+
+   
