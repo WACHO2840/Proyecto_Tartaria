@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    
     public void Play()
     {
         Debug.Log("Jugar");
@@ -33,19 +32,5 @@ public class MainMenu : MonoBehaviour
     public void Volume()
     {
 
-    }
-
-    
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
