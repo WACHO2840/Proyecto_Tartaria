@@ -35,11 +35,7 @@ public class EnemyLogic : MonoBehaviour
 
     void Update()
     {
-        velocidadEnemigo = rb.velocity;
-        if (!attacking)
-        {
-            Patrol();
-        }
+        velocidadEnemigo = rb.velocity; // BORRAR, SIRVE PARA PRUEBAS
 
         AttackPlayer();
 
@@ -50,6 +46,13 @@ public class EnemyLogic : MonoBehaviour
         else if (rb.velocity.x > 0)
         {
             sr.flipX = false; //Derecha
+        }
+    }
+    private void FixedUpdate()
+    {
+        if (!attacking)
+        {
+            Patrol();
         }
     }
 
