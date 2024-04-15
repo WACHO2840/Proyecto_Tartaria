@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMoven : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
-    public static PlayerMoven instance;
+    public static PlayerMovement instance;
 
     [SerializeField] Rigidbody2D rb;
     [SerializeField] Transform checkGround;
