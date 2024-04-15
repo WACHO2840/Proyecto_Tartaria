@@ -1,20 +1,98 @@
+using System;
 using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class mensajeNpc : MonoBehaviour
 {
-    public string mensaje = "Solo puedes elegir un arma, elige bien."; // Mensaje al acercarse al NPC
+    private bool isPlayerRange;
+    [SerializeField] private GameObject animacionNpc;
+    [SerializeField, TextArea(4, 6)] private String[] dialogoLineas;
+    [SerializeField] private GameObject dialogoPanel;
 
-    private bool alreadySpoken = false; // Bandera para asegurar que el mensaje solo se muestre una vez
+    [SerializeField] private TMP_Text dialogoTexto;
 
-    // Método que se llama cuando algo entra en el área de colisión del NPC
-    private void OnTriggerEnter2D(Collider2D other)
+    private float tiempo = 0.05f;
+
+    private bool didDialogueStar;
+    private int lineaIndex;
+
+    void Update()
     {
-        if (!alreadySpoken && other.CompareTag("playerNpc"))
+        if (isPlayerRange && Input.GetButtonDown("Fire1"))
         {
-            Debug.Log(mensaje); // Mostrar el mensaje en la consola (puedes cambiar esto por otro método para mostrar el mensaje)
-            alreadySpoken = true; // Actualizar la bandera
+            if (!didDialogueStar)
+            {
+                InicioDialogo();
+            }
+            else if (dialogoTexto.text == dialogoLineas[lineaIndex])
+            {
+                SiguienteFrase();
+            }
+            else
+            {
+                StopAllCoroutines();
+                dialogoTexto.text = dialogoLineas[lineaIndex];
+            }
+        }
+    }
+
+    private void InicioDialogo()
+    {
+        didDialogueStar = true;
+        dialogoPanel.SetActive(true);
+        animacionNpc.SetActive(false);
+        lineaIndex = 0;
+        Time.timeScale = 0f;
+        StartCoroutine(ShowLine());
+    }
+
+    private void SiguienteFrase()
+    {
+        lineaIndex++;
+        if (lineaIndex < dialogoLineas.Length)
+        {
+            StartCoroutine(ShowLine());
+        }
+        else
+        {
+            didDialogueStar = false;
+            dialogoPanel.SetActive(false);
+            animacionNpc.SetActive(true);
+            Time.timeScale = 1f;
+        }
+    }
+
+    private IEnumerator ShowLine()
+    {
+        dialogoTexto.text = string.Empty;
+
+        foreach (char ch in dialogoLineas[lineaIndex])
+        {
+            dialogoTexto.text += ch;
+            yield return new WaitForSecondsRealtime(tiempo);
+        }
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+
+            isPlayerRange = true;
+            animacionNpc.SetActive(true);
+            Debug.Log("Dialogo");
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            isPlayerRange = false;
+            animacionNpc.SetActive(false);
+            Debug.Log("Dialogo");
         }
     }
 }
