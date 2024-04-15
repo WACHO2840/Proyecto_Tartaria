@@ -11,6 +11,7 @@ public class EnemyLogic : MonoBehaviour
     [SerializeField] Rigidbody2D rb; // RB Enemigo
     [SerializeField] Transform player; // GO jugador
     [SerializeField] SpriteRenderer sr; // SR Enemigo
+    [SerializeField] bool horizontal; // Hacia donde se mueve
     private Vector2 velocidadEnemigo;
 
 
@@ -24,7 +25,7 @@ public class EnemyLogic : MonoBehaviour
 
     private void Awake()
     {
-
+        Instance = this;
     }
 
     void Start()
@@ -77,31 +78,50 @@ public class EnemyLogic : MonoBehaviour
         // Verificar si el componente EnemyStats está adjunto al enemigo
         if (enemyStats != null)
         {
-            // Cambiar la dirección de la patrulla si se alcanza el final del array
-            if (patrolOrder && nextPatrolPoint + 1 >= patrolPoints.Length)
+            if (horizontal)
             {
-                patrolOrder = false;
-            }
-            // Cambiar la dirección de la patrulla si se alcanza el principio del array
-            else if (!patrolOrder && nextPatrolPoint <= 0)
-            {
-                patrolOrder = true;
-            }
+                // Cambiar la dirección de la patrulla si se alcanza el final del array
+                if (patrolOrder && nextPatrolPoint + 1 >= patrolPoints.Length)
+                {
+                    patrolOrder = false;
+                }
+                // Cambiar la dirección de la patrulla si se alcanza el principio del array
+                else if (!patrolOrder && nextPatrolPoint <= 0)
+                {
+                    patrolOrder = true;
+                }   
 
-            // Dependiendo de la dirección de la patrulla, cambiar el próximo punto de patrulla
-            if (Vector2.Distance(transform.position, patrolPoints[nextPatrolPoint].position) < 0.1f)
-            {
-                if (patrolOrder)
+                // Dependiendo de la dirección de la patrulla, cambiar el próximo punto de patrulla
+                if (Vector2.Distance(transform.position, patrolPoints[nextPatrolPoint].position) < 0.1f)
                 {
-                    nextPatrolPoint += 1;
-                }
-                else
-                {
-                    nextPatrolPoint -= 1;
+                    if (patrolOrder)
+                    {
+                        nextPatrolPoint += 1;
+                    }
+                    else
+                    {
+                        nextPatrolPoint -= 1;
+                    }
                 }
             }
-            // Mover al enemigo hacia el siguiente punto de patrulla
-            transform.position = Vector2.MoveTowards(transform.position, patrolPoints[nextPatrolPoint].position, enemyStats.movementSpeed * Time.deltaTime);
+            else
+            {
+                if (Vector2.Distance(patrolPoints[nextPatrolPoint].position, transform.position) < 0.1f)
+                {
+                    if (patrolOrder)
+                    {
+                        nextPatrolPoint += 1;
+                    }
+                    else
+                    {
+                        nextPatrolPoint -= 1;
+                    }
+                }
+            }
+            if (horizontal)
+                transform.position = Vector2.MoveTowards(transform.position, patrolPoints[nextPatrolPoint].position, enemyStats.movementSpeed * Time.deltaTime);
+            else
+                transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x, patrolPoints[nextPatrolPoint].position.y), enemyStats.movementSpeed * Time.deltaTime);
         }
         else
         {

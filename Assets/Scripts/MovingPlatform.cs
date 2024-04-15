@@ -4,38 +4,59 @@ using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
-    public Transform[] puntosMovimiento;
-    public float velocidadMovimiento;
-    private int siguientePlataforma = 1;
-    private bool ordenPlataformas = true;
+    [SerializeField] Transform[] patrolPoints;
+    [SerializeField] float movementSpeed;
+    [SerializeField] bool horizontal; // PARA COMPROBAR SI LA PLATAFORMA SUBE Y BAJA O SE DESPLAZA HORIZONTALMENTE
+    private int nextPatrolPoint = 1;
+    private bool patrolOrder = true; // ESTO SOLO SIRVE EN CASO DE QUE SEAN 2 PUNTOS
 
-    // Update is called once per frame
     void Update()
     {
-        if (ordenPlataformas && siguientePlataforma + 1 >= puntosMovimiento.Length)
+        if (patrolOrder && nextPatrolPoint + 1 >= patrolPoints.Length)
         {
-            ordenPlataformas = false;
+            patrolOrder = false;
         }
 
-        if (!ordenPlataformas && siguientePlataforma <= 0)
+        if (!patrolOrder && nextPatrolPoint <= 0)
         {
-            ordenPlataformas = true;
+            patrolOrder = true;
         }
 
-        if (Vector2.Distance(transform.position, puntosMovimiento[siguientePlataforma].position) < 0.1f)
+        if (horizontal)
         {
-            if (ordenPlataformas)
+            if (Vector2.Distance(transform.position, patrolPoints[nextPatrolPoint].position) < 0.1f)
             {
-                siguientePlataforma += 1;
+                if (patrolOrder)
+                {
+                    nextPatrolPoint += 1;
+                }
+                else
+                {
+                    nextPatrolPoint -= 1;
+                }
             }
-            else
+        }
+        else // SI ES FALSO SE MUEVE EN EL EJE Y
+        {
+            if (Vector2.Distance(patrolPoints[nextPatrolPoint].position, transform.position) < 0.1f)
             {
-                siguientePlataforma -= 1;
+                if (patrolOrder)
+                {
+                    nextPatrolPoint += 1;
+                }
+                else
+                {
+                    nextPatrolPoint -= 1;
+                }
             }
         }
 
-        transform.position = Vector2.MoveTowards(transform.position, puntosMovimiento[siguientePlataforma].position, velocidadMovimiento * Time.deltaTime);
+        if (horizontal)
+            transform.position = Vector2.MoveTowards(transform.position, patrolPoints[nextPatrolPoint].position, movementSpeed * Time.deltaTime);
+        else
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x, patrolPoints[nextPatrolPoint].position.y), movementSpeed * Time.deltaTime);
     }
+
 
     // CUANDO EL JUGADOR ENTRE EN LA PLATAFORMA PONERLO DE HIJO
     private void OnCollisionEnter2D(Collision2D collision)

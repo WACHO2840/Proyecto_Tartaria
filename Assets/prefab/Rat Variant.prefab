@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &1963509493686755531
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1878317183835056668, guid: 854efddf7eea45b45bfeccaeddb90769, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 28.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 1878317183835056668, guid: 854efddf7eea45b45bfeccaeddb90769, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 1878317183835056668, guid: 854efddf7eea45b45bfeccaeddb90769, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1878317183835056668, guid: 854efddf7eea45b45bfeccaeddb90769, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1878317183835056668, guid: 854efddf7eea45b45bfeccaeddb90769, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1878317183835056668, guid: 854efddf7eea45b45bfeccaeddb90769, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1878317183835056668, guid: 854efddf7eea45b45bfeccaeddb90769, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1878317183835056668, guid: 854efddf7eea45b45bfeccaeddb90769, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1878317183835056668, guid: 854efddf7eea45b45bfeccaeddb90769, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1878317183835056668, guid: 854efddf7eea45b45bfeccaeddb90769, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3839273708974787430, guid: 854efddf7eea45b45bfeccaeddb90769, type: 3}
+      propertyPath: m_Size.y
+      value: 0.6997455
+      objectReference: {fileID: 0}
+    - target: {fileID: 3839273708974787430, guid: 854efddf7eea45b45bfeccaeddb90769, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.6501273
+      objectReference: {fileID: 0}
+    - target: {fileID: 5184978995497607348, guid: 854efddf7eea45b45bfeccaeddb90769, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 5184978995497607348, guid: 854efddf7eea45b45bfeccaeddb90769, type: 3}
+      propertyPath: m_Name
+      value: Rat Variant
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 854efddf7eea45b45bfeccaeddb90769, type: 3}
