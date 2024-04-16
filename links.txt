@@ -4,3 +4,5 @@ Mensajes NPC:
 Animación espadas:
 - https://www.youtube.com/watch?v=ZtP12Pcoz8k&list=PLNEAWvYbJJ9kZpaIg2RfzAc_KZixBgchT&index=36
 
+Sistema de comandos
+- https://www.youtube.com/watch?v=pSlEuYp31mg&list=PLC9Bu4wd37El8uBnYKtPyjiksBk13hnej&index=1&t=333s
