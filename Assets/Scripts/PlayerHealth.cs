@@ -23,6 +23,18 @@ public class PlayerHealth : MonoBehaviour
         health = maxHealth;
     }
 
+    public int MaxHealth // Propiedad pública para acceder y modificar el daño básico
+    {
+        get { return (int)maxHealth; }
+        set { maxHealth = value; }
+    }
+
+    public void IncreaseHealth(int increaseAmountPickUp)
+    {
+        maxHealth += increaseAmountPickUp; // Incrementa el daño base
+        Debug.Log("Daño incrementado. Nuevo daño: " + maxHealth);
+    }
+
     void Update()
     {
         if (iFrames > 0)
