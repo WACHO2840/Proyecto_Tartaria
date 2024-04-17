@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    private double basicDamage = 5; // Daño base privado con un atributo para poder verlo en el inspector de Unity
-    private double basicAttackSpeed = 3;
+    private float basicDamage = 5; // Daño base privado con un atributo para poder verlo en el inspector de Unity
+    private float basicAttackSpeed = 3;
     public bool hasToroide = false;
     public bool hasElectron = false;
     public bool hasLenguaDeFuego = false;
@@ -32,13 +32,13 @@ public class PlayerAttack : MonoBehaviour
 
     }
 
-    public void IncreaseDamage(int increaseAmountPickUp, double increaseAmountWeapon)
+    public void IncreaseDamage(int increaseAmountPickUp, float increaseAmountWeapon)
     {
         basicDamage += (increaseAmountPickUp+ increaseAmountWeapon); // Incrementa el daño base
         Debug.Log("Daño incrementado. Nuevo daño: " + basicDamage);
     }
 
-    public void IncreaseAttackSpeed(double increaseAmountPickUp, double increaseAmountWeapon)
+    public void IncreaseAttackSpeed(float increaseAmountPickUp, float increaseAmountWeapon)
     {
         basicAttackSpeed += (increaseAmountPickUp + increaseAmountWeapon); // Incrementa el daño base
         Debug.Log("Velocidad de Ataque incrementada. Nuevo daño: " + basicAttackSpeed);
@@ -62,7 +62,7 @@ public class PlayerAttack : MonoBehaviour
         {
             // Restablece el efecto original de los objetos individuales si ya se había aplicado
             basicDamage -= 5; // Suponiendo que cada uno añadía 5 de daño
-            basicAttackSpeed -= 0.5;
+            basicAttackSpeed -= 0.5f;
             // Aplica el nuevo efecto de sinergia
             basicDamage += 7; // Nuevo daño total de la sinergia
             basicAttackSpeed += 1;

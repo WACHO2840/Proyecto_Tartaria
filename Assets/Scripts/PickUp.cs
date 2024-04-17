@@ -51,7 +51,7 @@ public class PickUp : MonoBehaviour
             else if (isLenguaDeFuego)
             {
                 playerAttack.hasLenguaDeFuego = true;
-                playerAttack.IncreaseAttackSpeed(0.5, 0);
+                playerAttack.IncreaseAttackSpeed(0.5f, 0);
                 Debug.Log("OBJ Lengua De Fuego pillado");
             }
             else if (isRocaVolcanica)
