@@ -17,47 +17,52 @@ public class PlayerMovement : MonoBehaviour
     private float knockbackCounter;
     private bool isOnGround;
 
+    private bool canDoubleJump = false;  // Controla si el jugador puede hacer doble salto
+    private bool hasCrocks = false;      // Controla si el jugador ha recogido los Crocks
 
     private void Awake()
     {
         instance = this;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (knockbackCounter <= 0)
         {
-            rb.velocity = new Vector2(speed * Input.GetAxisRaw("Horizontal"), rb.velocity.y); // Velocidad de movimiento horizontal
+            rb.velocity = new Vector2(speed * Input.GetAxisRaw("Horizontal"), rb.velocity.y);
 
             isOnGround = Physics2D.OverlapCircle(checkGround.position, .2f, ground);
 
+            if (isOnGround && hasCrocks)
+            {
+                canDoubleJump = true;  // Solo restablece el doble salto si tiene los Crocks
+            }
+
             if (Input.GetButtonDown("Jump"))
             {
-                if (isOnGround)
+                if (isOnGround || canDoubleJump)
                 {
-                    rb.velocity = new Vector2(rb.velocity.x, jumpHeight); // Velocidad de movimiento vertical
+                    rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
+                    if (!isOnGround)
+                    {
+                        canDoubleJump = false; // Usa el doble salto
+                    }
                 }
             }
 
-            if (rb.velocity.x < 0)
-            {
-                sr.flipX = true; //Izquierda
-            }
-            else if (rb.velocity.x > 0)
-            {
-                sr.flipX = false; //Derecha
-            }
+            sr.flipX = rb.velocity.x < 0;
         }
         else
         {
             knockbackCounter -= Time.deltaTime;
-
-            if (sr.flipX)
-                rb.velocity = new Vector2(knockbackPower, rb.velocity.y);
-            else
-                rb.velocity = new Vector2(-knockbackPower, rb.velocity.y);
+            rb.velocity = new Vector2(knockbackPower * (sr.flipX ? 1 : -1), rb.velocity.y);
         }
+    }
+
+    public void EnableDoubleJump()
+    {
+        hasCrocks = true;  // Permite el doble salto al recoger los Crocks
+        canDoubleJump = true;  // Activa el doble salto inmediatamente
     }
 
     public void Knockback()

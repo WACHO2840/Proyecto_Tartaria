@@ -21,6 +21,7 @@ public class PickUp : MonoBehaviour
     public bool isLenguaDeFuego = true;
     public bool isRocaVolcanica = true;
     public bool isPalanca = true;
+    public bool isCrocks = true;
 
     public bool isDurumDoble = true;
     private bool isCollected;
@@ -78,6 +79,13 @@ public class PickUp : MonoBehaviour
                 Debug.Log("OBJ Durum pillado");
                 Destroy(gameObject);
             }
+            else if (isCrocks)
+            {
+                other.GetComponent<PlayerMovement>().EnableDoubleJump();
+                Debug.Log("Crocks recogidos, doble salto activado.");
+                Destroy(gameObject);
+            }
+
 
             // Opcional: desactivar el GameObject
             // gameObject.SetActive(false);
