@@ -6,6 +6,10 @@ public class PlayerAttack : MonoBehaviour
 {
     private double basicDamage = 5; // Daño base privado con un atributo para poder verlo en el inspector de Unity
     private double basicAttackSpeed = 3;
+    public bool hasToroide = false;
+    public bool hasElectron = false;
+    public bool hasLenguaDeFuego = false;
+    public bool hasRocaVolcanica = false;
 
     public int BasicAttackSpeed // Propiedad pública para acceder y modificar el daño básico
     {
@@ -38,5 +42,31 @@ public class PlayerAttack : MonoBehaviour
     {
         basicAttackSpeed += (increaseAmountPickUp + increaseAmountWeapon); // Incrementa el daño base
         Debug.Log("Velocidad de Ataque incrementada. Nuevo daño: " + basicAttackSpeed);
+    }
+    public void ApplySynergyTyE()
+    {
+        if (hasToroide && hasElectron)
+        {
+            // Restablece el efecto original de los objetos individuales si ya se había aplicado
+            basicDamage -= 5; // Suponiendo que cada uno añadía 5 de daño
+
+            // Aplica el nuevo efecto de sinergia
+            basicDamage += 7; // Nuevo daño total de la sinergia
+            Debug.Log("Sinergia aplicada. Nuevo daño total: " + basicDamage);
+        }
+    }
+
+    public void ApplySynergyLyR()
+    {
+        if (hasLenguaDeFuego && hasRocaVolcanica)
+        {
+            // Restablece el efecto original de los objetos individuales si ya se había aplicado
+            basicDamage -= 5; // Suponiendo que cada uno añadía 5 de daño
+            basicAttackSpeed -= 0.5;
+            // Aplica el nuevo efecto de sinergia
+            basicDamage += 7; // Nuevo daño total de la sinergia
+            basicAttackSpeed += 1;
+            Debug.Log("Sinergia aplicada. Nuevo daño total: " + basicDamage + "" + basicAttackSpeed);
+        }
     }
 }

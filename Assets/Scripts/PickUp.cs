@@ -20,6 +20,7 @@ public class PickUp : MonoBehaviour
     public bool isElectron = true;
     public bool isLenguaDeFuego = true;
     public bool isRocaVolcanica = true;
+    public bool isLlaveCorroida = true;
     public bool isPalanca = true;
     public bool isCrocks = true;
 
@@ -37,56 +38,56 @@ public class PickUp : MonoBehaviour
 
             if (isToroide)
             {
+                playerAttack.hasToroide = true;
                 playerAttack.IncreaseDamage(5, 0);
                 Debug.Log("OBJ Toroide pillado");
-                Destroy(gameObject);
             }
             else if (isElectron)
             {
+                playerAttack.hasElectron = true;
                 StartCoroutine(TempDamageBoost(playerAttack));
                 Debug.Log("OBJ Electron pillado");
-                GetComponent<Collider2D>().enabled = false;
-                if (GetComponent<Renderer>() != null)
-                {
-                    GetComponent<Renderer>().enabled = false;
-                }
             }
             else if (isLenguaDeFuego)
             {
+                playerAttack.hasLenguaDeFuego = true;
                 playerAttack.IncreaseAttackSpeed(0.5, 0);
                 Debug.Log("OBJ Lengua De Fuego pillado");
-                Destroy(gameObject);
             }
             else if (isRocaVolcanica)
             {
+                playerAttack.hasRocaVolcanica = true;
                 StartCoroutine(TempDamageBoost(playerAttack));
                 Debug.Log("OBJ Roca Volcánica pillado");
-                GetComponent<Collider2D>().enabled = false;
-                if (GetComponent<Renderer>() != null)
-                {
-                    GetComponent<Renderer>().enabled = false;
-                }
+            }
+            else if (isLlaveCorroida)
+            {
+                Debug.Log("OBJ Llave Corroida pillado");
             }
             else if (isPalanca)
             {
                 playerAttack.IncreaseDamage(10, 0);
                 Debug.Log("OBJ Palanca pillado");
-                Destroy(gameObject);
             }
             else if (isDurumDoble)
             {
                 playerHealth.IncreaseHealth(25);
                 Debug.Log("OBJ Durum pillado");
-                Destroy(gameObject);
             }
             else if (isCrocks)
             {
                 other.GetComponent<PlayerMovement>().EnableDoubleJump();
                 Debug.Log("Crocks recogidos, doble salto activado.");
-                Destroy(gameObject);
             }
 
+            playerAttack.ApplySynergyTyE();
+            playerAttack.ApplySynergyLyR();
 
+            GetComponent<Collider2D>().enabled = false;
+            if (GetComponent<Renderer>() != null)
+            {
+                GetComponent<Renderer>().enabled = false;
+            }
             // Opcional: desactivar el GameObject
             // gameObject.SetActive(false);
 
