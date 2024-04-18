@@ -80,8 +80,8 @@ public class PickUp : MonoBehaviour
                 Debug.Log("Crocks recogidos, doble salto activado.");
             }
 
-            playerAttack.ApplySynergyTyE();
-            playerAttack.ApplySynergyLyR();
+            //playerAttack.ApplySynergyTyE();
+            //playerAttack.ApplySynergyLyR();
 
             GetComponent<Collider2D>().enabled = false;
             if (GetComponent<Renderer>() != null)

@@ -43,7 +43,7 @@ public class PlayerAttack : MonoBehaviour
         basicAttackSpeed += (increaseAmountPickUp + increaseAmountWeapon); // Incrementa el daño base
         Debug.Log("Velocidad de Ataque incrementada. Nuevo daño: " + basicAttackSpeed);
     }
-    public void ApplySynergyTyE()
+    /*public void ApplySynergyTyE()
     {
         if (hasToroide && hasElectron)
         {
@@ -68,5 +68,5 @@ public class PlayerAttack : MonoBehaviour
             basicAttackSpeed += 1;
             Debug.Log("Sinergia aplicada. Nuevo daño total: " + basicDamage + "" + basicAttackSpeed);
         }
-    }
+    }*/
 }
