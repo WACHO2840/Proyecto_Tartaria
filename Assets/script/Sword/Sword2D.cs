@@ -34,7 +34,7 @@ public class Sword2D : MonoBehaviour
 
     public void Attack()
     {
-        animator.Play("Attack");
+        animator.Play("AttackKatana");
         collider2D.enabled = true;
         Invoke("DisableAttack", 0.5f);
     }
@@ -44,13 +44,13 @@ public class Sword2D : MonoBehaviour
         collider2D.enabled = false;
     }
 
-    // private void OntriggerEnter2D(Collider2D collision)
-    // {
-    //     if (collision.gameObject.CompareTag("Enemy"))
-    //     {   
-    //         // #ScripDamage# es un scrip que estara asociado a los enemigos
-    //         // collision.gameObject.GetComponent<ScripDamage>().LosseLifeAndHit();
-    //         collider2D.enabled= false;
-    //     }
-    // }
+    private void OntriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {   
+            // #ScripDamage# es un scrip que estara asociado a los enemigos
+            collision.gameObject.GetComponent<DamageEnemy>().LoseLifeAndHit();
+            collider2D.enabled= false;
+        }
+    }
 }

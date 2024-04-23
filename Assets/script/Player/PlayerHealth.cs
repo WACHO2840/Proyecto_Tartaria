@@ -61,4 +61,21 @@ public class PlayerHealth : MonoBehaviour
             }
         }
     }
+
+    public void TakeDamage(int damageAmount)
+    {
+        if (iFrames <= 0 && health > 0)
+        {
+            health -= damageAmount;
+            Debug.Log("Player health: " + health);
+
+            // Activar el tiempo de invulnerabilidad (iFrames)
+            if (health > 0)
+            {
+                iFrames = iFramesCountdown;
+                PlayerMovement.instance.Knockback(); // Empujar al jugador hacia atrás al recibir daño
+                sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0.5f); // Cambiar color para indicar daño recibido
+            }
+        }
+    }
 }
