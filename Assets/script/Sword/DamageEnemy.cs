@@ -61,7 +61,7 @@ public class DamageEnemy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("player"))
         {
             // Si colisiona con el jugador, causar daño al jugador
             collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(damageAmount);
