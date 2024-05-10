@@ -134,7 +134,7 @@ PrefabInstance:
     - target: {fileID: 2468191715738432940, guid: 629da5dd18abd7b4aad75c8cb835dbde, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1503316952}
     - target: {fileID: 4498467403204254959, guid: 629da5dd18abd7b4aad75c8cb835dbde, type: 3}
       propertyPath: m_Name
       value: Leader (52)
@@ -27991,7 +27991,7 @@ PrefabInstance:
     - target: {fileID: 2468191715738432940, guid: 629da5dd18abd7b4aad75c8cb835dbde, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1503316952}
     - target: {fileID: 4498467403204254959, guid: 629da5dd18abd7b4aad75c8cb835dbde, type: 3}
       propertyPath: m_Name
       value: Leader (53)
@@ -28118,7 +28118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   climbSpeed: 4
-  player: {fileID: 0}
+  player: {fileID: 1503316952}
 --- !u!212 &565123230
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -28263,7 +28263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   climbSpeed: 4
-  player: {fileID: 0}
+  player: {fileID: 1503316952}
 --- !u!212 &581659628
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -28477,7 +28477,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   climbSpeed: 4
-  player: {fileID: 0}
+  player: {fileID: 1503316952}
 --- !u!212 &690625788
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -28691,7 +28691,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   climbSpeed: 4
-  player: {fileID: 0}
+  player: {fileID: 1503316952}
 --- !u!212 &749241455
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -29153,7 +29153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   climbSpeed: 4
-  player: {fileID: 0}
+  player: {fileID: 1503316952}
 --- !u!212 &1301811795
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -29448,7 +29448,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   climbSpeed: 4
-  player: {fileID: 0}
+  player: {fileID: 1503316952}
 --- !u!212 &1487066184
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -29576,6 +29576,11 @@ PrefabInstance:
 --- !u!4 &1503316949 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7010028088234589475, guid: e3b4853ac6f100744866b9d9a9f0bfd2, type: 3}
+  m_PrefabInstance: {fileID: 1503316948}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &1503316952 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 4722303589028970327, guid: e3b4853ac6f100744866b9d9a9f0bfd2, type: 3}
   m_PrefabInstance: {fileID: 1503316948}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1520050445
@@ -29767,7 +29772,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   climbSpeed: 4
-  player: {fileID: 0}
+  player: {fileID: 1503316952}
 --- !u!212 &1536295618
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -29981,7 +29986,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   climbSpeed: 4
-  player: {fileID: 0}
+  player: {fileID: 1503316952}
 --- !u!212 &1743060159
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -30441,7 +30446,7 @@ PrefabInstance:
     - target: {fileID: 2468191715738432940, guid: 629da5dd18abd7b4aad75c8cb835dbde, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1503316952}
     - target: {fileID: 4498467403204254959, guid: 629da5dd18abd7b4aad75c8cb835dbde, type: 3}
       propertyPath: m_Name
       value: Leader (59)
