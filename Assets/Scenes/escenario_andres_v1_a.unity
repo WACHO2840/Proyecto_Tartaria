@@ -182,7 +182,6 @@ GameObject:
   - component: {fileID: 83485350}
   - component: {fileID: 83485349}
   - component: {fileID: 83485348}
-  - component: {fileID: 83485347}
   - component: {fileID: 83485354}
   m_Layer: 0
   m_Name: playerr
@@ -191,21 +190,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &83485347
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 83485346}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c097449faf4c9af4e86c6ae226b5b6e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerWeapon: {fileID: 0}
-  katanaSprite: {fileID: -4709762023137261477, guid: 94a1bd11afb7de348bc5e5b8cdc81e09, type: 3}
-  mazoSprite: {fileID: -4318911960915582374, guid: ab9b00ba21c3642438e0a93267c2ca58, type: 3}
 --- !u!61 &83485348
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -387,19 +371,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 83485346}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe69ad313ec65b64db6f711073d7fac8, type: 3}
+  m_Script: {fileID: 11500000, guid: 86e6aa09cf0b85c46a8bdf3f69d5bda2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAnim: {fileID: 0}
-  attackDelay: 0.1
-  weaponTransform: {fileID: 1816493160}
-  weaponRange: 1
-  weaponDamage: 1
-  enemyLayer:
+  startTimeBtwAttack: 0.3
+  attackPost: {fileID: 1816493160}
+  whatIsEnemies:
     serializedVersion: 2
     m_Bits: 64
-  coolDown: 2
-  KBforce: 0
+  attackDamage: 1.11
+  damage: 0
 --- !u!4 &282681527 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2547205992431917995, guid: 6ce40c754fca10d46bba99ae1db74a9d, type: 3}
@@ -418,7 +399,7 @@ GameObject:
   - component: {fileID: 353173513}
   - component: {fileID: 353173516}
   m_Layer: 0
-  m_Name: katana (1)
+  m_Name: katana
   m_TagString: katana
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1428,8 +1409,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06b3b5c286455dd44ae0759120cf90e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHealth: 1
-  enemyZombi: {fileID: 0}
+  health: 0
+  speed: 0
 --- !u!1 &1739493915
 GameObject:
   m_ObjectHideFlags: 0

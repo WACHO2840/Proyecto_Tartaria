@@ -32,7 +32,7 @@ public class MeleeAttack : MonoBehaviour
         yield return new WaitForSeconds(attackDelay);
 
         bool facingRigth = (transform.position.x < enemy.transform.position.x);
-        enemy.GetComponent<EnemyHealth>().TakeDamage(
-            weaponDamage, facingRigth, KBforce);
+        // enemy.GetComponent<EnemyHealth>().TakeDamage(
+        //     weaponDamage, facingRigth, KBforce);
     }
 }
