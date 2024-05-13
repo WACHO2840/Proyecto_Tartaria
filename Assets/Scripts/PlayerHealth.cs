@@ -6,11 +6,12 @@ public class PlayerHealth : MonoBehaviour
 {
     public static PlayerHealth instance;
 
-    [SerializeField] int maxHealth;
-    private int health;
+    [SerializeField] private float maxHealth;
+    private float health;
     private float iFramesCountdown = 1;
     private float iFrames;
     private SpriteRenderer sr;
+    [SerializeField] private HealthBar hpBar;
 
     private void Awake()
     {
@@ -21,6 +22,7 @@ public class PlayerHealth : MonoBehaviour
     void Start()
     {
         health = maxHealth;
+        hpBar.Bar(health);
     }
 
     void Update()
@@ -43,6 +45,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void DealDamageSpikes()
     {
+        hpBar.HpSet(health);
         health = 0;
     }
 
@@ -52,6 +55,7 @@ public class PlayerHealth : MonoBehaviour
         {
             health -= dmg;
             Debug.Log(health);
+            hpBar.HpSet(health);
             if (health > 0)
             {
                 iFrames = iFramesCountdown;

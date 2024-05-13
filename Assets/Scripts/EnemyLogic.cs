@@ -17,7 +17,7 @@ public class EnemyLogic : MonoBehaviour
 
     private float detectionRange = 9f;
     private int nextPatrolPoint = 0;
-    private bool patrolOrder = true; // 
+    private bool patrolOrder = true;
 
     private bool attacking; // Comprobar si esta persiguiendo al jugador
 
@@ -39,14 +39,7 @@ public class EnemyLogic : MonoBehaviour
 
         AttackPlayer();
 
-        if (rb.velocity.x < 0)
-        {
-            sr.flipX = true; //Izquierda
-        }
-        else if (rb.velocity.x > 0)
-        {
-            sr.flipX = false; //Derecha
-        }
+        Flip();
     }
     private void FixedUpdate()
     {
@@ -159,6 +152,18 @@ public class EnemyLogic : MonoBehaviour
                     attacking = false;
                 }
             }
+        }
+    }
+
+    private void Flip()
+    {
+        if(transform.position.x < patrolPoints[nextPatrolPoint].position.x)
+        {
+            sr.flipX = true;
+        }
+        else
+        {
+            sr.flipX = false;
         }
     }
 }

@@ -7,30 +7,21 @@ public class MainMenu : MonoBehaviour
 {
     public void Play()
     {
-        Debug.Log("Jugar");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+2); // Cambiar a la escena de tutorial
     }
 
-    public void Settings()
+    public void Tutorial()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); // Cambiar a la siguiente escena
-        Debug.Log("Ajustes");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); // Cambiar a la escena de tutorial
+    }
+
+    public void BossRush()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1); // Cambiar a la escena de pelea contra el jefe
     }
 
     public void Exit()
     {
-        Debug.Log("Salir");
-        Application.Quit();
-    }
-
-    public void ExitSettings()
-    {
-        Debug.Log("Salir de ajustes");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1); // Cambiar a la escena de menu principal
-    }
-
-    public void Volume()
-    {
-
+        Application.Quit(); // Cerrar la aplicacion
     }
 }
