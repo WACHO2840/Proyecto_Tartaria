@@ -9,8 +9,13 @@ public class LadderMovement : MonoBehaviour
     private float vertical;
     private bool isLadder; 
     private bool isClimbing;
+    [SerializeField] private PlayerMovement playerMovement;
+    private Rigidbody2D player;
 
-    [SerializeField] private Rigidbody2D player;
+    private void Awake()
+    {
+        player = playerMovement.rb; 
+    }
 
     // Update is called once per frame
     void Update()

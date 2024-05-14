@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public static PlayerMovement instance;
 
-    [SerializeField] Rigidbody2D rb;
+    [SerializeField] public Rigidbody2D rb;
     [SerializeField] Transform checkGround;
     [SerializeField] LayerMask ground;
     [SerializeField] SpriteRenderer sr;
@@ -19,8 +21,11 @@ public class PlayerMovement : MonoBehaviour
     private bool isOnGround;
     private Vector2 levelStart;
 
+    private int stages;
+
     private void Awake()
     {
+        stages = 0;
         instance = this;
         levelStart = transform.position;
     }
@@ -68,13 +73,33 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = new Vector2(0f, knockbackPower / 2);
     }
 
+    //PASAR DE NIVEL ALEATORIO
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("LevelEnd"))
         {
+            if (stages < 5)
+            {
+                int[] stagesCheck = new int[5];
+                for (int i = 0; i < 5; i++)
+                {
+                    int index = UnityEngine.Random.Range(3, 16);
+                    while (stagesCheck.Contains(index))
+                    {
+                        index = UnityEngine.Random.Range(3, 16); // Si ya está, genera otro índice
+                    }   
+                    stagesCheck[i] = index; 
+                }
+                SceneManager.LoadScene(stagesCheck[stages]); // Cambiar a la siguiente sala
+                Debug.Log(stagesCheck[stages]);
+                stages++;
+            } 
+            else if (stages == 5)
+            {
+                SceneManager.LoadScene(16); // Cambiar a la sala del jefe
+            }
             this.transform.position = levelStart;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); // Cambiar a la siguiente escena
-            
         }
     }
 }
