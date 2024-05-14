@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -16,11 +17,12 @@ public class PlayerMovement : MonoBehaviour
     private float knockbackPower;
     private float knockbackCounter;
     private bool isOnGround;
-
+    private Vector2 levelStart;
 
     private void Awake()
     {
         instance = this;
+        levelStart = transform.position;
     }
 
     // Update is called once per frame
@@ -64,5 +66,15 @@ public class PlayerMovement : MonoBehaviour
     {
         knockbackCounter = knockbackDistance;
         rb.velocity = new Vector2(0f, knockbackPower / 2);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("LevelEnd"))
+        {
+            this.transform.position = levelStart;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); // Cambiar a la siguiente escena
+            
+        }
     }
 }
