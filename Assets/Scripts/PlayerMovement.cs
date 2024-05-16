@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     private float knockbackPower;
     private float knockbackCounter;
     private bool isOnGround;
+    int[] stagesCheck = new int[5];
     private Vector2 levelStart;
 
     private int stages;
@@ -28,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
         stages = 0;
         instance = this;
         levelStart = transform.position;
+        GenerateScenes();
     }
 
     // Update is called once per frame
@@ -82,25 +84,32 @@ public class PlayerMovement : MonoBehaviour
         {
             if (stages < 5)
             {
-                int[] stagesCheck = new int[5];
-                for (int i = 0; i < 5; i++)
-                {
-                    int index = UnityEngine.Random.Range(3, 16);
-                    while (stagesCheck.Contains(index))
-                    {
-                        index = UnityEngine.Random.Range(3, 16); // Si ya está, genera otro índice
-                    }   
-                    stagesCheck[i] = index; 
-                }
                 SceneManager.LoadScene(stagesCheck[stages]); // Cambiar a la siguiente sala
-                Debug.Log(stagesCheck[stages]);
+                //Debug.Log(stagesCheck[stages]);
+                //Debug.Log(stages);
                 stages++;
             } 
             else if (stages == 5)
             {
                 SceneManager.LoadScene(16); // Cambiar a la sala del jefe
+                //Debug.Log("jefe");
             }
             this.transform.position = levelStart;
         }
+    }
+
+    private int[] GenerateScenes()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            int index = UnityEngine.Random.Range(3, 16);
+            while (stagesCheck.Contains(index))
+            {
+                index = UnityEngine.Random.Range(3, 16); // Si ya está, genera otro índice
+            }
+            stagesCheck[i] = index;
+            Debug.Log(index);
+        }
+        return stagesCheck;
     }
 }
