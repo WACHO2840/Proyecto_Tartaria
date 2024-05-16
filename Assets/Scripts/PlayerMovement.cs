@@ -77,6 +77,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        
         if (collision.gameObject.CompareTag("LevelEnd"))
         {
             if (stages < 5)

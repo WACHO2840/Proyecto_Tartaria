@@ -8,13 +8,12 @@ public class EnemyLogic : MonoBehaviour
 
     #region Variables
     [SerializeField] Transform[] patrolPoints; // Puntos de patrullaje
+  
+    [SerializeField] private Rigidbody2D rb; // RB Enemigo
     private PlayerMovement playerMovement;
-    private Rigidbody2D rb; // RB Enemigo
     private Transform player; // GO jugador
     [SerializeField] SpriteRenderer sr; // SR Enemigo
     [SerializeField] bool horizontal; // Hacia donde se mueve
-    private Vector2 velocidadEnemigo;
-
 
     private float detectionRange = 9f;
     private int nextPatrolPoint = 0;
@@ -27,19 +26,17 @@ public class EnemyLogic : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        rb = playerMovement.rb;
-        player = playerMovement.transform;
+        
     }
 
     void Start()
     {
-
+        playerMovement = FindObjectOfType<PlayerMovement>();
+        player = playerMovement.transform;
     }
 
     void Update()
     {
-        velocidadEnemigo = rb.velocity; // BORRAR, SIRVE PARA PRUEBAS
-
         AttackPlayer();
 
         Flip();

@@ -9,15 +9,15 @@ public class LadderMovement : MonoBehaviour
     private float vertical;
     private bool isLadder; 
     private bool isClimbing;
-    [SerializeField] private PlayerMovement playerMovement;
     private Rigidbody2D player;
+    private PlayerMovement playerMovement;
 
-    private void Awake()
+    private void Start()
     {
-        player = playerMovement.rb; 
+        playerMovement = FindObjectOfType<PlayerMovement>();
+        player = playerMovement.rb;
     }
 
-    // Update is called once per frame
     void Update()
     {
         vertical = Input.GetAxis("Vertical"); // ALMACENO LA VELOCIDAD DEL EJE Y
