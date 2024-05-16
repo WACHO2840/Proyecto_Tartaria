@@ -97,6 +97,10 @@ PrefabInstance:
       value: Zombie Variant
       objectReference: {fileID: 0}
     - target: {fileID: 6432816255359548546, guid: 854efddf7eea45b45bfeccaeddb90769, type: 3}
+      propertyPath: m_Mass
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6432816255359548546, guid: 854efddf7eea45b45bfeccaeddb90769, type: 3}
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 6200000, guid: 83edb58ae2b8a744580b498ffc137031, type: 2}

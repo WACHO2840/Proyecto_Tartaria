@@ -188,6 +188,7 @@ GameObject:
   - component: {fileID: 1061478129826225337}
   - component: {fileID: 8023274928945748507}
   - component: {fileID: 4355747216848055463}
+  - component: {fileID: -1315486247407578356}
   - component: {fileID: 4313226280249419281}
   m_Layer: 5
   m_Name: UI
@@ -262,6 +263,18 @@ MonoBehaviour:
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
   m_PresetInfoIsWorld: 0
+--- !u!114 &-1315486247407578356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3543753523113434655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eea40b36887f8c41b4d9e8557b4e609, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4313226280249419281
 MonoBehaviour:
   m_ObjectHideFlags: 0

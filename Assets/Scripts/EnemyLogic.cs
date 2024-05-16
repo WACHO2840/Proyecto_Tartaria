@@ -4,23 +4,20 @@ using UnityEngine;
 
 public class EnemyLogic : MonoBehaviour
 {
+    #region Variables
     public static EnemyLogic Instance;
 
-    #region Variables
-    [SerializeField] Transform[] patrolPoints; // Puntos de patrullaje
-    [SerializeField] Rigidbody2D rb; // RB Enemigo
-    [SerializeField] Transform player; // GO jugador
-    [SerializeField] SpriteRenderer sr; // SR Enemigo
-    [SerializeField] bool horizontal; // Hacia donde se mueve
-    private Vector2 velocidadEnemigo;
-
+    [SerializeField] private Transform[] patrolPoints; // Puntos de patrullaje
+    [SerializeField] private bool horizontal; // Hacia donde se mueve
+    private Rigidbody2D rb; // RB Enemigo
+    private Transform player; // GO jugador
+    private SpriteRenderer sr; // SR Enemigo
+    private PlayerMovement playerMovement;
 
     private float detectionRange = 9f;
     private int nextPatrolPoint = 0;
     private bool patrolOrder = true;
-
     private bool attacking; // Comprobar si esta persiguiendo al jugador
-
     #endregion
 
     private void Awake()
@@ -30,15 +27,15 @@ public class EnemyLogic : MonoBehaviour
 
     void Start()
     {
-
+        rb = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
+        playerMovement = FindObjectOfType<PlayerMovement>();
+        player = playerMovement.transform;
     }
 
     void Update()
     {
-        velocidadEnemigo = rb.velocity; // BORRAR, SIRVE PARA PRUEBAS
-
         AttackPlayer();
-
         Flip();
     }
     private void FixedUpdate()

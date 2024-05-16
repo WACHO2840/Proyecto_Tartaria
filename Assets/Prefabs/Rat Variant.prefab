@@ -72,6 +72,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rat Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 6432816255359548546, guid: 854efddf7eea45b45bfeccaeddb90769, type: 3}
+      propertyPath: m_Mass
+      value: 1000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

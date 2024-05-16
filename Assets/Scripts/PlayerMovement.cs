@@ -1,16 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
+    #region VARIABLES
     public static PlayerMovement instance;
 
-    [SerializeField] Rigidbody2D rb;
-    [SerializeField] Transform checkGround;
-    [SerializeField] LayerMask ground;
-    [SerializeField] SpriteRenderer sr;
+    [SerializeField] public Rigidbody2D rb;
+    [SerializeField] private Transform checkGround;
+    [SerializeField] private LayerMask ground;
+    private SpriteRenderer sr;
+
     private float speed = 10;
     private float jumpHeight = 10;
     private float knockbackDistance;
@@ -18,11 +22,20 @@ public class PlayerMovement : MonoBehaviour
     private float knockbackCounter;
     private bool isOnGround;
     private Vector2 levelStart;
+    private int[] stagesCheck = new int[5];
+    private int stages;
+    #endregion
 
     private void Awake()
     {
         instance = this;
         levelStart = transform.position;
+    }
+
+    private void Start()
+    {
+        sr = GetComponent<SpriteRenderer>();
+        GenerateScenes();
     }
 
     // Update is called once per frame
@@ -70,11 +83,34 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+
         if (collision.gameObject.CompareTag("LevelEnd"))
         {
+            if (stages < 5)
+            {
+                SceneManager.LoadScene(stagesCheck[stages]); // Cambiar a la siguiente sala
+                stages++;
+            }
+            else if (stages == 5)
+            {
+                SceneManager.LoadScene(16); // Cambiar a la sala del jefe
+            }
             this.transform.position = levelStart;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); // Cambiar a la siguiente escena
-            
         }
+    }
+
+    private int[] GenerateScenes()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            int index = UnityEngine.Random.Range(2, 16);
+            while (stagesCheck.Contains(index))
+            {
+                index = UnityEngine.Random.Range(2, 16); // Si ya está, genera otro numero
+            }
+            stagesCheck[i] = index;
+            Debug.Log(index);
+        }
+        return stagesCheck;
     }
 }

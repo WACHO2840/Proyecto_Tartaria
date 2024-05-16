@@ -6,7 +6,7 @@ public class PlayerHealth : MonoBehaviour
 {
     public static PlayerHealth instance;
 
-    [SerializeField] private float maxHealth;
+    private float maxHealth = 100;
     private float health;
     private float iFramesCountdown = 1;
     private float iFrames;

@@ -5,12 +5,21 @@ using UnityEngine;
 
 public class LadderMovement : MonoBehaviour
 {
+    #region VARIABLES
     [SerializeField] private float climbSpeed = 4f;
-    private float vertical;
-    private bool isLadder; 
-    private bool isClimbing;
 
-    [SerializeField] private Rigidbody2D player;
+    private float vertical;
+    private bool isLadder;
+    private bool isClimbing;
+    private PlayerMovement playerMovement;
+    private Rigidbody2D player;
+    #endregion
+
+    private void Start()
+    {
+        playerMovement = FindObjectOfType<PlayerMovement>();
+        player = playerMovement.rb;
+    }
 
     // Update is called once per frame
     void Update()
