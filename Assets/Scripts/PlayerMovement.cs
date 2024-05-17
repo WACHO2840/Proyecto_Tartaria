@@ -20,6 +20,8 @@ public class PlayerMovement : MonoBehaviour
     private bool canDoubleJump = false;  // Controla si el jugador puede hacer doble salto
     private bool hasCrocks = false;      // Controla si el jugador ha recogido los Crocks
 
+    public bool canMove = true; // Variable para controlar si el jugador puede moverse
+
     private void Awake()
     {
         instance = this;
@@ -27,35 +29,42 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (knockbackCounter <= 0)
+        if (canMove)
         {
-            rb.velocity = new Vector2(speed * Input.GetAxisRaw("Horizontal"), rb.velocity.y);
-
-            isOnGround = Physics2D.OverlapCircle(checkGround.position, .2f, ground);
-
-            if (isOnGround && hasCrocks)
+            if (knockbackCounter <= 0)
             {
-                canDoubleJump = true;  // Solo restablece el doble salto si tiene los Crocks
-            }
+                rb.velocity = new Vector2(speed * Input.GetAxisRaw("Horizontal"), rb.velocity.y);
 
-            if (Input.GetButtonDown("Jump"))
-            {
-                if (isOnGround || canDoubleJump)
+                isOnGround = Physics2D.OverlapCircle(checkGround.position, .2f, ground);
+
+                if (isOnGround && hasCrocks)
                 {
-                    rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
-                    if (!isOnGround)
+                    canDoubleJump = true;  // Solo restablece el doble salto si tiene los Crocks
+                }
+
+                if (Input.GetButtonDown("Jump"))
+                {
+                    if (isOnGround || canDoubleJump)
                     {
-                        canDoubleJump = false; // Usa el doble salto
+                        rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
+                        if (!isOnGround)
+                        {
+                            canDoubleJump = false; // Usa el doble salto
+                        }
                     }
                 }
-            }
 
-            sr.flipX = rb.velocity.x < 0;
+                sr.flipX = rb.velocity.x < 0;
+            }
+            else
+            {
+                knockbackCounter -= Time.deltaTime;
+                rb.velocity = new Vector2(knockbackPower * (sr.flipX ? 1 : -1), rb.velocity.y);
+            }
         }
         else
         {
-            knockbackCounter -= Time.deltaTime;
-            rb.velocity = new Vector2(knockbackPower * (sr.flipX ? 1 : -1), rb.velocity.y);
+            rb.velocity = new Vector2(0, rb.velocity.y); // Detener el movimiento horizontal
         }
     }
 
