@@ -72,7 +72,6 @@ public class ItemPickupConfirmation : MonoBehaviour
         currentPickUpItem = null;
     }
 }
-*/
 
 using System.Collections;
 using System.Collections.Generic;
@@ -146,5 +145,115 @@ public class ItemPickupConfirmation : MonoBehaviour
         confirmationDialog.SetActive(false);
         PlayerMovement.instance.canMove = true; // Habilitar movimiento
         currentPickUpItem = null;
+    }
+}*/
+
+/*using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class ItemPickupConfirmation : MonoBehaviour
+{
+    public GameObject confirmationDialog; // Referencia al Panel del cuadro de diálogo
+    public Text confirmationText; // Referencia al Texto del cuadro de diálogo
+    public Button yesButton; // Referencia al Botón "Sí"
+    public Button noButton; // Referencia al Botón "No"
+
+    public int itemsCollected;
+    
+
+    private PickUpGeneric currentPickUpItem;
+
+    void Start()
+    {
+        confirmationDialog.SetActive(false); // Asegúrate de que el cuadro de diálogo esté oculto al inicio
+        yesButton.onClick.AddListener(OnYesButtonClicked);
+        noButton.onClick.AddListener(OnNoButtonClicked);
+    }
+
+    void Update()
+    {
+        itemsCollected = PickUpGeneric.Instance.GetNumberItems();
+    }
+
+    public void ShowConfirmationDialog(PickUpGeneric pickUpItem)
+    {
+        currentPickUpItem = pickUpItem;
+        confirmationText.text = "¿Quieres recoger el objeto?";
+        confirmationDialog.SetActive(true);
+        PlayerMovement.instance.canMove = false; // Deshabilitar movimiento
+    }
+
+    private void OnYesButtonClicked()
+    {
+        if (itemsCollected<3)
+        {
+            currentPickUpItem.CollectItem();
+        }
+        HideConfirmationDialog();
+    }
+
+    private void OnNoButtonClicked()
+    {
+        HideConfirmationDialog();
+    }
+
+    private void HideConfirmationDialog()
+    {
+        confirmationDialog.SetActive(false);
+        currentPickUpItem = null;
+        PlayerMovement.instance.canMove = true; // Habilitar movimiento
+    }
+}*/
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class ItemPickupConfirmation : MonoBehaviour
+{
+    public GameObject confirmationDialog; // Referencia al Panel del cuadro de diálogo
+    public Text confirmationText; // Referencia al Texto del cuadro de diálogo
+    public Button yesButton; // Referencia al Botón "Sí"
+    public Button noButton; // Referencia al Botón "No"
+
+    private PickUpGeneric currentPickUpItem;
+
+    void Start()
+    {
+        confirmationDialog.SetActive(false); // Asegúrate de que el cuadro de diálogo esté oculto al inicio
+        yesButton.onClick.AddListener(OnYesButtonClicked);
+        noButton.onClick.AddListener(OnNoButtonClicked);
+    }
+
+    public void ShowConfirmationDialog(PickUpGeneric pickUpItem)
+    {
+        currentPickUpItem = pickUpItem;
+        confirmationText.text = "¿Quieres recoger el objeto?";
+        confirmationDialog.SetActive(true);
+        PlayerMovement.instance.canMove = false; // Deshabilitar movimiento
+    }
+
+    private void OnYesButtonClicked()
+    {
+        if (PickUpGeneric.Instance.GetNumberItems() < PickUpGeneric.maxItems)
+        {
+            currentPickUpItem.CollectItem();
+        }
+        HideConfirmationDialog();
+    }
+
+    private void OnNoButtonClicked()
+    {
+        HideConfirmationDialog();
+    }
+
+    private void HideConfirmationDialog()
+    {
+        confirmationDialog.SetActive(false);
+        currentPickUpItem = null;
+        PlayerMovement.instance.canMove = true; // Habilitar movimiento
     }
 }
