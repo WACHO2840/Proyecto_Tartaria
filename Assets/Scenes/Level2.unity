@@ -222,7 +222,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   climbSpeed: 4
-  player: {fileID: 0}
 --- !u!61 &27094419
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -367,7 +366,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   climbSpeed: 4
-  player: {fileID: 0}
 --- !u!61 &141102931
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -590,7 +588,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   climbSpeed: 4
-  player: {fileID: 0}
 --- !u!61 &652367677
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -735,7 +732,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   climbSpeed: 4
-  player: {fileID: 0}
 --- !u!61 &1035145497
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -937,7 +933,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   climbSpeed: 4
-  player: {fileID: 0}
 --- !u!61 &1291433859
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -23808,7 +23803,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   climbSpeed: 4
-  player: {fileID: 0}
 --- !u!61 &1368134817
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -23986,7 +23980,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   climbSpeed: 4
-  player: {fileID: 0}
 --- !u!212 &1816855330
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -24169,7 +24162,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   climbSpeed: 4
-  player: {fileID: 0}
 --- !u!61 &2103474821
 BoxCollider2D:
   m_ObjectHideFlags: 0
