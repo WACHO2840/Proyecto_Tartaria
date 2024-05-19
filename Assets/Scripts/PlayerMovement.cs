@@ -74,6 +74,12 @@ public class PlayerMovement : MonoBehaviour
         canDoubleJump = true;  // Activa el doble salto inmediatamente
     }
 
+    public void DisableDoubleJump()
+    {
+        hasCrocks = false;  // Permite el doble salto al recoger los Crocks
+        canDoubleJump = false;  // Activa el doble salto inmediatamente
+    }
+
     public void Knockback()
     {
         knockbackCounter = knockbackDistance;
