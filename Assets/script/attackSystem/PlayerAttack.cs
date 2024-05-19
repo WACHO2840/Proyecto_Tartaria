@@ -22,7 +22,7 @@ public class PlayerAttack : MonoBehaviour
             if (Input.GetKey(KeyCode.Space))
             {
                 camAnim.SetTrigger("shake");
-                playerAnim.SetTrigger("attack");
+                playerAnim.SetTrigger("AttackKatana");
                 Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPost.position, attackDamage, whatIsEnemies);
 
                 for (int i = 0; i < enemiesToDamage.Length; i++)
