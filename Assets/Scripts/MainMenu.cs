@@ -7,7 +7,7 @@ public class MainMenu : MonoBehaviour
 {
     public void Play()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+2); // Cambiar a la escena de tutorial
+        SceneManager.LoadScene(2); // Cambiar a la escena de juego
     }
 
     public void Tutorial()

@@ -18,8 +18,11 @@ public class PlayerMovement : MonoBehaviour
     private float knockbackDistance;
     private float knockbackPower;
     private float knockbackCounter;
+    private float sceneCooldown = 1f;
+    private float sceneTimer = 0f;
     private bool isOnGround;
-    int[] stagesCheck = new int[5];
+    private bool nextScene = false; // Evitar múltiples ejecuciones
+    int[] scenesCheck = new int[5];
     private Vector2 levelStart;
 
     private int stages;
@@ -35,6 +38,18 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Cooldown escenas 
+        if (nextScene)
+        {
+            sceneTimer += Time.deltaTime; // Contar el tiempo en segundos
+            if (sceneTimer >= sceneCooldown)
+            {
+                nextScene = false; // Habilitar cambio de escena
+                sceneTimer = 0f; // Restablecer contador
+            }
+        }
+
+
         if (knockbackCounter <= 0)
         {
             rb.velocity = new Vector2(speed * Input.GetAxisRaw("Horizontal"), rb.velocity.y); // Velocidad de movimiento horizontal
@@ -75,41 +90,38 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = new Vector2(0f, knockbackPower / 2);
     }
 
-    //PASAR DE NIVEL ALEATORIO
-
+    //PASAR DE NIVEL 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        
-        if (collision.gameObject.CompareTag("LevelEnd"))
+        if (collision.gameObject.CompareTag("LevelEnd") && !nextScene)
         {
+            nextScene = true; // Activar cuenta atras
+
             if (stages < 5)
             {
-                SceneManager.LoadScene(stagesCheck[stages]); // Cambiar a la siguiente sala
-                //Debug.Log(stagesCheck[stages]);
-                //Debug.Log(stages);
+                SceneManager.LoadScene(scenesCheck[stages]); // Cambiar a la siguiente escena
                 stages++;
-            } 
+            }
             else if (stages == 5)
             {
-                SceneManager.LoadScene(16); // Cambiar a la sala del jefe
-                //Debug.Log("jefe");
+                SceneManager.LoadScene(16); // Cambiar a la escena del jefe
             }
-            this.transform.position = levelStart;
+            this.transform.position = levelStart; // Resetear posicion del jugador a x:0 y:0
         }
     }
 
+    // GENERAR NIVELES
     private int[] GenerateScenes()
     {
         for (int i = 0; i < 5; i++)
         {
-            int index = UnityEngine.Random.Range(3, 16);
-            while (stagesCheck.Contains(index))
+            int index = UnityEngine.Random.Range(2, 16); // Limites de escenas
+            while (scenesCheck.Contains(index))
             {
-                index = UnityEngine.Random.Range(3, 16); // Si ya está, genera otro índice
+                index = UnityEngine.Random.Range(2, 16); // Si ya está, genera otro número
             }
-            stagesCheck[i] = index;
-            Debug.Log(index);
+            scenesCheck[i] = index; // Guardar el valor
         }
-        return stagesCheck;
+        return scenesCheck;
     }
 }

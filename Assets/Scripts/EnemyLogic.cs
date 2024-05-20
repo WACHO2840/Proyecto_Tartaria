@@ -26,7 +26,6 @@ public class EnemyLogic : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        
     }
 
     void Start()
@@ -38,7 +37,6 @@ public class EnemyLogic : MonoBehaviour
     void Update()
     {
         AttackPlayer();
-
         Flip();
     }
     private void FixedUpdate()
@@ -63,7 +61,7 @@ public class EnemyLogic : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning("El enemigo no tiene el script EnemyStats.");
+                Debug.LogWarning("El enemigo no tiene el script EnemyStats asociado");
             }
         }
     }
@@ -129,29 +127,37 @@ public class EnemyLogic : MonoBehaviour
     {
         EnemyStats enemyStats = GetComponent<EnemyStats>();
 
-        if (enemyStats != null)
+        if (enemyStats != null) // En caso de que el objeto exista
         {
-            if (player != null)
+            if (player != null) // En caso de que el jugador exista
             {
-                // Calcula la distancia entre el enemigo y el jugador
+                // Obtiene la distancia entre el enemigo y el jugador
                 float playerDistance = Vector2.Distance(transform.position, player.position);
 
-                // Si la distancia es menor que la distancia de persecución, comienza a perseguir al jugador
+                // Si la distancia es menor que la distancia de persecución, comienza a atacar al jugador
                 if (playerDistance <= detectionRange)
                 {
-                    // Dirección hacia la que se moverá el enemigo
+                    // Dirección hacia la que se moverá el enemigo a la maxima velocidad
                     Vector2 direccion = (player.position - transform.position).normalized;
 
                     // Mueve al enemigo hacia el jugador
                     transform.position = Vector2.MoveTowards(transform.position, player.position, enemyStats.movementSpeed * Time.deltaTime);
 
-                    attacking = true;
+                    attacking = true; // Modo ataque activado
                 }
                 else
                 {
-                    attacking = false;
+                    attacking = false; // Modo ataque desactivado
                 }
             }
+            else
+            {
+                Debug.Log("El jugador esta muerto o no se ha generado correctamente");
+            }
+        }
+        else
+        {
+            Debug.Log("El enemigo esta muerto o no se ha generado correctamente");
         }
     }
 
