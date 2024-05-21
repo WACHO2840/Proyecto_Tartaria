@@ -1,10 +1,11 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TutorialManager : MonoBehaviour
+public class NPCInteraction : MonoBehaviour
 {
     public GameObject[] panels; // Los paneles que se mostrarán secuencialmente
     public Button[] nextButtons; // Los botones para avanzar al siguiente panel
+    public Text interactText; // El texto que muestra la letra 'E' para interactuar
 
     private int currentPanelIndex = 0;
     private bool isPlayerInRange = false; // Para verificar si el jugador está en rango
@@ -14,6 +15,7 @@ public class TutorialManager : MonoBehaviour
     {
         canvas = FindObjectOfType<Canvas>(); // Encuentra el Canvas en la escena
         HideAllPanels(); // Ocultar todos los paneles al inicio
+        interactText.gameObject.SetActive(false); // Ocultar el texto de interacción al inicio
 
         // Asegúrate de que cada botón tenga asignado el método NextPanel
         for (int i = 0; i < nextButtons.Length; i++)
@@ -35,6 +37,7 @@ public class TutorialManager : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerInRange = true; // El jugador está en rango
+            interactText.gameObject.SetActive(true); // Mostrar el texto de interacción
         }
     }
 
@@ -44,6 +47,7 @@ public class TutorialManager : MonoBehaviour
         {
             isPlayerInRange = false; // El jugador ha salido del rango
             HideAllPanels(); // Ocultar los paneles de interacción cuando el jugador se aleja
+            interactText.gameObject.SetActive(false); // Ocultar el texto de interacción
         }
     }
 
