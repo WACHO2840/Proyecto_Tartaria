@@ -5,7 +5,7 @@ public class NPCInteraction : MonoBehaviour
 {
     public GameObject[] panels; // Los paneles que se mostrarán secuencialmente
     public Button[] nextButtons; // Los botones para avanzar al siguiente panel
-    public Text interactText; // El texto que muestra la letra 'E' para interactuar
+    public GameObject interactText; // El texto que muestra la letra 'E' para interactuar
 
     private int currentPanelIndex = 0;
     private bool isPlayerInRange = false; // Para verificar si el jugador está en rango
