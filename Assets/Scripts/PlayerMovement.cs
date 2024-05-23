@@ -20,9 +20,12 @@ public class PlayerMovement : MonoBehaviour
     private float knockbackDistance;
     private float knockbackPower;
     private float knockbackCounter;
+    private float sceneCooldown = 1f;
+    private float sceneTimer = 0f;
     private bool isOnGround;
+    private bool nextScene = false; // Evitar múltiples ejecuciones
     private Vector2 levelStart;
-    private int[] stagesCheck = new int[5];
+    private int[] scenesCheck = new int[5];
     private int stages;
     #endregion
 
@@ -41,6 +44,17 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Cooldown escenas 
+        if (nextScene)
+        {
+            sceneTimer += Time.deltaTime; // Contar el tiempo en segundos
+            if (sceneTimer >= sceneCooldown)
+            {
+                nextScene = false; // Habilitar cambio de escena
+                sceneTimer = 0f; // Restablecer contador
+            }
+        }
+
         if (knockbackCounter <= 0)
         {
             rb.velocity = new Vector2(speed * Input.GetAxisRaw("Horizontal"), rb.velocity.y); // Velocidad de movimiento horizontal
@@ -83,19 +97,20 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
-        if (collision.gameObject.CompareTag("LevelEnd"))
+        if (collision.gameObject.CompareTag("LevelEnd") && !nextScene)
         {
+            nextScene = true; // Activar cuenta atras
+
             if (stages < 5)
             {
-                SceneManager.LoadScene(stagesCheck[stages]); // Cambiar a la siguiente sala
+                SceneManager.LoadScene(scenesCheck[stages]); // Cambiar a la siguiente escena
                 stages++;
             }
             else if (stages == 5)
             {
-                SceneManager.LoadScene(16); // Cambiar a la sala del jefe
+                SceneManager.LoadScene(16); // Cambiar a la escena del jefe
             }
-            this.transform.position = levelStart;
+            this.transform.position = levelStart; // Resetear posicion del jugador a x:0 y:0
         }
     }
 
@@ -104,13 +119,13 @@ public class PlayerMovement : MonoBehaviour
         for (int i = 0; i < 5; i++)
         {
             int index = UnityEngine.Random.Range(2, 16);
-            while (stagesCheck.Contains(index))
+            while (scenesCheck.Contains(index))
             {
                 index = UnityEngine.Random.Range(2, 16); // Si ya está, genera otro numero
             }
-            stagesCheck[i] = index;
+            scenesCheck[i] = index;
             Debug.Log(index);
         }
-        return stagesCheck;
+        return scenesCheck;
     }
 }

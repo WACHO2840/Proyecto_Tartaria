@@ -6,11 +6,9 @@ public class SpikeDamage : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // COMPROBAR QUE EL JUGADOR HA TOCADO
-        if (collision.tag == "Player")
+        if (collision.tag == "Player") // Comprobar que ha colisionado con el jugador
         {
-            Debug.Log("PLAYER TOCADO");
-            PlayerHealth.instance.DealDamageSpikes();
+            PlayerHealth.instance.DealDamageSpikes(); // Llamar a la funcion para bajar la vida
         }
     }
 }

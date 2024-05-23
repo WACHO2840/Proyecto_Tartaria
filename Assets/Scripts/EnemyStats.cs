@@ -12,12 +12,15 @@ public class EnemyStats : MonoBehaviour
     private int hp;
     #endregion
 
+    // Inicializar vida
     void Start()
     {
         hp = maxHp;
     }
 
+    // Devolver vida
     public int GetHp() { return hp; }
 
+    // Actualizar vida
     public void SetHp(int dmg) { hp -= dmg; }
 }

@@ -18,6 +18,11 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
-        transform.position = new Vector3(Mathf.Clamp(player.position.x, minWidth, maxWidth), Mathf.Clamp(player.position.y, minHeight, maxHeight), transform.position.z); // FIJAR CAMARA AL JUGADOR 
+        if (player != null) // Comprobar que el jugador exista
+        {
+            transform.position = new Vector3(Mathf.Clamp(player.position.x, minWidth, maxWidth),
+                                             Mathf.Clamp(player.position.y, minHeight, maxHeight),
+                                             transform.position.z); // FIJAR CAMARA AL JUGADOR EN EL EJE X E Y
+        }
     }
 }
