@@ -1,27 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.IMGUI.Controls;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class WeaponItem : MonoBehaviour
 {
+    [Header("Common")]
+    public GameObject weaponPrefab;
 
-    public GameObject weapongPrefab;
     private bool justDropped;
+
+    [Header("Gun data")]
+    public int startingAmmo = 9999;
 
     // Start is called before the first frame update
     void Start()
     {
         this.justDropped = true;
-        Invoke("ActivatePicktUpMode", 1f);
+
+        Invoke("ActivatePickUpMode", 1f);
     }
 
-    private void ActivatePicktUpMode()
+    private void ActivatePickUpMode()
     {
         this.justDropped = false;
     }
 
-    private void OntriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (this.justDropped)
             return;
@@ -34,12 +38,9 @@ public class NewBehaviourScript : MonoBehaviour
         if (manager.HasRoomForWeapon == false)
             return;
 
+        var newWeapon = Instantiate(this.weaponPrefab);
+        manager.PickUpWeapon(newWeapon.GetComponent<Weapon>(), this.startingAmmo);
 
-        var newWeapon = Instantiate(this.weapongPrefab);
-        manager.PickUpWeapon(newWeapon.GetComponent<Weapon>());
         Destroy(this.gameObject);
-
     }
-
-
 }

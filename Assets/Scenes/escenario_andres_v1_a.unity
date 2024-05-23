@@ -182,11 +182,9 @@ GameObject:
   - component: {fileID: 83485350}
   - component: {fileID: 83485349}
   - component: {fileID: 83485348}
-  - component: {fileID: 83485354}
-  - component: {fileID: 83485355}
-  m_Layer: 0
-  m_Name: playerr
-  m_TagString: Player
+  m_Layer: 7
+  m_Name: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -364,48 +362,6 @@ Transform:
   - {fileID: 457380181}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &83485354
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 83485346}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86e6aa09cf0b85c46a8bdf3f69d5bda2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startTimeBtwAttack: 0.3
-  attackPost: {fileID: 457380181}
-  whatIsEnemies:
-    serializedVersion: 2
-    m_Bits: 64
-  attackDamage: 0.85
-  camAnim: {fileID: 873807671}
-  playerAnim: {fileID: 1157503391}
-  damage: 2
---- !u!95 &83485355
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 83485346}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6d26270b50f32c649a9ff1fe8235bfe8, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &282681527 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2547205992431917995, guid: 6ce40c754fca10d46bba99ae1db74a9d, type: 3}
@@ -424,7 +380,7 @@ GameObject:
   - component: {fileID: 353173513}
   - component: {fileID: 353173516}
   - component: {fileID: 353173517}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: katana
   m_TagString: katana
   m_Icon: {fileID: 0}
@@ -885,6 +841,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: groudHit
       objectReference: {fileID: 0}
+    - target: {fileID: 6573111374833086720, guid: 6ce40c754fca10d46bba99ae1db74a9d, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -899,7 +859,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 457380181}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AttackPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1273,7 +1233,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1157503390}
   - component: {fileID: 1157503391}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1576,6 +1536,64 @@ MonoBehaviour:
   health: 1
   speed: 1
   blooEffect: {fileID: 1214299702}
+--- !u!1001 &1699939941
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 875536623554260412, guid: a2a1e3bad0b108f438d9a429bd5b245b, type: 3}
+      propertyPath: m_Name
+      value: SwordItem
+      objectReference: {fileID: 0}
+    - target: {fileID: 8245302731845638808, guid: a2a1e3bad0b108f438d9a429bd5b245b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.981
+      objectReference: {fileID: 0}
+    - target: {fileID: 8245302731845638808, guid: a2a1e3bad0b108f438d9a429bd5b245b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.323
+      objectReference: {fileID: 0}
+    - target: {fileID: 8245302731845638808, guid: a2a1e3bad0b108f438d9a429bd5b245b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8245302731845638808, guid: a2a1e3bad0b108f438d9a429bd5b245b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8245302731845638808, guid: a2a1e3bad0b108f438d9a429bd5b245b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8245302731845638808, guid: a2a1e3bad0b108f438d9a429bd5b245b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8245302731845638808, guid: a2a1e3bad0b108f438d9a429bd5b245b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8245302731845638808, guid: a2a1e3bad0b108f438d9a429bd5b245b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8245302731845638808, guid: a2a1e3bad0b108f438d9a429bd5b245b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8245302731845638808, guid: a2a1e3bad0b108f438d9a429bd5b245b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1555528622145921033, guid: a2a1e3bad0b108f438d9a429bd5b245b, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a2a1e3bad0b108f438d9a429bd5b245b, type: 3}
 --- !u!1 &1739493915
 GameObject:
   m_ObjectHideFlags: 0
@@ -1762,7 +1780,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1816493160}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ObjectHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7115,3 +7133,4 @@ SceneRoots:
   - {fileID: 34185927}
   - {fileID: 1406696622}
   - {fileID: 659992030}
+  - {fileID: 1699939941}

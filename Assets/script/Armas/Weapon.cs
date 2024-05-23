@@ -45,7 +45,7 @@ public abstract class Weapon : MonoBehaviour
 
         vida.Damage(this.damage);
     }
-    public void Throw()
+    public virtual void Throw()
     {
         Instantiate(this.weaponItem, this.transform.position, Quaternion.identity);
         Destroy(this.gameObject);

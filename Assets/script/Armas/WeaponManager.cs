@@ -5,28 +5,36 @@ using UnityEngine;
 public class WeaponManager : MonoBehaviour
 {
     public Weapon currentWeapon;
+
     public Transform weaponHolder;
+
     public bool HasRoomForWeapon => this.currentWeapon == null;
-    // void Start()
-    // {
-    //     Weapon[] weapons = this.GetComponentInChildren<Weapon>();
-    //     foreach (var x in weapons)
-    //     {
-    //         this.PickUpWeapon(x);
-    //     }
-    // }
+
+    // UI
+    private AmmoUI ammoUI;
+
+    /// =========================================================
+    /// <summary>
+    ///
+    /// </summary>
     void Start()
     {
-        // Obtener todas las armas del objeto hijo y elegir la primera encontrada
-        Weapon[] weapons = GetComponentsInChildren<Weapon>();
-        if (weapons.Length > 0)
+        this.ammoUI = FindObjectOfType<AmmoUI>();
+        this.ammoUI.Display(false);
+
+        Weapon[] weapons = this.GetComponentsInChildren<Weapon>();
+        foreach (var w in weapons)
         {
-            PickUpWeapon(weapons[0]); // Solo recoge la primera arma encontrada por ahora
+            // ARREGLAME PLS
+            this.PickUpWeapon(w, 9999);
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    /// =========================================================
+    /// <summary>
+    ///
+    /// </summary>
+    private void Update()
     {
         if (Input.GetButton("Fire1"))
         {
@@ -35,21 +43,70 @@ public class WeaponManager : MonoBehaviour
                 this.currentWeapon.Activate();
             }
         }
+
         if (Input.GetButton("Fire2"))
         {
             if (this.currentWeapon != null)
             {
                 this.currentWeapon.Throw();
                 this.currentWeapon = null;
+
+                this.ammoUI.Display(false);
             }
         }
     }
 
-    public void PickUpWeapon(Weapon wp)
+    /// =========================================================
+    /// <summary>
+    ///
+    /// </summary>
+    /// <param name="weapon"></param>
+    /// <param name="startingAmmo"></param>
+    public void PickUpWeapon(Weapon weapon, int startingAmmo)
     {
-        wp.transform.position = this.weaponHolder.position;
-        wp.transform.rotation = this.weaponHolder.rotation;
-        wp.transform.SetParent(this.weaponHolder);
+        weapon.transform.position = this.weaponHolder.position;
+        weapon.transform.rotation = this.weaponHolder.rotation;
+        weapon.transform.SetParent(this.weaponHolder);
+
+        this.currentWeapon = weapon;
+
+        if (this.currentWeapon is GunWeapon)
+        {
+            GunWeapon gun = this.currentWeapon as GunWeapon;
+
+            gun.ui = this.ammoUI;
+
+            gun.currentAmmo = startingAmmo;
+
+            this.ammoUI.Display(true);
+        }
+        else
+        {
+            this.ammoUI.Display(false);
+        }
     }
 
+    /// =========================================================
+    /// <summary>
+    ///
+    /// </summary>
+    /// <param name="type"></param>
+    /// <param name="amount"></param>
+    /// <returns></returns>
+    public bool TryToRecharge(GunType type, int amount)
+    {
+        if (this.currentWeapon is GunWeapon == false)
+            return false;
+
+        GunWeapon gun = this.currentWeapon as GunWeapon;
+        if (gun.type != type)
+            return false;
+
+        if (gun.isAmmoAtMax)
+            return false;
+
+        gun.currentAmmo += amount;
+
+        return true;
+    }
 }
