@@ -4,7 +4,15 @@ using UnityEngine;
 
 public class CombatCaC : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] private Transform HitContoler;
+    [SerializeField] private float HitRadius;
+    [SerializeField] private float HitDamage;
+
+    private void Hit()
+    {
+        Collider2D[] objects = Physics2D.OverlapCircleAll(HitContoler.position, HitRadius);
+    }
+
     void Start()
     {
         
@@ -15,4 +23,6 @@ public class CombatCaC : MonoBehaviour
     {
         
     }
+
+
 }
