@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -38,7 +39,7 @@ public class PlayerHealth : MonoBehaviour
         if (health <= 0)
         {
             gameObject.SetActive(false); // Hacer desaparecer el jugador
-
+            SceneManager.LoadScene(0);
             //Hacer saltar el canvas de fin de juego
         }
     }
