@@ -58,8 +58,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] SpriteRenderer sr;
     private float speed = 10;
     private float jumpHeight = 10;
-    private float knockbackDistance;
-    private float knockbackPower;
+    private float knockbackDistance = .5f;
+    private float knockbackPower = 10f;
     private float knockbackCounter;
     private bool isOnGround;
 
@@ -80,42 +80,29 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (canMove)
+        if (knockbackCounter <= 0)
         {
-            if (knockbackCounter <= 0)
+            rb.velocity = new Vector2(speed * Input.GetAxisRaw("Horizontal"), rb.velocity.y); // Velocidad de movimiento horizontal
+
+            isOnGround = Physics2D.OverlapCircle(checkGround.position, .2f, ground);
+
+            if (Input.GetButtonDown("Jump") && isOnGround)
             {
-                rb.velocity = new Vector2(speed * Input.GetAxisRaw("Horizontal"), rb.velocity.y);
-
-                isOnGround = Physics2D.OverlapCircle(checkGround.position, .2f, ground);
-
-                if (isOnGround && hasCrocks)
-                {
-                    canDoubleJump = true;  // Solo restablece el doble salto si tiene los Crocks
-                }
-
-                if (Input.GetButtonDown("Jump"))
-                {
-                    if (isOnGround || canDoubleJump)
-                    {
-                        rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
-                        if (!isOnGround)
-                        {
-                            canDoubleJump = false; // Usa el doble salto
-                        }
-                    }
-                }
-
-                sr.flipX = rb.velocity.x < 0;
+                rb.velocity = new Vector2(rb.velocity.x, jumpHeight); // Velocidad de movimiento vertical
             }
-            else
+
+            if (rb.velocity.x < 0)
             {
-                knockbackCounter -= Time.deltaTime;
-                rb.velocity = new Vector2(knockbackPower * (sr.flipX ? 1 : -1), rb.velocity.y);
+                sr.flipX = true; //Izquierda
+            }
+            else if (rb.velocity.x > 0)
+            {
+                sr.flipX = false; //Derecha
             }
         }
         else
         {
-            rb.velocity = new Vector2(0, rb.velocity.y); // Detener el movimiento horizontal
+            knockbackCounter -= Time.deltaTime;
         }
     }
 
@@ -131,9 +118,18 @@ public class PlayerMovement : MonoBehaviour
         canDoubleJump = false;  // Activa el doble salto inmediatamente
     }
 
-    public void Knockback()
+    public void Knockback(Vector2 direction)
     {
         knockbackCounter = knockbackDistance;
-        rb.velocity = new Vector2(0f, knockbackPower / 2);
+        rb.velocity = new Vector2(direction.x * knockbackPower, knockbackPower / 2);
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Vector2 knockbackDirection = (transform.position - collision.transform.position).normalized;
+            Knockback(knockbackDirection);
+        }
+    }
+
 }

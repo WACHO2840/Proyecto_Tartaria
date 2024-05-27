@@ -247,11 +247,11 @@ public class EnemyLogic : MonoBehaviour
             // COMPROBAMOS QUE TENGA ENLAZADO EL SCRIPT
             if (enemyStats != null)
             {
-                PlayerHealth.instance.DealMonsterDamage(enemyStats.dmg);
+                PlayerHealth.instance.DealMonsterDamage(enemyStats.dmg, transform.position);
             }
             else
             {
-                Debug.LogWarning("El enemigo no tiene el script EnemyStats.");
+                Debug.LogWarning("El enemigo no tiene el script EnemyStats asociado");
             }
         }
     }
