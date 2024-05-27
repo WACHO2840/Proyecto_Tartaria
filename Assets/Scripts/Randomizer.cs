@@ -12,11 +12,11 @@ public class Randomizer : MonoBehaviour
     private bool nextScene = false;
     private Vector2 levelStart;
     private int[] scenesCheck = new int[5];
-    private int stages = 0; // Inicializamos la variable stages
+    private int stages = 0;
     public GameObject[] objects;
-    private readonly string[] positionNames = { "Position1", "Position2", "Position3" }; // Array con los nombres de los GameObjects vacíos
+    private readonly string[] positionNames = { "Position1", "Position2", "Position3" };
     private List<int> objectsCheck = new List<int>();
-    private GameObject[] selectedObjects = new GameObject[5]; // Declaramos selectedObjects a nivel de clase
+    private GameObject[] selectedObjects = new GameObject[5];
     #endregion
 
     private void Awake()
@@ -27,7 +27,8 @@ public class Randomizer : MonoBehaviour
     private void Start()
     {
         GenerateScenes();
-        SceneManager.sceneLoaded += OnSceneLoaded; // Suscribirse al evento de carga de escena
+        GenerateObjects();
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void Update()
@@ -51,8 +52,6 @@ public class Randomizer : MonoBehaviour
 
             if (stages < 5)
             {
-                // Cargar el siguiente nivel después de generar el objeto
-                GenerateObjects();
                 SceneManager.LoadScene(scenesCheck[stages]);
                 stages++;
             }
@@ -62,14 +61,10 @@ public class Randomizer : MonoBehaviour
             }
             this.transform.position = levelStart;
 
-            // Desactivar el componente SpriteRenderer del objeto
-            if (selectedObjects[stages - 1] != null)
+            // Desactivar el objeto de la escena anterior
+            if (stages > 1 && selectedObjects[stages - 2] != null)
             {
-                SpriteRenderer spriteRenderer = selectedObjects[stages - 1].GetComponent<SpriteRenderer>();
-                if (spriteRenderer != null)
-                {
-                    spriteRenderer.enabled = false;
-                }
+                selectedObjects[stages - 2].SetActive(false);
             }
         }
     }
@@ -78,10 +73,10 @@ public class Randomizer : MonoBehaviour
     {
         for (int i = 0; i < scenesCheck.Length; i++)
         {
-            int index = UnityEngine.Random.Range(2, 16); // Asegúrate de obtener un índice válido para la escena
+            int index = UnityEngine.Random.Range(2, 16);
             while (scenesCheck.Contains(index))
             {
-                index = UnityEngine.Random.Range(2, 16); // Evitar índices duplicados
+                index = UnityEngine.Random.Range(2, 16);
             }
             scenesCheck[i] = index;
             Debug.Log("Scene: " + index);
@@ -90,52 +85,30 @@ public class Randomizer : MonoBehaviour
 
     private void GenerateObjects()
     {
-        // Si ya se han utilizado todos los objetos, reinicia la lista de índices utilizados
-        if (objectsCheck.Count >= objects.Length)
-        {
-            objectsCheck.Clear();
-        }
+        List<int> availableIndexes = Enumerable.Range(0, objects.Length).ToList();
 
-        // Obtener un índice aleatorio que no se haya utilizado previamente
-        int randomIndex;
-        do
+        for (int i = 0; i < selectedObjects.Length; i++)
         {
-            randomIndex = Random.Range(0, objects.Length);
-        } while (objectsCheck.Contains(randomIndex));
-
-        // Registrar el índice utilizado
-        objectsCheck.Add(randomIndex);
-        Debug.Log("Random index: " + randomIndex);
-
-        // Seleccionar aleatoriamente uno de los nombres de los GameObjects vacíos
-        string positionName = positionNames[UnityEngine.Random.Range(0, positionNames.Length)];
-        GameObject positionObject = GameObject.Find(positionName);
-
-        if (positionObject != null)
-        {
-            // Instancia el objeto en la posición del GameObject vacío
-            Instantiate(objects[randomIndex], positionObject.transform.position, Quaternion.identity);
-        }
-        else
-        {
-            Debug.LogWarning("No se encontró el GameObject vacío con el nombre: " + positionName);
+            int randomIndex = UnityEngine.Random.Range(0, availableIndexes.Count);
+            selectedObjects[i] = objects[availableIndexes[randomIndex]];
+            availableIndexes.RemoveAt(randomIndex);
+            Debug.Log("Selected object for scene " + (i + 1) + ": " + selectedObjects[i].name);
         }
     }
-
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         int sceneIndex = System.Array.IndexOf(scenesCheck, scene.buildIndex);
-        if (sceneIndex >= 0 && sceneIndex < objects.Length)
+        if (sceneIndex >= 0 && sceneIndex < selectedObjects.Length)
         {
-            // Selecciona aleatoriamente uno de los nombres de los GameObjects vacíos
             string positionName = positionNames[UnityEngine.Random.Range(0, positionNames.Length)];
             GameObject positionObject = GameObject.Find(positionName);
 
             if (positionObject != null)
             {
-                // Instancia el objeto en la posición del GameObject vacío
-                selectedObjects[sceneIndex] = Instantiate(objects[sceneIndex], positionObject.transform.position, Quaternion.identity);
+                GameObject instantiatedObject = Instantiate(selectedObjects[sceneIndex], positionObject.transform.position, Quaternion.identity);
+                instantiatedObject.SetActive(true);
+                selectedObjects[sceneIndex] = instantiatedObject; // Actualiza el array con la instancia activada
             }
             else
             {
@@ -143,5 +116,4 @@ public class Randomizer : MonoBehaviour
             }
         }
     }
-
 }
