@@ -176,15 +176,35 @@ public class NPCInteraction : MonoBehaviour
         HideAllPanels();
         panels[1].SetActive(true);
 
-        yesButton.onClick.RemoveAllListeners();
-        yesButton.onClick.AddListener(ExchangeItem);
+        if (yesButton != null)
+        {
+            yesButton.onClick.RemoveAllListeners();
+            yesButton.onClick.AddListener(ExchangeItem);
+        }
+        else
+        {
+            Debug.LogError("yesButton no está asignado en el inspector.");
+        }
     }
 
     private void ExchangeItem()
     {
-        PickUp pickUpGeneric = playerCollider.GetComponent<PickUp>();
-        pickUpGeneric.ExchangeRandomItem();
-        HideAllPanels();
+        if (playerCollider == null)
+        {
+            Debug.LogError("playerCollider es nulo.");
+            return;
+        }
+
+        PickUp pickUp = playerCollider.GetComponent<PickUp>();
+        if (pickUp != null)
+        {
+            pickUp.ExchangeRandomItem();
+            HideAllPanels();
+        }
+        else
+        {
+            Debug.LogError("El componente PickUp no está presente en el jugador.");
+        }
     }
 }
 
