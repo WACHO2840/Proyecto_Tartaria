@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class NPCInteraction : MonoBehaviour
+public class TutorialManager : MonoBehaviour
 {
     public GameObject[] panels; // Los paneles que se mostrarán secuencialmente
     public Button[] nextButtons; // Los botones para avanzar al siguiente panel
