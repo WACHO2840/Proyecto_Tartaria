@@ -49,7 +49,7 @@ public class PlayerHealth : MonoBehaviour
         health = 0;
     }
 
-    public void DealMonsterDamage(int dmg)
+    public void DealMonsterDamage(int dmg, Vector3 enemyPosition)
     {
         if (iFrames <= 0)
         {
@@ -58,9 +58,14 @@ public class PlayerHealth : MonoBehaviour
             if (health > 0) // Comprobamos que el jugador siga teniendo vida
             {
                 iFrames = iFramesCountdown; // Le volvemos invulnerable
-                PlayerMovement.instance.Knockback(); // Empujamos al jugador hacia atras
-                sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0.5f); // Le bajamos la transparecia para indicar la invulnerabilidad
+
+                // Calcula la dirección del knockback
+                Vector2 knockbackDirection = (PlayerMovement.instance.transform.position - enemyPosition).normalized;
+                PlayerMovement.instance.Knockback(knockbackDirection); // Empujamos al jugador hacia atrás
+
+                sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0.5f); // Le bajamos la transparencia para indicar la invulnerabilidad
             }
         }
     }
+
 }

@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -15,8 +14,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] SpriteRenderer sr;
     private float speed = 10;
     private float jumpHeight = 10;
-    private float knockbackDistance;
-    private float knockbackPower;
+    private float knockbackDistance = .5f;
+    private float knockbackPower = 10f;
     private float knockbackCounter;
     private float sceneCooldown = 1f;
     private float sceneTimer = 0f;
@@ -49,19 +48,15 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-
         if (knockbackCounter <= 0)
         {
             rb.velocity = new Vector2(speed * Input.GetAxisRaw("Horizontal"), rb.velocity.y); // Velocidad de movimiento horizontal
 
             isOnGround = Physics2D.OverlapCircle(checkGround.position, .2f, ground);
 
-            if (Input.GetButtonDown("Jump"))
+            if (Input.GetButtonDown("Jump") && isOnGround)
             {
-                if (isOnGround)
-                {
-                    rb.velocity = new Vector2(rb.velocity.x, jumpHeight); // Velocidad de movimiento vertical
-                }
+                rb.velocity = new Vector2(rb.velocity.x, jumpHeight); // Velocidad de movimiento vertical
             }
 
             if (rb.velocity.x < 0)
@@ -76,18 +71,13 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             knockbackCounter -= Time.deltaTime;
-
-            if (sr.flipX)
-                rb.velocity = new Vector2(knockbackPower, rb.velocity.y);
-            else
-                rb.velocity = new Vector2(-knockbackPower, rb.velocity.y);
         }
     }
 
-    public void Knockback()
+    public void Knockback(Vector2 direction)
     {
         knockbackCounter = knockbackDistance;
-        rb.velocity = new Vector2(0f, knockbackPower / 2);
+        rb.velocity = new Vector2(direction.x * knockbackPower, knockbackPower / 2);
     }
 
     //PASAR DE NIVEL 
@@ -107,6 +97,15 @@ public class PlayerMovement : MonoBehaviour
                 SceneManager.LoadScene(16); // Cambiar a la escena del jefe
             }
             this.transform.position = levelStart; // Resetear posicion del jugador a x:0 y:0
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Vector2 knockbackDirection = (transform.position - collision.transform.position).normalized;
+            Knockback(knockbackDirection);
         }
     }
 
