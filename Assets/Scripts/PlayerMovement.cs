@@ -1,40 +1,5 @@
-/*using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using Unity.Mathematics;
-using UnityEngine;
-using UnityEngine.SceneManagement;
-
-public class PlayerMovement : MonoBehaviour
-{
-    #region VARIABLES
-    public static PlayerMovement instance;
-
-    [SerializeField] public Rigidbody2D rb;
-    [SerializeField] private Transform checkGround;
-    [SerializeField] private LayerMask ground;
-    private SpriteRenderer sr;
-
-    private float speed = 10;
-    private float jumpHeight = 10;
-    private float knockbackDistance;
-    private float knockbackPower;
-    private float knockbackCounter;
-    
-    private bool isOnGround;
-
-    #endregion
-
-    private void Awake()
-    {
-        instance = this;
-    }
-
-    private void Start()
-    {
-        sr = GetComponent<SpriteRenderer>();
-    }
-
+/*
+   
     // Update is called once per frame
     void Update()
     {
@@ -74,11 +39,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void Knockback()
-    {
-        knockbackCounter = knockbackDistance;
-        rb.velocity = new Vector2(0f, knockbackPower / 2);
-    }
+    
 
 }
 */
@@ -91,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public static PlayerMovement instance;
 
-    [SerializeField] Rigidbody2D rb;
+    [SerializeField] public Rigidbody2D rb;
     [SerializeField] Transform checkGround;
     [SerializeField] LayerMask ground;
     [SerializeField] SpriteRenderer sr;
@@ -110,6 +71,11 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         instance = this;
+    }
+ 
+    private void Start()
+    {
+        sr = GetComponent<SpriteRenderer>();
     }
 
     void Update()
