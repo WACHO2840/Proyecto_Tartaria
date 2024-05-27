@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Markmap</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #mindmap {
+      display: block;
+      width: 100vw;
+      height: 100vh;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/markmap-toolbar@0.17.0/dist/style.css">
+</head>
+
+<body>
+  <svg id="mindmap"></svg>
+  <script src="https://cdn.jsdelivr.net/npm/d3@7.8.5/dist/d3.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/markmap-view@0.17.0/dist/browser/index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/markmap-toolbar@0.17.0/dist/index.js"></script>
+  <script>(() => { setTimeout(() => { const { markmap: O, mm: h } = window, M = new O.Toolbar; M.attach(h); const oe = M.render(); oe.setAttribute("style", "position:absolute;bottom:20px;right:20px"), document.body.append(oe) }) })()</script>
+  <script>((i, L, f, r) => { const w = i(); window.mm = w.Markmap.create("svg#mindmap", (L || w.deriveOptions)(r), f) })(() => window.markmap, null, { "content": "Proyecto de Videojuego 2D", "children": [{ "content": "1. Introducción", "children": [{ "content": "Exploración de motores de juego: Unity vs. Unreal Engine", "children": [], "payload": { "lines": "3,4" } }, { "content": "Decisión final: Unity por facilidad y flexibilidad", "children": [], "payload": { "lines": "4,5" } }, { "content": "Género del juego: Roguelike con elementos de plataformas", "children": [], "payload": { "lines": "5,6" } }, { "content": "Inspiración: Metroidvania y juegos clásicos de 16 bits", "children": [], "payload": { "lines": "6,8" } }], "payload": { "lines": "2,3" } }, { "content": "2. Justificación", "children": [{ "content": "Aprendizaje de un nuevo lenguaje de programación (C#)", "children": [], "payload": { "lines": "9,10" } }, { "content": "Interés común del equipo en videojuegos", "children": [], "payload": { "lines": "10,11" } }, { "content": "Exploración creativa y técnica en el desarrollo de videojuegos", "children": [], "payload": { "lines": "11,13" } }], "payload": { "lines": "8,9" } }, { "content": "3. Objetivos del Proyecto", "children": [{ "content": "Desarrollar un juego que combine mecánicas de plataformas y roguelike", "children": [], "payload": { "lines": "14,15" } }, { "content": "Generación aleatoria de mapas para evitar la monotonía", "children": [], "payload": { "lines": "15,16" } }, { "content": "Crear una experiencia de juego variada y emocionante", "children": [], "payload": { "lines": "16,18" } }], "payload": { "lines": "13,14" } }, { "content": "4. Metodología", "children": [{ "content": "Uso de la metodología ágil Scrum", "children": [], "payload": { "lines": "19,20" } }, { "content": "Trabajo dividido en sprints mensuales", "children": [], "payload": { "lines": "20,21" } }, { "content": "Revisión y ajuste continuo de tareas y objetivos", "children": [], "payload": { "lines": "21,23" } }], "payload": { "lines": "18,19" } }, { "content": "5. Herramientas de Trabajo", "children": [{ "content": "Unity: Plataforma de desarrollo elegida", "children": [{ "content": "Integración con GitHub para control de versiones", "children": [], "payload": { "lines": "25,26" } }, { "content": "Funcionalidades gratuitas amplias", "children": [], "payload": { "lines": "26,27" } }], "payload": { "lines": "24,27" } }, { "content": "Aseprite: Herramienta para crear gráficos en pixel art", "children": [], "payload": { "lines": "27,29" } }], "payload": { "lines": "23,24" } }, { "content": "6. Diseño del Videojuego", "children": [{ "content": "Estética de 16 bits: Personajes, escenarios, objetos", "children": [], "payload": { "lines": "30,31" } }, { "content": "Diseño de niveles con diversidad en plataformas y enemigos", "children": [], "payload": { "lines": "31,32" } }, { "content": "Incorporación de elementos característicos de roguelike", "children": [], "payload": { "lines": "32,34" } }], "payload": { "lines": "29,30" } }, { "content": "7. Desarrollo Técnico", "children": [{ "content": "Programación en C# para:", "children": [{ "content": "Mecánicas de movimiento del jugador", "children": [], "payload": { "lines": "36,37" } }, { "content": "Sistema de ataque y vida del jugador y enemigos", "children": [], "payload": { "lines": "37,38" } }, { "content": "Aleatorización de niveles y objetos", "children": [], "payload": { "lines": "38,40" } }], "payload": { "lines": "35,40" } }], "payload": { "lines": "34,35" } }, { "content": "8. Control de Calidad", "children": [{ "content": "Pruebas continuas durante el desarrollo", "children": [], "payload": { "lines": "41,42" } }, { "content": "Revisión de código y ajustes según feedback", "children": [], "payload": { "lines": "42,44" } }], "payload": { "lines": "40,41" } }, { "content": "9. Estado del Proyecto", "children": [{ "content": "Progreso actual en el desarrollo de gráficos y mecánicas", "children": [], "payload": { "lines": "45,46" } }, { "content": "Próximos pasos: Implementación y pruebas finales", "children": [], "payload": { "lines": "46,48" } }], "payload": { "lines": "44,45" } }, { "content": "10. Conclusión", "children": [{ "content": "Referencias", "children": [{ "content": "Documentación de Unity y Aseprite", "children": [], "payload": { "lines": "53,54" } }, { "content": "Guías y tutoriales sobre desarrollo de juegos roguelike", "children": [], "payload": { "lines": "54,55" } }], "payload": { "lines": "52,53" } }], "payload": { "lines": "48,49" } }], "payload": { "lines": "0,1" } }, null)</script>
+</body>
+
+</html>
