@@ -326,24 +326,19 @@ public class PickUp : MonoBehaviour
 
             Item newItem = GetItem();
             mochila[randomIndex] = newItem;
+            ApplyItemEffect(newItem);
             LogMochilaContents();
         }
-
-        MakeInvisibleAndUninteractable();
     }
 
     public void ExchangeRandomItem()
     {
         if (mochila.Count > 0)
         {
-            // Seleccionar un índice aleatorio para el objeto que se va a reemplazar
             int randomIndex = Random.Range(0, mochila.Count);
             Item oldItem = mochila[randomIndex];
 
-            // Eliminar el efecto del objeto reemplazado
             RemoveItemEffect(oldItem);
-
-            // Obtener un nuevo objeto aleatorio que no esté ya en la mochila
             Item newItem = GetRandomNewItem();
             if (newItem != null)
             {
@@ -368,7 +363,6 @@ public class PickUp : MonoBehaviour
             new Item("Crocks", "Permite doble salto")
         };
 
-        // Filtrar los objetos que ya están en la mochila
         allPossibleItems.RemoveAll(item => mochila.Exists(m => m.Name == item.Name));
 
         if (allPossibleItems.Count > 0)
@@ -377,7 +371,7 @@ public class PickUp : MonoBehaviour
             return allPossibleItems[randomIndex];
         }
 
-        return null; // Si no hay nuevos elementos posibles, devuelve nulo (esto no debería suceder)
+        return null;
     }
 
     private void ApplyItemEffect(Item item)
@@ -398,7 +392,7 @@ public class PickUp : MonoBehaviour
                 playerAttack.IncreaseAttackSpeed(1);
                 break;
             case "Roca Volcánica":
-                playerAttack.IncreaseDamage(1);
+                playerAttack.IncreaseDamage(10);
                 break;
             case "Palanca":
                 playerAttack.IncreaseDamage(20);
@@ -452,7 +446,7 @@ public class PickUp : MonoBehaviour
             GetComponent<Renderer>().enabled = false;
         }
 
-        interactKeyUI.SetActive(false); // Hide the interaction UI
+        interactKeyUI.SetActive(false);
     }
 
     private void LogMochilaContents()
@@ -516,7 +510,7 @@ public class PickUp : MonoBehaviour
         if (index >= 0 && index < mochila.Count)
         {
             Item oldItem = mochila[index];
-            RemoveItemEffect(oldItem); // Eliminar el efecto del objeto reemplazado
+            RemoveItemEffect(oldItem);
             mochila.RemoveAt(index);
             AddItemToInventory();
         }
@@ -527,3 +521,5 @@ public class PickUp : MonoBehaviour
         return itemsCollected;
     }
 }
+
+

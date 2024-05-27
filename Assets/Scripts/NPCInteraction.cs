@@ -90,14 +90,35 @@ public class NPCInteraction : MonoBehaviour
 {
     public GameObject[] panels; // Array de paneles en el Canvas
     public Button yesButton; // Botón de "Sí" para el intercambio de objetos
+    public Button noButton; // Botón de "No" para el intercambio de objetos
     private int currentPanelIndex = 0; // Índice del panel actualmente visible
     private bool isPlayerNearby = false; // Bandera para verificar si el jugador está cerca
 
-    private Collider2D playerCollider;
+    private GameObject player;
 
     void Start()
     {
         HideAllPanels();
+
+        if (yesButton != null)
+        {
+            yesButton.onClick.AddListener(OnYesButtonClicked);
+            Debug.Log("Yes button assigned and listener added.");
+        }
+        else
+        {
+            Debug.LogError("yesButton no está asignado en el inspector.");
+        }
+
+        if (noButton != null)
+        {
+            noButton.onClick.AddListener(OnNoButtonClicked);
+            Debug.Log("No button assigned and listener added.");
+        }
+        else
+        {
+            Debug.LogError("noButton no está asignado en el inspector.");
+        }
     }
 
     void Update()
@@ -113,7 +134,8 @@ public class NPCInteraction : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerNearby = true;
-            playerCollider = other;
+            player = other.gameObject;
+            Debug.Log("Player entered NPC interaction zone.");
         }
     }
 
@@ -122,7 +144,8 @@ public class NPCInteraction : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerNearby = false;
-            playerCollider = null;
+            player = null;
+            Debug.Log("Player exited NPC interaction zone.");
         }
     }
 
@@ -175,35 +198,48 @@ public class NPCInteraction : MonoBehaviour
     {
         HideAllPanels();
         panels[1].SetActive(true);
+    }
 
-        if (yesButton != null)
-        {
-            yesButton.onClick.RemoveAllListeners();
-            yesButton.onClick.AddListener(ExchangeItem);
-        }
-        else
-        {
-            Debug.LogError("yesButton no está asignado en el inspector.");
-        }
+    private void OnYesButtonClicked()
+    {
+        Debug.Log("Yes button clicked.");
+        ExchangeItem();
+        HideAllPanels();
+    }
+
+    private void OnNoButtonClicked()
+    {
+        Debug.Log("No button clicked.");
+        HideAllPanels();
     }
 
     private void ExchangeItem()
     {
-        if (playerCollider == null)
+        if (player == null)
         {
-            Debug.LogError("playerCollider es nulo.");
+            Debug.LogError("player es nulo.");
             return;
         }
 
-        PickUp pickUp = playerCollider.GetComponent<PickUp>();
+        PickUp pickUp = player.GetComponent<PickUp>();
         if (pickUp != null)
         {
+            Debug.Log("Starting item exchange.");
             pickUp.ExchangeRandomItem();
-            HideAllPanels();
+            LogMochilaContents();
         }
         else
         {
             Debug.LogError("El componente PickUp no está presente en el jugador.");
+        }
+    }
+
+    private void LogMochilaContents()
+    {
+        Debug.Log("Contenido actual de la mochila:");
+        foreach (var item in PickUp.mochila)
+        {
+            Debug.Log(item.Name);
         }
     }
 }
