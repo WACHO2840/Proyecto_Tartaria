@@ -18,7 +18,7 @@ public class LadderMovement : MonoBehaviour
     private void Start()
     {
         playerMovement = FindObjectOfType<PlayerMovement>();
-        player = playerMovement.rb;
+        //player = playerMovement.rb;
     }
 
     // Update is called once per frame
