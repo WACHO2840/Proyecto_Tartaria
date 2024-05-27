@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyLogic : MonoBehaviour
 {
     public static EnemyLogic Instance;
+    private EnemyStats enemyStats;
 
     #region Variables
     [SerializeField] Transform[] patrolPoints; // Puntos de patrullaje
@@ -13,7 +14,6 @@ public class EnemyLogic : MonoBehaviour
     [SerializeField] SpriteRenderer sr; // SR Enemigo
     [SerializeField] bool horizontal; // Hacia donde se mueve
     private Vector2 velocidadEnemigo;
-
 
     private float detectionRange = 9f;
     private int nextPatrolPoint = 0;
@@ -26,11 +26,16 @@ public class EnemyLogic : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        enemyStats = GetComponent<EnemyStats>();
+        if (enemyStats == null)
+        {
+            Debug.LogError("EnemyStats no está adjunto al GameObject.");
+        }
     }
 
     void Start()
     {
-
+        // Inicialización si es necesario
     }
 
     void Update()
@@ -41,13 +46,14 @@ public class EnemyLogic : MonoBehaviour
 
         if (rb.velocity.x < 0)
         {
-            sr.flipX = true; //Izquierda
+            sr.flipX = true; // Izquierda
         }
         else if (rb.velocity.x > 0)
         {
-            sr.flipX = false; //Derecha
+            sr.flipX = false; // Derecha
         }
     }
+
     private void FixedUpdate()
     {
         if (!attacking)
@@ -77,7 +83,6 @@ public class EnemyLogic : MonoBehaviour
 
     private void Patrol()
     {
-        EnemyStats enemyStats = GetComponent<EnemyStats>();
         // Verificar si el componente EnemyStats está adjunto al enemigo
         if (enemyStats != null)
         {
@@ -92,7 +97,7 @@ public class EnemyLogic : MonoBehaviour
                 else if (!patrolOrder && nextPatrolPoint <= 0)
                 {
                     patrolOrder = true;
-                }   
+                }
 
                 // Dependiendo de la dirección de la patrulla, cambiar el próximo punto de patrulla
                 if (Vector2.Distance(transform.position, patrolPoints[nextPatrolPoint].position) < 0.1f)
@@ -134,8 +139,6 @@ public class EnemyLogic : MonoBehaviour
 
     private void AttackPlayer()
     {
-        EnemyStats enemyStats = GetComponent<EnemyStats>();
-
         if (enemyStats != null)
         {
             if (player != null)
@@ -160,5 +163,19 @@ public class EnemyLogic : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void GetDamage(float damage)
+    {
+        if (enemyStats != null)
+        {
+            enemyStats.ReduceHp(damage);
+        }
+    }
+
+    private void EnemyDead()
+    {
+        Debug.Log("Enemigo muerto");
+        Destroy(gameObject); // Elimina al enemigo del juego
     }
 }

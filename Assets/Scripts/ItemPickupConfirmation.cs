@@ -59,7 +59,7 @@ public class ItemPickupConfirmation : MonoBehaviour
 
     public void ShowExangeDialog()
     {
-        exangeText.text = "¿Quieres cambiar este objeto por el último objeto en tu mochila?";
+        exangeText.text = "¿Quieres cambiar este objeto por un objeto aleatorio en tu mochila?";
         exangeDialog.SetActive(true);
     }
 
@@ -96,11 +96,7 @@ public class ItemPickupConfirmation : MonoBehaviour
 
     private void OnExangeYesButtonClicked()
     {
-        // Reemplazar el último objeto en la mochila con el nuevo objeto
-        if (PickUpGeneric.mochila.Count > 0)
-        {
-            PickUpGeneric.mochila[PickUpGeneric.mochila.Count - 1] = currentPickUpItem.GetItem();
-        }
+        currentPickUpItem.ReplaceRandomItemInMochila();
         exangeDialog.SetActive(false); // Ocultar la dialog de intercambio
         HideConfirmationDialog(); // Restaurar el estado original
     }
@@ -120,6 +116,7 @@ public class ItemPickupConfirmation : MonoBehaviour
         currentPickUpItem = null;
     }
 }*/
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -181,7 +178,7 @@ public class ItemPickupConfirmation : MonoBehaviour
 
     public void ShowExangeDialog()
     {
-        exangeText.text = "¿Quieres cambiar este objeto por el último objeto en tu mochila?";
+        exangeText.text = "¿Quieres cambiar este objeto por un objeto aleatorio en tu mochila?";
         exangeDialog.SetActive(true);
     }
 
@@ -218,7 +215,7 @@ public class ItemPickupConfirmation : MonoBehaviour
 
     private void OnExangeYesButtonClicked()
     {
-        currentPickUpItem.ReplaceLastItemInMochila();
+        currentPickUpItem.ReplaceRandomItemInMochila();
         exangeDialog.SetActive(false); // Ocultar la dialog de intercambio
         HideConfirmationDialog(); // Restaurar el estado original
     }
@@ -238,4 +235,6 @@ public class ItemPickupConfirmation : MonoBehaviour
         currentPickUpItem = null;
     }
 }
+
+
 

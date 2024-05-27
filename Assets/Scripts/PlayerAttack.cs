@@ -4,69 +4,89 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    private float basicDamage = 5; // Daño base privado con un atributo para poder verlo en el inspector de Unity
-    private float basicAttackSpeed = 3;
-    public bool hasToroide = false;
-    public bool hasElectron = false;
-    public bool hasLenguaDeFuego = false;
-    public bool hasRocaVolcanica = false;
+    private float baseDamage = 5;
+    private float baseAttackSpeed = 3;
+    private float baseRange = 1.5f;
 
-    public int BasicAttackSpeed // Propiedad pública para acceder y modificar el daño básico
+    private float additionalDamage = 0;
+    private float additionalAttackSpeed = 0;
+    private float additionalRange = 0;
+
+    public bool isKatana = false;
+    public bool isMazo = false;
+
+    public float BasicAttackSpeed // Propiedad pública para acceder y modificar la velocidad de ataque
     {
-        get { return (int)basicAttackSpeed; }
-        set { basicAttackSpeed = value; }
+        get
+        {
+            return baseAttackSpeed + additionalAttackSpeed;
+        }
     }
-    public int BasicDamage // Propiedad pública para acceder y modificar  básico
+
+    public float BasicDamage // Propiedad pública para acceder y modificar el daño básico
     {
-        get { return (int)basicDamage; }
-        set { basicDamage = value; }
+        get
+        {
+            return baseDamage + additionalDamage;
+        }
+    }
+
+    public float Range // Propiedad pública para acceder y modificar el rango
+    {
+        get
+        {
+            return baseRange + additionalRange;
+        }
     }
 
     void Start()
     {
-
+        // Inicialización si es necesario
     }
 
     void Update()
     {
-
+        UpdateBaseStats();
     }
 
-    public void IncreaseDamage(int increaseAmountPickUp, float increaseAmountWeapon)
+    private void UpdateBaseStats()
     {
-        basicDamage += (increaseAmountPickUp+ increaseAmountWeapon); // Incrementa el daño base
-        Debug.Log("Daño incrementado. Nuevo daño: " + basicDamage);
-    }
-
-    public void IncreaseAttackSpeed(float increaseAmountPickUp, float increaseAmountWeapon)
-    {
-        basicAttackSpeed += (increaseAmountPickUp + increaseAmountWeapon); // Incrementa el daño base
-        Debug.Log("Velocidad de Ataque incrementada. Nuevo daño: " + basicAttackSpeed);
-    }
-    /*public void ApplySynergyTyE()
-    {
-        if (hasToroide && hasElectron)
+        if (isKatana)
         {
-            // Restablece el efecto original de los objetos individuales si ya se había aplicado
-            basicDamage -= 5; // Suponiendo que cada uno añadía 5 de daño
-
-            // Aplica el nuevo efecto de sinergia
-            basicDamage += 7; // Nuevo daño total de la sinergia
-            Debug.Log("Sinergia aplicada. Nuevo daño total: " + basicDamage);
+            baseDamage = 10;
+            baseAttackSpeed = 6;
+            baseRange = 3f;
+        }
+        else if (isMazo)
+        {
+            baseDamage = 15;
+            baseAttackSpeed = 4;
+            baseRange = 2f;
+        }
+        else
+        {
+            baseDamage = 5;
+            baseAttackSpeed = 3;
+            baseRange = 1.5f; // Cambiado a 1.5 para el ataque sin arma
         }
     }
 
-    public void ApplySynergyLyR()
+    public void IncreaseDamage(float amount)
     {
-        if (hasLenguaDeFuego && hasRocaVolcanica)
-        {
-            // Restablece el efecto original de los objetos individuales si ya se había aplicado
-            basicDamage -= 5; // Suponiendo que cada uno añadía 5 de daño
-            basicAttackSpeed -= 0.5f;
-            // Aplica el nuevo efecto de sinergia
-            basicDamage += 7; // Nuevo daño total de la sinergia
-            basicAttackSpeed += 1;
-            Debug.Log("Sinergia aplicada. Nuevo daño total: " + basicDamage + "" + basicAttackSpeed);
-        }
-    }*/
+        additionalDamage += amount; // Incrementa el daño adicional
+        Debug.Log("Daño incrementado. Nuevo daño: " + BasicDamage);
+    }
+
+    public void IncreaseAttackSpeed(float amount)
+    {
+        additionalAttackSpeed += amount; // Incrementa la velocidad de ataque adicional
+        Debug.Log("Velocidad de Ataque incrementada. Nueva velocidad: " + BasicAttackSpeed);
+    }
+
+    public void IncreaseRange(float amount)
+    {
+        additionalRange += amount; // Incrementa el rango adicional
+        Debug.Log("Rango incrementado. Nuevo rango: " + Range);
+    }
 }
+
