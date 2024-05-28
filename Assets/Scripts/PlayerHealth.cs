@@ -7,6 +7,8 @@ public class PlayerHealth : MonoBehaviour
 {
     public static PlayerHealth instance;
 
+    public EndGame endGame;
+
     private float maxHealth = 100;
     private float health;
     private float iFramesCountdown = 1;
@@ -18,6 +20,12 @@ public class PlayerHealth : MonoBehaviour
     {
         instance = this;
         sr = GetComponent<SpriteRenderer>();
+
+        endGame = FindObjectOfType<EndGame>();
+        if (endGame == null)
+        {
+            Debug.LogError("No se encontrÃ³ un objeto con el script EndGame en la escena.");
+        }
     }
 
     void Start()
@@ -26,7 +34,7 @@ public class PlayerHealth : MonoBehaviour
         hpBar.Bar(health);
     }
 
-    public int MaxHealth // Propiedad pública para acceder y modificar el daño básico
+    public int MaxHealth // Propiedad pï¿½blica para acceder y modificar el daï¿½o bï¿½sico
     {
         get { return (int)maxHealth; }
         set { maxHealth = value; }
@@ -34,8 +42,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void IncreaseHealth(int increaseAmountPickUp)
     {
-        maxHealth += increaseAmountPickUp; // Incrementa el daño base
-        Debug.Log("Daño incrementado. Nuevo daño: " + maxHealth);
+        maxHealth += increaseAmountPickUp; 
     }
 
     void Update()
@@ -51,8 +58,10 @@ public class PlayerHealth : MonoBehaviour
         if (health <= 0)
         {
             gameObject.SetActive(false); // Hacer desaparecer el jugador
-            SceneManager.LoadScene(0);
-            //Hacer saltar el canvas de fin de juego
+            if (endGame != null)
+            {
+                endGame.FinalScreenSet();
+            }
         }
     }
 
@@ -72,9 +81,9 @@ public class PlayerHealth : MonoBehaviour
             {
                 iFrames = iFramesCountdown; // Le volvemos invulnerable
 
-                // Calcula la dirección del knockback
+                // Calcula la direcciï¿½n del knockback
                 Vector2 knockbackDirection = (PlayerMovement.instance.transform.position - enemyPosition).normalized;
-                PlayerMovement.instance.Knockback(knockbackDirection); // Empujamos al jugador hacia atrás
+                PlayerMovement.instance.Knockback(knockbackDirection); // Empujamos al jugador hacia atrï¿½s
 
                 sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0.5f); // Le bajamos la transparencia para indicar la invulnerabilidad
             }
