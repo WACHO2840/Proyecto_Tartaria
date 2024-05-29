@@ -21,7 +21,10 @@ public class CameraController : MonoBehaviour
     private void Start()
     {
         playerMovement = FindObjectOfType<PlayerMovement>();
-        player = playerMovement.transform;
+        if (playerMovement != null)
+        {
+            player = playerMovement.transform;
+        }
 
         // Inicializar la posición anterior de la cámara
         previousCameraPosition = transform.position;
@@ -29,7 +32,8 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
-        if (player != null) // Comprobar que el jugador exista
+        // Comprobar que el jugador exista
+        if (player != null)
         {
             Vector3 newCameraPosition = new Vector3(
                 Mathf.Clamp(player.position.x, minWidth, maxWidth),
@@ -41,13 +45,25 @@ public class CameraController : MonoBehaviour
             Vector3 deltaMovement = newCameraPosition - previousCameraPosition;
 
             // Aplicar los factores de desplazamiento al fondo
-            farBackGround.position += new Vector3(deltaMovement.x * parallaxEffectMultiplierX, deltaMovement.y * parallaxEffectMultiplierY, 0f);
+            if (farBackGround != null)
+            {
+                farBackGround.position += new Vector3(deltaMovement.x * parallaxEffectMultiplierX, deltaMovement.y * parallaxEffectMultiplierY, 0f);
+            }
 
             // Actualizar la posición anterior de la cámara
             previousCameraPosition = newCameraPosition;
 
             // Actualizar la posición de la cámara
             transform.position = newCameraPosition;
+        }
+        else
+        {
+            // Intentar encontrar el jugador nuevamente
+            playerMovement = FindObjectOfType<PlayerMovement>();
+            if (playerMovement != null)
+            {
+                player = playerMovement.transform;
+            }
         }
     }
 }

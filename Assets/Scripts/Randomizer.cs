@@ -104,7 +104,7 @@ public class Randomizer : MonoBehaviour
             string positionName = positionNames[UnityEngine.Random.Range(0, positionNames.Length)];
             GameObject positionObject = GameObject.Find(positionName);
 
-            if (positionObject != null)
+            if (positionObject != null && selectedObjects[sceneIndex] != null)
             {
                 GameObject instantiatedObject = Instantiate(selectedObjects[sceneIndex], positionObject.transform.position, Quaternion.identity);
                 instantiatedObject.SetActive(true);
@@ -112,8 +112,20 @@ public class Randomizer : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning("No se encontró el GameObject vacío con el nombre: " + positionName);
+                if (positionObject == null)
+                {
+                    Debug.LogWarning("No se encontró el GameObject vacío con el nombre: " + positionName);
+                }
+                if (selectedObjects[sceneIndex] == null)
+                {
+                    Debug.LogWarning("El objeto seleccionado para la escena es null en el índice: " + sceneIndex);
+                }
             }
         }
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 }
