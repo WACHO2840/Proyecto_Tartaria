@@ -67,7 +67,7 @@ public class PlayerAttack : MonoBehaviour
         {
             baseDamage = 5;
             baseAttackSpeed = 3;
-            baseRange = 1.5f; // Cambiado a 1.5 para el ataque sin arma
+            baseRange = 3f; // Cambiado a 1.5 para el ataque sin arma
         }
     }
 
