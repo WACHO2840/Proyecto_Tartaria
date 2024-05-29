@@ -2841,6 +2841,18 @@ PrefabInstance:
       propertyPath: farBackGround
       value: 
       objectReference: {fileID: 530729420}
+    - target: {fileID: 8400754498504226201, guid: 45206aabbe05a95469cfb4975919b800, type: 3}
+      propertyPath: parallaxEffectMultiplier
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8400754498504226201, guid: 45206aabbe05a95469cfb4975919b800, type: 3}
+      propertyPath: parallaxEffectMultiplierX
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8400754498504226201, guid: 45206aabbe05a95469cfb4975919b800, type: 3}
+      propertyPath: parallaxEffectMultiplierY
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 9048810165581603040, guid: 45206aabbe05a95469cfb4975919b800, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9
@@ -7439,11 +7451,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7010028088234589475, guid: e3b4853ac6f100744866b9d9a9f0bfd2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 143.27
+      value: 2.2
       objectReference: {fileID: 0}
     - target: {fileID: 7010028088234589475, guid: e3b4853ac6f100744866b9d9a9f0bfd2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.8
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 7010028088234589475, guid: e3b4853ac6f100744866b9d9a9f0bfd2, type: 3}
       propertyPath: m_LocalPosition.z
