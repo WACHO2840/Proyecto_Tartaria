@@ -34,17 +34,6 @@ public class PlayerHealth : MonoBehaviour
         hpBar.Bar(health);
     }
 
-    public int MaxHealth // Propiedad p�blica para acceder y modificar el da�o b�sico
-    {
-        get { return (int)maxHealth; }
-        set { maxHealth = value; }
-    }
-
-    public void IncreaseHealth(int increaseAmountPickUp)
-    {
-        maxHealth += increaseAmountPickUp; 
-    }
-
     void Update()
     {
         if (iFrames > 0)
@@ -89,6 +78,14 @@ public class PlayerHealth : MonoBehaviour
             }
         }
     }
+    public int MaxHealth // Propiedad p�blica para acceder y modificar el da�o b�sico
+    {
+        get { return (int)maxHealth; }
+        set { maxHealth = value; }
+    }
+
+    public void IncreaseHealth(int increaseAmountPickUp)
+    {
+        maxHealth += increaseAmountPickUp;
+    }
 }
-
-
