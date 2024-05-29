@@ -122,11 +122,11 @@ public class PickUp : MonoBehaviour
     {
         List<Item> allPossibleItems = new List<Item>
         {
-            new Item("Toroide", "Aumenta el daño"),
+            new Item("Toroide", "Aumenta el daï¿½o"),
             new Item("Electron", "Aumenta la velocidad de ataque"),
             new Item("Lengua de Fuego", "Aumenta la velocidad de ataque"),
-            new Item("Roca Volcánica", "Incrementa el daño"),
-            new Item("Palanca", "Aumenta el daño"),
+            new Item("Roca Volcï¿½nica", "Incrementa el daï¿½o"),
+            new Item("Palanca", "Aumenta el daï¿½o"),
             new Item("Durum Doble", "Aumenta la salud"),
             new Item("Crocks", "Permite doble salto")
         };
@@ -159,7 +159,7 @@ public class PickUp : MonoBehaviour
             case "Lengua de Fuego":
                 playerAttack.IncreaseAttackSpeed(1);
                 break;
-            case "Roca Volcánica":
+            case "Roca Volcï¿½nica":
                 playerAttack.IncreaseDamage(10);
                 break;
             case "Palanca":
@@ -191,7 +191,7 @@ public class PickUp : MonoBehaviour
             case "Lengua de Fuego":
                 playerAttack.IncreaseAttackSpeed(-1);
                 break;
-            case "Roca Volcánica":
+            case "Roca Volcï¿½nica":
                 playerAttack.IncreaseDamage(-10);
                 break;
             case "Palanca":
@@ -236,7 +236,7 @@ public class PickUp : MonoBehaviour
 
         if (isToroide)
         {
-            newItem = new Item("Toroide", "Aumenta el daño");
+            newItem = new Item("Toroide", "Aumenta el daï¿½o");
             playerAttack.IncreaseDamage(15);
         }
         else if (isElectron)
@@ -251,12 +251,12 @@ public class PickUp : MonoBehaviour
         }
         else if (isRocaVolcanica)
         {
-            newItem = new Item("Roca Volcánica", "Incrementa el daño");
+            newItem = new Item("Roca Volcï¿½nica", "Incrementa el daï¿½o");
             playerAttack.IncreaseDamage(10);
         }
         else if (isPalanca)
         {
-            newItem = new Item("Palanca", "Aumenta el daño");
+            newItem = new Item("Palanca", "Aumenta el daï¿½o");
             playerAttack.IncreaseDamage(20);
         }
         else if (isDurumDoble)
@@ -415,11 +415,11 @@ public class PickUp : MonoBehaviour
     {
         List<Item> allPossibleItems = new List<Item>
         {
-            new Item("Toroide", "Aumenta el daño"),
+            new Item("Toroide", "Aumenta el daï¿½o"),
             new Item("Electron", "Aumenta la velocidad de ataque"),
             new Item("Lengua de Fuego", "Aumenta la velocidad de ataque"),
-            new Item("Roca Volcánica", "Incrementa el daño"),
-            new Item("Palanca", "Aumenta el daño"),
+            new Item("Roca Volcï¿½nica", "Incrementa el daï¿½o"),
+            new Item("Palanca", "Aumenta el daï¿½o"),
             new Item("Durum Doble", "Aumenta la salud"),
             new Item("Crocks", "Permite doble salto")
         };
@@ -452,7 +452,7 @@ public class PickUp : MonoBehaviour
             case "Lengua de Fuego":
                 playerAttack.IncreaseAttackSpeed(1);
                 break;
-            case "Roca Volcánica":
+            case "Roca Volcï¿½nica":
                 playerAttack.IncreaseDamage(10);
                 break;
             case "Palanca":
@@ -484,7 +484,7 @@ public class PickUp : MonoBehaviour
             case "Lengua de Fuego":
                 playerAttack.IncreaseAttackSpeed(-1);
                 break;
-            case "Roca Volcánica":
+            case "Roca Volcï¿½nica":
                 playerAttack.IncreaseDamage(-10);
                 break;
             case "Palanca":
@@ -534,7 +534,7 @@ public class PickUp : MonoBehaviour
 
         if (isToroide)
         {
-            newItem = new Item("Toroide", "Aumenta el daño");
+            newItem = new Item("Toroide", "Aumenta el daï¿½o");
             playerAttack.IncreaseDamage(15);
         }
         else if (isElectron)
@@ -549,12 +549,12 @@ public class PickUp : MonoBehaviour
         }
         else if (isRocaVolcanica)
         {
-            newItem = new Item("Roca Volcánica", "Incrementa el daño");
+            newItem = new Item("Roca Volcï¿½nica", "Incrementa el daï¿½o");
             playerAttack.IncreaseDamage(10);
         }
         else if (isPalanca)
         {
-            newItem = new Item("Palanca", "Aumenta el daño");
+            newItem = new Item("Palanca", "Aumenta el daï¿½o");
             playerAttack.IncreaseDamage(20);
         }
         else if (isDurumDoble)
