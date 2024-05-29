@@ -22,7 +22,7 @@ public class CombatCaC : MonoBehaviour
 
     void Update()
     {
-        hitCooldown = 1 / playerAttack.BasicAttackSpeed; // Ajusta el cooldown basado en la velocidad de ataque
+        hitCooldown = 4 / playerAttack.BasicAttackSpeed; // Ajusta el cooldown basado en la velocidad de ataque
 
         // Detectar la tecla F
         if (Input.GetKeyDown(KeyCode.F) && canHit)

@@ -7,7 +7,7 @@ public class CameraController : MonoBehaviour
     [SerializeField] Transform player; // JUGADOR
     [SerializeField] float minHeight, maxHeight, minWidth, maxWidth; // LIMITES DE LA CAMARA
 
-    public Transform farBackGround; // Referencia al fondo lejano
+    //public Transform farBackGround; // Referencia al fondo lejano
     private Vector3 previousCameraPosition;
 
     // Agregar factores de desplazamiento individuales para X y Y
@@ -32,7 +32,7 @@ public class CameraController : MonoBehaviour
         Vector3 deltaMovement = newCameraPosition - previousCameraPosition;
 
         // Aplicar los factores de desplazamiento al fondo
-        farBackGround.position += new Vector3(deltaMovement.x * parallaxEffectMultiplierX, deltaMovement.y * parallaxEffectMultiplierY, 0f);
+        //farBackGround.position += new Vector3(deltaMovement.x * parallaxEffectMultiplierX, deltaMovement.y * parallaxEffectMultiplierY, 0f);
 
         // Actualizar la posición anterior de la cámara
         previousCameraPosition = newCameraPosition;
