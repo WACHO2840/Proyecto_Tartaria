@@ -33,6 +33,7 @@ public class EndGame : MonoBehaviour
         if (screen != null)
         {
             screen.SetActive(true);
+            StartCoroutine(WaitAndUnsetScreen());
         }
     }
 
@@ -44,10 +45,16 @@ public class EndGame : MonoBehaviour
         }
     }
 
+    private IEnumerator WaitAndUnsetScreen()
+    {
+        yield return new WaitForSeconds(5);
+        FinalScreenUnset();
+        MainMenu();
+    }
+
     public void MainMenu()
     {
         Debug.Log("MainMenu llamado");
-        FinalScreenSet();
         SceneManager.LoadScene(0); // Cambiar a la escena de juego
     }
 }

@@ -11,9 +11,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Settings.unity
     guid: 6a71396c1bced0f42af5bbfbdad1e103
-  - enabled: 0
-    path: Assets/Scenes/LevelTutorial.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/LevelTuto.unity
+    guid: 795d9fa4f72313848852238849dc4cec
   - enabled: 1
     path: Assets/Scenes/Level1.unity
     guid: 82d4c37a0b1af8243af9ca7944ccc80a
@@ -62,4 +62,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LevelBossSkip.unity
     guid: ab38f91be32b23b448cfa33206de6416
+  - enabled: 1
+    path: Assets/Scenes/LevelTutorial.unity
+    guid: d8ae18a8bd1dfd64ca0370985d466da8
   m_configObjects: {}
