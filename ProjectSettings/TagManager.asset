@@ -8,6 +8,7 @@ TagManager:
   - NPC
   - Ground
   - LevelEnd
+  - Box
   layers:
   - Default
   - TransparentFX
