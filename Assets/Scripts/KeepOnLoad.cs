@@ -8,4 +8,5 @@ public class KeepOnLoad : MonoBehaviour
     {
         GameObject.DontDestroyOnLoad(this.gameObject);
     }
+    
 }

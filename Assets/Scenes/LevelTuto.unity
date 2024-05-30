@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 156094487}
   - component: {fileID: 156094490}
   - component: {fileID: 156094489}
+  - component: {fileID: 156094491}
   m_Layer: 0
   m_Name: 1_Toroide
   m_TagString: Untagged
@@ -275,6 +276,18 @@ MonoBehaviour:
   isDurumDoble: 0
   interactKeyUI: {fileID: 1142062974}
   itemPickupConfirmation: {fileID: 1547258435}
+--- !u!114 &156094491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156094486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eea40b36887f8c41b4d9e8557b4e609, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &158901358
 GameObject:
   m_ObjectHideFlags: 0
@@ -287,6 +300,7 @@ GameObject:
   - component: {fileID: 158901359}
   - component: {fileID: 158901362}
   - component: {fileID: 158901361}
+  - component: {fileID: 158901363}
   m_Layer: 0
   m_Name: 4_RocaVolcanica
   m_TagString: Untagged
@@ -427,6 +441,18 @@ MonoBehaviour:
   isDurumDoble: 0
   interactKeyUI: {fileID: 1142062974}
   itemPickupConfirmation: {fileID: 1547258435}
+--- !u!114 &158901363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 158901358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eea40b36887f8c41b4d9e8557b4e609, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &188995732
 GameObject:
   m_ObjectHideFlags: 0
@@ -471,6 +497,7 @@ GameObject:
   - component: {fileID: 312206194}
   - component: {fileID: 312206197}
   - component: {fileID: 312206196}
+  - component: {fileID: 312206198}
   m_Layer: 0
   m_Name: 3_LenguaDeFuego
   m_TagString: Untagged
@@ -611,6 +638,18 @@ MonoBehaviour:
   isDurumDoble: 0
   interactKeyUI: {fileID: 1142062974}
   itemPickupConfirmation: {fileID: 1547258435}
+--- !u!114 &312206198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 312206193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eea40b36887f8c41b4d9e8557b4e609, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &533821769 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5778007970460502102, guid: f828a178d57584e4999ef9a606e7ac1f, type: 3}
@@ -634,6 +673,7 @@ GameObject:
   - component: {fileID: 571632841}
   - component: {fileID: 571632844}
   - component: {fileID: 571632843}
+  - component: {fileID: 571632845}
   m_Layer: 0
   m_Name: 11_ToroideElectromagnetico
   m_TagString: Untagged
@@ -774,6 +814,18 @@ MonoBehaviour:
   isDurumDoble: 0
   interactKeyUI: {fileID: 1142062974}
   itemPickupConfirmation: {fileID: 1547258435}
+--- !u!114 &571632845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 571632840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eea40b36887f8c41b4d9e8557b4e609, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &583780364
 GameObject:
   m_ObjectHideFlags: 0
@@ -2869,6 +2921,7 @@ GameObject:
   - component: {fileID: 872445005}
   - component: {fileID: 872445004}
   - component: {fileID: 872445003}
+  - component: {fileID: 872445007}
   m_Layer: 0
   m_Name: 11_ToroideElectromagnetico (1)
   m_TagString: Untagged
@@ -3009,6 +3062,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &872445007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 872445002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eea40b36887f8c41b4d9e8557b4e609, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &936245243
 GameObject:
   m_ObjectHideFlags: 0
@@ -3150,6 +3215,7 @@ GameObject:
   - component: {fileID: 1137087324}
   - component: {fileID: 1137087327}
   - component: {fileID: 1137087326}
+  - component: {fileID: 1137087328}
   m_Layer: 0
   m_Name: 10_durum
   m_TagString: Untagged
@@ -3290,6 +3356,18 @@ MonoBehaviour:
   isDurumDoble: 1
   interactKeyUI: {fileID: 1142062974}
   itemPickupConfirmation: {fileID: 1547258435}
+--- !u!114 &1137087328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137087323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eea40b36887f8c41b4d9e8557b4e609, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1142062974 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3541396802468941031, guid: 4b40924eb05c75c4aae6f170e19274b9, type: 3}
@@ -3307,6 +3385,7 @@ GameObject:
   - component: {fileID: 1326906787}
   - component: {fileID: 1326906790}
   - component: {fileID: 1326906789}
+  - component: {fileID: 1326906791}
   m_Layer: 0
   m_Name: 6_Palanca
   m_TagString: Untagged
@@ -3447,6 +3526,18 @@ MonoBehaviour:
   isDurumDoble: 0
   interactKeyUI: {fileID: 1142062974}
   itemPickupConfirmation: {fileID: 1547258435}
+--- !u!114 &1326906791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1326906786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eea40b36887f8c41b4d9e8557b4e609, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1348725564
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3550,33 +3641,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 556915639565862264, guid: e3b4853ac6f100744866b9d9a9f0bfd2, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1348725567}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3b4853ac6f100744866b9d9a9f0bfd2, type: 3}
 --- !u!4 &1348725565 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7010028088234589475, guid: e3b4853ac6f100744866b9d9a9f0bfd2, type: 3}
   m_PrefabInstance: {fileID: 1348725564}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1348725566 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 556915639565862264, guid: e3b4853ac6f100744866b9d9a9f0bfd2, type: 3}
-  m_PrefabInstance: {fileID: 1348725564}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1348725567
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1348725566}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2eea40b36887f8c41b4d9e8557b4e609, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1366483225
 GameObject:
   m_ObjectHideFlags: 0
@@ -3673,6 +3744,7 @@ GameObject:
   - component: {fileID: 1493716495}
   - component: {fileID: 1493716498}
   - component: {fileID: 1493716497}
+  - component: {fileID: 1493716499}
   m_Layer: 0
   m_Name: 9_TierraPlana
   m_TagString: Untagged
@@ -3813,6 +3885,18 @@ MonoBehaviour:
   isDurumDoble: 0
   interactKeyUI: {fileID: 1142062974}
   itemPickupConfirmation: {fileID: 1547258435}
+--- !u!114 &1493716499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1493716494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eea40b36887f8c41b4d9e8557b4e609, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1547258435 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3639166423452452526, guid: 4b40924eb05c75c4aae6f170e19274b9, type: 3}
@@ -3836,6 +3920,7 @@ GameObject:
   - component: {fileID: 1788405614}
   - component: {fileID: 1788405617}
   - component: {fileID: 1788405616}
+  - component: {fileID: 1788405618}
   m_Layer: 0
   m_Name: 2_Electron
   m_TagString: Untagged
@@ -3976,6 +4061,18 @@ MonoBehaviour:
   isDurumDoble: 0
   interactKeyUI: {fileID: 1142062974}
   itemPickupConfirmation: {fileID: 1547258435}
+--- !u!114 &1788405618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1788405613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eea40b36887f8c41b4d9e8557b4e609, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1798241717
 GameObject:
   m_ObjectHideFlags: 0
@@ -4238,6 +4335,7 @@ GameObject:
   - component: {fileID: 2127801509}
   - component: {fileID: 2127801512}
   - component: {fileID: 2127801511}
+  - component: {fileID: 2127801513}
   m_Layer: 0
   m_Name: 5_LlaveCorroida
   m_TagString: Untagged
@@ -4378,6 +4476,18 @@ MonoBehaviour:
   isDurumDoble: 0
   interactKeyUI: {fileID: 1142062974}
   itemPickupConfirmation: {fileID: 1547258435}
+--- !u!114 &2127801513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2127801508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eea40b36887f8c41b4d9e8557b4e609, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -4391,6 +4501,7 @@ SceneRoots:
   - {fileID: 1887005379}
   - {fileID: 827542160}
   - {fileID: 156094488}
+  - {fileID: 1832103552}
   - {fileID: 1788405615}
   - {fileID: 312206195}
   - {fileID: 158901360}
@@ -4401,4 +4512,3 @@ SceneRoots:
   - {fileID: 571632842}
   - {fileID: 872445006}
   - {fileID: 188995733}
-  - {fileID: 1832103552}
