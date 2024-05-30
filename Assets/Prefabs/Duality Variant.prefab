@@ -100,11 +100,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Duality Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 5184978995497607348, guid: 854efddf7eea45b45bfeccaeddb90769, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3839273708974787430, guid: 854efddf7eea45b45bfeccaeddb90769, type: 3}
+    - {fileID: 1409119381942151171, guid: 854efddf7eea45b45bfeccaeddb90769, type: 3}
+    - {fileID: 6432816255359548546, guid: 854efddf7eea45b45bfeccaeddb90769, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5184978995497607348, guid: 854efddf7eea45b45bfeccaeddb90769, type: 3}
+      insertIndex: 3
+      addedObject: {fileID: -3744447485259564769}
     - targetCorrespondingSourceObject: {fileID: 5184978995497607348, guid: 854efddf7eea45b45bfeccaeddb90769, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2134058112211370867}
@@ -114,6 +123,23 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5184978995497607348, guid: 854efddf7eea45b45bfeccaeddb90769, type: 3}
   m_PrefabInstance: {fileID: 8929766615842592989}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &-3744447485259564769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4330309448042002537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c8a44d3a8fbb804cb5eb5a95a74313a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  patrolPoints: []
+  player: {fileID: 0}
+  sr: {fileID: 0}
+  horizontal: 0
+  detectionRange: 5
 --- !u!68 &2134058112211370867
 EdgeCollider2D:
   m_ObjectHideFlags: 0

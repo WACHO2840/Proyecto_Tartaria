@@ -7,7 +7,6 @@ public class EnemyStats : MonoBehaviour
     #region Variables
     [SerializeField] public int maxHp = 100;
     [SerializeField] public float movementSpeed = 3.0f;
-    [SerializeField] public float attackSpeed = 1.0f;
     [SerializeField] public int dmg = 10;
     private int hp;
     #endregion
@@ -15,6 +14,14 @@ public class EnemyStats : MonoBehaviour
     void Start()
     {
         hp = maxHp;
+    }
+
+    private void Update()
+    {
+        if (hp <= 0)
+        {
+            Die();
+        }
     }
 
     public int GetHp()
@@ -26,10 +33,6 @@ public class EnemyStats : MonoBehaviour
     {
         hp -= (int)damage;
         Debug.Log("Vida restante del enemigo: " + hp);
-        if (hp <= 0)
-        {
-            Die();
-        }
     }
 
     private void Die()

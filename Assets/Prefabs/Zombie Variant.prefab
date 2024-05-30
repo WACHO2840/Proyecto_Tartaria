@@ -88,6 +88,10 @@ PrefabInstance:
       propertyPath: m_Offset.x
       value: -0.0009613037
       objectReference: {fileID: 0}
+    - target: {fileID: 3839273708974787430, guid: 854efddf7eea45b45bfeccaeddb90769, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
     - target: {fileID: 5184978995497607348, guid: 854efddf7eea45b45bfeccaeddb90769, type: 3}
       propertyPath: m_Icon
       value: 
@@ -95,6 +99,10 @@ PrefabInstance:
     - target: {fileID: 5184978995497607348, guid: 854efddf7eea45b45bfeccaeddb90769, type: 3}
       propertyPath: m_Name
       value: Zombie Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 5184978995497607348, guid: 854efddf7eea45b45bfeccaeddb90769, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 6432816255359548546, guid: 854efddf7eea45b45bfeccaeddb90769, type: 3}
       propertyPath: m_Mass

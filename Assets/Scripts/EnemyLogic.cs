@@ -16,7 +16,7 @@ public class EnemyLogic : MonoBehaviour
     private Vector2 velocidadEnemigo;
     private PlayerMovement playerMovement;
 
-    private float detectionRange = 5f;
+    [SerializeField] private float detectionRange = 5f;
     private int nextPatrolPoint = 0;
     private bool patrolOrder = true; //
 
@@ -179,12 +179,6 @@ public class EnemyLogic : MonoBehaviour
         {
             enemyStats.ReduceHp(damage);
         }
-    }
-
-    private void EnemyDead()
-    {
-        Debug.Log("Enemigo muerto");
-        Destroy(gameObject); // Elimina al enemigo del juego
     }
 
     private void Flip()
