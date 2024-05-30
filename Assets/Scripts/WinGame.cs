@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class EndGame : MonoBehaviour
+public class WinGame : MonoBehaviour
 {
     // Asigna esto en el Inspector
     [SerializeField] private GameObject screen;
@@ -13,8 +13,7 @@ public class EndGame : MonoBehaviour
     {
         if (screen == null)
         {
-            //            screen = transform.Find("MainMenu").gameObject;
-            screen = transform.Find("EndGame").gameObject;
+            screen = transform.Find("WinGame").gameObject;
             if (screen == null)
             {
                 Debug.LogError("El GameObject de la pantalla no pudo ser encontrado.");
@@ -30,7 +29,7 @@ public class EndGame : MonoBehaviour
         }
     }
 
-    public void FinalScreenSet()
+    public void WinScreenSet()
     {
         if (screen != null)
         {
@@ -39,7 +38,7 @@ public class EndGame : MonoBehaviour
         }
     }
 
-    public void FinalScreenUnset()
+    public void WinScreenUnset()
     {
         if (screen != null)
         {
@@ -51,7 +50,7 @@ public class EndGame : MonoBehaviour
     {
         yield return new WaitForSeconds(5);
         yield return StartCoroutine(ReloadScenes());
-        FinalScreenUnset();
+        WinScreenUnset();
         MainMenu();
     }
 
@@ -87,5 +86,4 @@ public class EndGame : MonoBehaviour
         // Destruir el GameObject "Player"
         Destroy(playerObject);
     }
-
 }
