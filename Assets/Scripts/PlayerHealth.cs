@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -87,5 +88,10 @@ public class PlayerHealth : MonoBehaviour
     public void IncreaseHealth(int increaseAmountPickUp)
     {
         maxHealth += increaseAmountPickUp;
+    }
+
+    internal void Damage(float damage)
+    {
+        throw new NotImplementedException();
     }
 }
