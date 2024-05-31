@@ -306,11 +306,11 @@ PrefabInstance:
     - target: {fileID: 1409119381942151171, guid: 854efddf7eea45b45bfeccaeddb90769, type: 3}
       propertyPath: patrolPoints.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 622457347}
     - target: {fileID: 1409119381942151171, guid: 854efddf7eea45b45bfeccaeddb90769, type: 3}
       propertyPath: patrolPoints.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 675164247}
     - target: {fileID: 1878317183835056668, guid: 854efddf7eea45b45bfeccaeddb90769, type: 3}
       propertyPath: m_LocalPosition.x
       value: 96.75429
@@ -771,11 +771,11 @@ PrefabInstance:
     - target: {fileID: 1409119381942151171, guid: 854efddf7eea45b45bfeccaeddb90769, type: 3}
       propertyPath: patrolPoints.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1391517767}
     - target: {fileID: 1409119381942151171, guid: 854efddf7eea45b45bfeccaeddb90769, type: 3}
       propertyPath: patrolPoints.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 610305525}
     - target: {fileID: 1878317183835056668, guid: 854efddf7eea45b45bfeccaeddb90769, type: 3}
       propertyPath: m_LocalPosition.x
       value: 97.331985
@@ -50257,11 +50257,11 @@ PrefabInstance:
     - target: {fileID: 626558795195730120, guid: 52256376be88e784d98727d111d0aa5c, type: 3}
       propertyPath: patrolPoints.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 806552107}
     - target: {fileID: 626558795195730120, guid: 52256376be88e784d98727d111d0aa5c, type: 3}
       propertyPath: patrolPoints.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1567526581}
     - target: {fileID: 3376391526527608101, guid: 52256376be88e784d98727d111d0aa5c, type: 3}
       propertyPath: movementSpeed
       value: 2

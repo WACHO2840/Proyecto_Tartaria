@@ -2030,7 +2030,11 @@ PrefabInstance:
       objectReference: {fileID: 1348725565}
     - target: {fileID: 8400754498504226201, guid: 45206aabbe05a95469cfb4975919b800, type: 3}
       propertyPath: maxWidth
-      value: 100
+      value: 14.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 8400754498504226201, guid: 45206aabbe05a95469cfb4975919b800, type: 3}
+      propertyPath: minWidth
+      value: 7.57
       objectReference: {fileID: 0}
     - target: {fileID: 8400754498504226201, guid: 45206aabbe05a95469cfb4975919b800, type: 3}
       propertyPath: farBackGround
@@ -2038,7 +2042,7 @@ PrefabInstance:
       objectReference: {fileID: 1798241718}
     - target: {fileID: 9048810165581603040, guid: 45206aabbe05a95469cfb4975919b800, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 15.02
+      value: 7.57
       objectReference: {fileID: 0}
     - target: {fileID: 9048810165581603040, guid: 45206aabbe05a95469cfb4975919b800, type: 3}
       propertyPath: m_LocalPosition.y
