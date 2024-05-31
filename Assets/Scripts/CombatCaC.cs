@@ -27,6 +27,7 @@ public class CombatCaC : MonoBehaviour
         // Detectar la tecla F
         if (Input.GetKeyDown(KeyCode.F) && canHit)
         {
+            Debug.Log("ATAQUE");
             Hit();
             canHit = false;
             lastHitTime = Time.time;
