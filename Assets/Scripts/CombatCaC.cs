@@ -59,6 +59,18 @@ public class CombatCaC : MonoBehaviour
                     Debug.LogWarning("El enemigo no tiene el script EnemyLogic adjunto.");
                 }
             }
+            if (colisionador.CompareTag("Boss"))
+            {
+                EnemyLogic enemyLogic = colisionador.transform.GetComponent<EnemyLogic>();
+                if (enemyLogic != null)
+                {
+                    enemyLogic.GetDamage(playerAttack.BasicDamage);
+                }
+                else
+                {
+                    Debug.LogWarning("El enemigo no tiene el script EnemyLogic adjunto.");
+                }
+            }
         }
     }
 
