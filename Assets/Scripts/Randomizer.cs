@@ -74,29 +74,26 @@ public class Randomizer : MonoBehaviour
 
     private void GenerateScenes()
     {
-        // Usar un HashSet para rastrear los índices utilizados en general
         HashSet<int> usedIndices = new HashSet<int>();
 
-        // Generar las 3 primeras escenas en el rango 2 a 11
         for (int i = 0; i < 3; i++)
         {
-            int index = UnityEngine.Random.Range(2, 12); // El límite superior es exclusivo, por eso es 12
+            int index = UnityEngine.Random.Range(2, 11);
             while (usedIndices.Contains(index))
             {
-                index = UnityEngine.Random.Range(2, 12);
+                index = UnityEngine.Random.Range(2, 11);
             }
             scenesCheck[i] = index;
             usedIndices.Add(index);
             Debug.Log("Scene: " + index);
         }
 
-        // Generar las 2 últimas escenas en el rango 11 a 16
         for (int i = 3; i < 5; i++)
         {
-            int index = UnityEngine.Random.Range(11, 17); // El límite superior es exclusivo, por eso es 17
+            int index = UnityEngine.Random.Range(11, 16);
             while (usedIndices.Contains(index))
             {
-                index = UnityEngine.Random.Range(11, 17);
+                index = UnityEngine.Random.Range(11, 16);
             }
             scenesCheck[i] = index;
             usedIndices.Add(index);
@@ -150,25 +147,36 @@ public class Randomizer : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
+    // Método para limpiar y reiniciar las estructuras de datos y regenerar niveles y objetos
+    public void ResetAndRegenerate()
+    {
+        ResetArraysAndLists();
+        GenerateScenes();
+        GenerateObjects();
+    }
+
     // Método para limpiar y reiniciar las estructuras de datos
     public void ResetArraysAndLists()
     {
-        // Limpiar el array de escenas
         for (int i = 0; i < scenesCheck.Length; i++)
         {
             scenesCheck[i] = 0;
         }
 
-        // Limpiar el array de objetos seleccionados
         for (int i = 0; i < selectedObjects.Length; i++)
         {
             selectedObjects[i] = null;
         }
 
-        // Limpiar la lista de objetos chequeados
         objectsCheck.Clear();
 
-        // Reiniciar el contador de etapas
         stages = 0;
+    }
+
+    // Método para manejar la muerte del jugador
+    public void OnPlayerDeath()
+    {
+        // Reiniciar el juego y regenerar niveles y objetos
+        ResetAndRegenerate();
     }
 }

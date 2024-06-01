@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -16,6 +15,8 @@ public class PlayerHealth : MonoBehaviour
     private SpriteRenderer sr;
     [SerializeField] private HealthBar hpBar;
 
+    private Randomizer randomizer;
+
     private void Awake()
     {
         instance = this;
@@ -25,6 +26,12 @@ public class PlayerHealth : MonoBehaviour
         if (endGame == null)
         {
             Debug.LogError("No se encontró un objeto con el script EndGame en la escena.");
+        }
+
+        randomizer = FindObjectOfType<Randomizer>();
+        if (randomizer == null)
+        {
+            Debug.LogError("No se encontró un objeto con el script Randomizer en la escena.");
         }
     }
 
@@ -50,14 +57,15 @@ public class PlayerHealth : MonoBehaviour
             if (endGame != null)
             {
                 endGame.FinalScreenSet();
+                randomizer.OnPlayerDeath();
             }
         }
     }
 
     public void DealDamageSpikes()
     {
-        hpBar.HpSet(health);
         health = 0;
+        hpBar.HpSet(health);
     }
 
     public void DealMonsterDamage(int dmg, Vector3 enemyPosition)
@@ -70,15 +78,16 @@ public class PlayerHealth : MonoBehaviour
             {
                 iFrames = iFramesCountdown; // Le volvemos invulnerable
 
-                // Calcula la direcci�n del knockback
+                // Calcula la dirección del knockback
                 Vector2 knockbackDirection = (PlayerMovement.instance.transform.position - enemyPosition).normalized;
-                PlayerMovement.instance.Knockback(knockbackDirection); // Empujamos al jugador hacia atr�s
+                PlayerMovement.instance.Knockback(knockbackDirection); // Empujamos al jugador hacia atrás
 
                 sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0.5f); // Le bajamos la transparencia para indicar la invulnerabilidad
             }
         }
     }
-    public int MaxHealth // Propiedad p�blica para acceder y modificar el da�o b�sico
+
+    public int MaxHealth // Propiedad pública para acceder y modificar el daño básico
     {
         get { return (int)maxHealth; }
         set { maxHealth = value; }
