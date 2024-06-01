@@ -9,6 +9,8 @@ TagManager:
   - Ground
   - LevelEnd
   - Box
+  - katana
+  - Mazo
   layers:
   - Default
   - TransparentFX
@@ -20,8 +22,8 @@ TagManager:
   - NPC
   - Enemy
   - Player
-  - 
-  - 
+  - Katana
+  - Box
   - 
   - 
   - 
