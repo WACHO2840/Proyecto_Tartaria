@@ -5,12 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class WinGame : MonoBehaviour
 {
-    // Asigna esto en el Inspector
     [SerializeField] private GameObject screen;
-    [SerializeField] private List<int> scenesToReload; // Lista de índices de escenas que deben ser recargadas
+    [SerializeField] private List<int> scenesToReload;
 
     private void Awake()
     {
+        DontDestroyOnLoad(transform.root.gameObject);
+
         if (screen == null)
         {
             screen = transform.Find("WinGame").gameObject;
@@ -54,27 +55,22 @@ public class WinGame : MonoBehaviour
         MainMenu();
     }
 
-
     private IEnumerator ReloadScenes()
     {
-        // Buscar el objeto llamado "UI" y almacenarlo para que no sea destruido
         foreach (int sceneIndex in scenesToReload)
         {
             SceneManager.LoadScene(sceneIndex, LoadSceneMode.Single);
-            yield return null; // Esperar un frame para asegurarse de que la escena se haya cargado completamente
+            yield return null;
         }
-
     }
 
     public void MainMenu()
     {
-        SceneManager.LoadScene(0); // Cambiar a la escena de menú principal
+        SceneManager.LoadScene(0);
         KeepOnLoad[] keepOnLoadObjects = FindObjectsOfType<KeepOnLoad>();
 
-        // Buscar el GameObject "Player"
         GameObject playerObject = GameObject.FindWithTag("Player");
 
-        // Destruir cada objeto encontrado excepto el objeto "Player"
         foreach (KeepOnLoad keepOnLoad in keepOnLoadObjects)
         {
             if (keepOnLoad.gameObject != playerObject)
@@ -83,7 +79,6 @@ public class WinGame : MonoBehaviour
             }
         }
 
-        // Destruir el GameObject "Player"
         Destroy(playerObject);
     }
 }

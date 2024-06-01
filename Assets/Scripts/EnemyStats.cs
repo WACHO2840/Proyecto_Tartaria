@@ -11,16 +11,31 @@ public class EnemyStats : MonoBehaviour
     private int hp;
     #endregion
 
+    private WinGame winGame;
+
     void Start()
     {
         hp = maxHp;
+        winGame = FindWinGame();
+        if (winGame == null)
+        {
+            Debug.LogError("No se encontró el script WinGame en la escena.");
+        }
     }
 
     private void Update()
     {
         if (hp <= 0)
         {
-            Die();
+            if (CompareTag("Boss") && winGame != null)
+            {
+                Die();
+                winGame.WinScreenSet();
+            }
+            else if (CompareTag("Enemy"))
+            {
+                Die();
+            }
         }
     }
 
@@ -40,6 +55,14 @@ public class EnemyStats : MonoBehaviour
         Debug.Log("Enemigo muerto");
         Destroy(gameObject);
     }
+
+    private WinGame FindWinGame()
+    {
+        var dontDestroyOnLoadObjects = FindObjectsOfType<WinGame>(true);
+        foreach (var obj in dontDestroyOnLoadObjects)
+        {
+            return obj;
+        }
+        return null;
+    }
 }
-
-

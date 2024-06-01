@@ -7,7 +7,7 @@ public class EndGame : MonoBehaviour
 {
     // Asigna esto en el Inspector
     [SerializeField] private GameObject screen;
-    [SerializeField] private List<int> scenesToReload; // Lista de índices de escenas que deben ser recargadas
+    [SerializeField] private List<int> scenesToReload; // Lista de ï¿½ndices de escenas que deben ser recargadas
 
     private void Awake()
     {
@@ -69,7 +69,7 @@ public class EndGame : MonoBehaviour
 
     public void MainMenu()
     {
-        SceneManager.LoadScene(0); // Cambiar a la escena de menú principal
+        SceneManager.LoadScene(0); // Cambiar a la escena de menï¿½ principal
         KeepOnLoad[] keepOnLoadObjects = FindObjectsOfType<KeepOnLoad>();
 
         // Buscar el GameObject "Player"

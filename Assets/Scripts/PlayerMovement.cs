@@ -97,4 +97,10 @@ public class PlayerMovement : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    private void OnDestroy()
+    {
+        // Desuscribirse del evento sceneLoaded para evitar errores
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
 }
