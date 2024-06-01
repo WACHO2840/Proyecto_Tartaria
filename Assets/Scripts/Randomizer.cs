@@ -74,14 +74,32 @@ public class Randomizer : MonoBehaviour
 
     private void GenerateScenes()
     {
-        for (int i = 0; i < scenesCheck.Length; i++)
+        // Usar un HashSet para rastrear los índices utilizados en general
+        HashSet<int> usedIndices = new HashSet<int>();
+
+        // Generar las 3 primeras escenas en el rango 2 a 11
+        for (int i = 0; i < 3; i++)
         {
-            int index = UnityEngine.Random.Range(2, 16);
-            while (scenesCheck.Contains(index))
+            int index = UnityEngine.Random.Range(2, 12); // El límite superior es exclusivo, por eso es 12
+            while (usedIndices.Contains(index))
             {
-                index = UnityEngine.Random.Range(2, 16);
+                index = UnityEngine.Random.Range(2, 12);
             }
             scenesCheck[i] = index;
+            usedIndices.Add(index);
+            Debug.Log("Scene: " + index);
+        }
+
+        // Generar las 2 últimas escenas en el rango 11 a 16
+        for (int i = 3; i < 5; i++)
+        {
+            int index = UnityEngine.Random.Range(11, 17); // El límite superior es exclusivo, por eso es 17
+            while (usedIndices.Contains(index))
+            {
+                index = UnityEngine.Random.Range(11, 17);
+            }
+            scenesCheck[i] = index;
+            usedIndices.Add(index);
             Debug.Log("Scene: " + index);
         }
     }
