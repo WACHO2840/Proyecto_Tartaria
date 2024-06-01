@@ -131,4 +131,26 @@ public class Randomizer : MonoBehaviour
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
+
+    // Método para limpiar y reiniciar las estructuras de datos
+    public void ResetArraysAndLists()
+    {
+        // Limpiar el array de escenas
+        for (int i = 0; i < scenesCheck.Length; i++)
+        {
+            scenesCheck[i] = 0;
+        }
+
+        // Limpiar el array de objetos seleccionados
+        for (int i = 0; i < selectedObjects.Length; i++)
+        {
+            selectedObjects[i] = null;
+        }
+
+        // Limpiar la lista de objetos chequeados
+        objectsCheck.Clear();
+
+        // Reiniciar el contador de etapas
+        stages = 0;
+    }
 }

@@ -3382,9 +3382,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 356949051623757275, guid: 2b423b73d9aeff147bad8364d961fa08, type: 3}
+      propertyPath: isCrocks
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 356949051623757275, guid: 2b423b73d9aeff147bad8364d961fa08, type: 3}
       propertyPath: interactKeyUI
       value: 
       objectReference: {fileID: 1142062974}
+    - target: {fileID: 356949051623757275, guid: 2b423b73d9aeff147bad8364d961fa08, type: 3}
+      propertyPath: isLenguaDeFuego
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 356949051623757275, guid: 2b423b73d9aeff147bad8364d961fa08, type: 3}
       propertyPath: itemPickupConfirmation
       value: 
@@ -3644,6 +3652,14 @@ PrefabInstance:
     - target: {fileID: 392188433150952419, guid: 31cbb2ad2fa9b4e4682afbbb634c412e, type: 3}
       propertyPath: m_Name
       value: 1_Toroide
+      objectReference: {fileID: 0}
+    - target: {fileID: 5967075769639105908, guid: 31cbb2ad2fa9b4e4682afbbb634c412e, type: 3}
+      propertyPath: isToroide
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5967075769639105908, guid: 31cbb2ad2fa9b4e4682afbbb634c412e, type: 3}
+      propertyPath: isElectron
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5967075769639105908, guid: 31cbb2ad2fa9b4e4682afbbb634c412e, type: 3}
       propertyPath: interactKeyUI
