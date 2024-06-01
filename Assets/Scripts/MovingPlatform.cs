@@ -6,9 +6,9 @@ public class MovingPlatform : MonoBehaviour
 {
     [SerializeField] Transform[] patrolPoints;
     [SerializeField] float movementSpeed;
-    [SerializeField] bool horizontal; // PARA COMPROBAR SI LA PLATAFORMA SUBE Y BAJA O SE DESPLAZA HORIZONTALMENTE
+    [SerializeField] bool horizontal;
     private int nextPatrolPoint = 1;
-    private bool patrolOrder = true; // ESTO SOLO SIRVE EN CASO DE QUE SEAN 2 PUNTOS
+    private bool patrolOrder = true;
 
     void Update()
     {
@@ -36,7 +36,7 @@ public class MovingPlatform : MonoBehaviour
                 }
             }
         }
-        else // SI ES FALSO SE MUEVE EN EL EJE Y
+        else
         {
             if (Vector2.Distance(patrolPoints[nextPatrolPoint].position, transform.position) < 0.1f)
             {
@@ -57,24 +57,33 @@ public class MovingPlatform : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x, patrolPoints[nextPatrolPoint].position.y), movementSpeed * Time.deltaTime);
     }
 
-
-    // CUANDO EL JUGADOR ENTRE EN LA PLATAFORMA PONERLO DE HIJO
+    // Detectar cuando el jugador entra en la plataforma
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.transform.SetParent(this.transform);
+            // Cambiar el padre del jugador solo si no tiene ya un padre
+            if (collision.transform.parent == null)
+            {
+                collision.transform.SetParent(this.transform);
+            }
         }
-
     }
 
-    // CUANDO EL JUGADOR DEJE LA PLATAFORMA QUITARLO DE HIJO
+
+
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.transform.SetParent(null);
+            // Cambiar el padre del jugador solo si el padre actual es esta plataforma
+            if (collision.transform.parent == this.transform)
+            {
+                collision.transform.SetParent(null);
+                DontDestroyOnLoad(collision.gameObject); // Aquí establecemos la propiedad DontDestroyOnLoad
+            }
         }
-
     }
 }
+
+

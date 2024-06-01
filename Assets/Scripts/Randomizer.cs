@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Linq;
+using System.Collections.Generic;
 
 public class Randomizer : MonoBehaviour
 {
@@ -66,6 +65,10 @@ public class Randomizer : MonoBehaviour
             {
                 selectedObjects[stages - 2].SetActive(false);
             }
+        }
+        else
+        {
+            Debug.Log("El jugador no puede pasar todavía");
         }
     }
 

@@ -1,52 +1,5 @@
-/*
-   
-    // Update is called once per frame
-    void Update()
-    {
-
-
-        if (knockbackCounter <= 0)
-        {
-            rb.velocity = new Vector2(speed * Input.GetAxisRaw("Horizontal"), rb.velocity.y); // Velocidad de movimiento horizontal
-
-            isOnGround = Physics2D.OverlapCircle(checkGround.position, .2f, ground);
-
-            if (Input.GetButtonDown("Jump"))
-            {
-                if (isOnGround)
-                {
-                    rb.velocity = new Vector2(rb.velocity.x, jumpHeight); // Velocidad de movimiento vertical
-                }
-            }
-
-            if (rb.velocity.x < 0)
-            {
-                sr.flipX = true; //Izquierda
-            }
-            else if (rb.velocity.x > 0)
-            {
-                sr.flipX = false; //Derecha
-            }
-        }
-        else
-        {
-            knockbackCounter -= Time.deltaTime;
-
-            if (sr.flipX)
-                rb.velocity = new Vector2(knockbackPower, rb.velocity.y);
-            else
-                rb.velocity = new Vector2(-knockbackPower, rb.velocity.y);
-        }
-    }
-
-    
-
-}
-*/
-
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -63,59 +16,72 @@ public class PlayerMovement : MonoBehaviour
     private float knockbackCounter;
     private bool isOnGround;
 
-    private bool canDoubleJump = false;  // Controla si el jugador puede hacer doble salto
-    private bool hasCrocks = false;     // Controla si el jugador ha recogido los Crocks
+    private bool canDoubleJump = false;
+    private bool hasCrocks = false;
 
-    public bool canMove = true; // Variable para controlar si el jugador puede moverse
+    public bool canMove = true;
 
     private void Awake()
     {
-        instance = this;
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
     }
- 
+
     private void Start()
     {
         sr = GetComponent<SpriteRenderer>();
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     void Update()
     {
-        if (knockbackCounter <= 0)
+        if (SceneManager.GetActiveScene().buildIndex != 0) // Si no estamos en la escena del menú
         {
-            rb.velocity = new Vector2(speed * Input.GetAxisRaw("Horizontal"), rb.velocity.y); // Velocidad de movimiento horizontal
-
-            isOnGround = Physics2D.OverlapCircle(checkGround.position, .2f, ground);
-
-            if (Input.GetButtonDown("Jump") && isOnGround)
+            if (knockbackCounter <= 0)
             {
-                rb.velocity = new Vector2(rb.velocity.x, jumpHeight); // Velocidad de movimiento vertical
-            }
+                rb.velocity = new Vector2(speed * Input.GetAxisRaw("Horizontal"), rb.velocity.y);
 
-            if (rb.velocity.x < 0)
-            {
-                sr.flipX = true; //Izquierda
+                isOnGround = Physics2D.OverlapCircle(checkGround.position, .2f, ground);
+
+                if (Input.GetButtonDown("Jump") && isOnGround)
+                {
+                    rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
+                }
+
+                if (rb.velocity.x < 0)
+                {
+                    sr.flipX = true;
+                }
+                else if (rb.velocity.x > 0)
+                {
+                    sr.flipX = false;
+                }
             }
-            else if (rb.velocity.x > 0)
+            else
             {
-                sr.flipX = false; //Derecha
+                knockbackCounter -= Time.deltaTime;
             }
-        }
-        else
-        {
-            knockbackCounter -= Time.deltaTime;
         }
     }
 
     public void EnableDoubleJump()
     {
-        hasCrocks = true;  // Permite el doble salto al recoger los Crocks
-        canDoubleJump = true;  // Activa el doble salto inmediatamente
+        hasCrocks = true;
+        canDoubleJump = true;
     }
 
     public void DisableDoubleJump()
     {
-        hasCrocks = false;  // Permite el doble salto al recoger los Crocks
-        canDoubleJump = false;  // Activa el doble salto inmediatamente
+        hasCrocks = false;
+        canDoubleJump = false;
     }
 
     public void Knockback(Vector2 direction)
@@ -123,13 +89,12 @@ public class PlayerMovement : MonoBehaviour
         knockbackCounter = knockbackDistance;
         rb.velocity = new Vector2(direction.x * knockbackPower, knockbackPower / 2);
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (scene.buildIndex == 0) // Si volvemos a la escena del menú
         {
-            Vector2 knockbackDirection = (transform.position - collision.transform.position).normalized;
-            Knockback(knockbackDirection);
+            Destroy(gameObject);
         }
     }
-
 }

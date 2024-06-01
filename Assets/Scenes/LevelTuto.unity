@@ -2803,7 +2803,8 @@ PrefabInstance:
       propertyPath: endGame
       value: 
       objectReference: {fileID: 533821769}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8204834394307359338, guid: e3b4853ac6f100744866b9d9a9f0bfd2, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7010028088234589475, guid: e3b4853ac6f100744866b9d9a9f0bfd2, type: 3}
