@@ -51,6 +51,9 @@ public class PlayerHealth : MonoBehaviour
             if (endGame != null)
             {
                 endGame.FinalScreenSet();
+            }
+            if (randomizer != null)
+            {
                 randomizer.OnPlayerDeath();
             }
         }

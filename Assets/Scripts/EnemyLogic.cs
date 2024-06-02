@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyLogic : MonoBehaviour
@@ -44,7 +43,6 @@ public class EnemyLogic : MonoBehaviour
 
     void Update()
     {
-
         Flip();
         velocidadEnemigo = rb.velocity; // BORRAR, SIRVE PARA PRUEBAS
 
@@ -67,7 +65,6 @@ public class EnemyLogic : MonoBehaviour
             Patrol();
         }
     }
-
 
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -193,6 +190,3 @@ public class EnemyLogic : MonoBehaviour
         }
     }
 }
-
-
-
