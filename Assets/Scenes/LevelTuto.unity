@@ -2136,6 +2136,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eea40b36887f8c41b4d9e8557b4e609, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &652915293
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 652915294}
+  m_Layer: 9
+  m_Name: HitSpot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &652915294
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652915293}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1326257875}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &714497235
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2204,6 +2235,7 @@ GameObject:
   - component: {fileID: 767989611}
   - component: {fileID: 767989610}
   - component: {fileID: 767989609}
+  - component: {fileID: 767989612}
   m_Layer: 9
   m_Name: Katana
   m_TagString: Katana
@@ -2320,9 +2352,27 @@ Transform:
   m_LocalPosition: {x: 9.5197735, y: -0.5141683, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1759336684}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &767989612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 767989608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01b3ad919468c6d4f94e5c4e9fa83b8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  gfx: {fileID: 602192032}
+  hitSpot: {fileID: 1759336684}
+  range: 0.67
+  maxCooldownTime: 1
 --- !u!1001 &827542160
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2579,6 +2629,7 @@ GameObject:
   - component: {fileID: 1326257875}
   - component: {fileID: 1326257874}
   - component: {fileID: 1326257873}
+  - component: {fileID: 1326257876}
   m_Layer: 9
   m_Name: Mazo
   m_TagString: Mazo
@@ -2695,9 +2746,27 @@ Transform:
   m_LocalPosition: {x: 15.801001, y: -0.5141683, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 652915294}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1326257876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1326257872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01b3ad919468c6d4f94e5c4e9fa83b8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  gfx: {fileID: 602192032}
+  hitSpot: {fileID: 652915294}
+  range: 0.52
+  maxCooldownTime: 1
 --- !u!1 &1326906786 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2279613090073326157, guid: 34206060e7209304eb2615d2b095a785, type: 3}
@@ -2952,6 +3021,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cc4c8b58b08e5e4db2330524390d6bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1759336683
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1759336684}
+  m_Layer: 9
+  m_Name: HitSpot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1759336684
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1759336683}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.02, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 767989611}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1788405613 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1448364882277683165, guid: 9229a785f84f67f469b741ce134d57e2, type: 3}
