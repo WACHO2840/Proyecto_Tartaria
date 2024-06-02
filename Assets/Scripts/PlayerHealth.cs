@@ -27,12 +27,6 @@ public class PlayerHealth : MonoBehaviour
         {
             Debug.LogError("No se encontró un objeto con el script EndGame en la escena.");
         }
-
-        randomizer = FindObjectOfType<Randomizer>();
-        if (randomizer == null)
-        {
-            Debug.LogError("No se encontró un objeto con el script Randomizer en la escena.");
-        }
     }
 
     void Start()

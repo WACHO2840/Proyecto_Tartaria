@@ -3,21 +3,22 @@ using UnityEngine.UI;
 
 public class TutorialManager : MonoBehaviour
 {
-    public GameObject[] panels; // Los paneles que se mostrar·n secuencialmente
+    public GameObject[] panels; // Los paneles que se mostrar√°n secuencialmente
     public Button[] nextButtons; // Los botones para avanzar al siguiente panel
     public GameObject interactText; // El texto que muestra la letra 'E' para interactuar
+    public GameObject healthBar; // Referencia al GameObject HealthBar
 
     private int currentPanelIndex = 0;
-    private bool isPlayerInRange = false; // Para verificar si el jugador est· en rango
+    private bool isPlayerInRange = false; // Para verificar si el jugador est√° en rango
     private Canvas canvas; // Referencia al Canvas
 
     void Start()
     {
         canvas = FindObjectOfType<Canvas>(); // Encuentra el Canvas en la escena
         HideAllPanels(); // Ocultar todos los paneles al inicio
-        interactText.gameObject.SetActive(false); // Ocultar el texto de interacciÛn al inicio
+        interactText.gameObject.SetActive(false); // Ocultar el texto de interacci√≥n al inicio
 
-        // Aseg˙rate de que cada botÛn tenga asignado el mÈtodo NextPanel
+        // Aseg√∫rate de que cada bot√≥n tenga asignado el m√©todo NextPanel
         for (int i = 0; i < nextButtons.Length; i++)
         {
             nextButtons[i].onClick.AddListener(NextPanel);
@@ -28,7 +29,7 @@ public class TutorialManager : MonoBehaviour
     {
         if (isPlayerInRange && Input.GetKeyDown(KeyCode.E))
         {
-            ShowCurrentPanel(); // Mostrar el panel de interacciÛn
+            ShowCurrentPanel(); // Mostrar el panel de interacci√≥n
         }
     }
 
@@ -36,8 +37,8 @@ public class TutorialManager : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            isPlayerInRange = true; // El jugador est· en rango
-            interactText.gameObject.SetActive(true); // Mostrar el texto de interacciÛn
+            isPlayerInRange = true; // El jugador est√° en rango
+            interactText.gameObject.SetActive(true); // Mostrar el texto de interacci√≥n
         }
     }
 
@@ -46,8 +47,8 @@ public class TutorialManager : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerInRange = false; // El jugador ha salido del rango
-            HideAllPanels(); // Ocultar los paneles de interacciÛn cuando el jugador se aleja
-            interactText.gameObject.SetActive(false); // Ocultar el texto de interacciÛn
+            HideAllPanels(); // Ocultar los paneles de interacci√≥n cuando el jugador se aleja
+            interactText.gameObject.SetActive(false); // Ocultar el texto de interacci√≥n
         }
     }
 
@@ -61,21 +62,20 @@ public class TutorialManager : MonoBehaviour
 
     private void HideAllPanels()
     {
-        // Ocultar todos los paneles dentro del Canvas
-        foreach (Transform child in canvas.transform)
-        {
-            if (child.gameObject.activeSelf)
-            {
-                child.gameObject.SetActive(false);
-            }
-        }
-
-        // Reiniciar el Ìndice del panel y asegurarse de que todos los paneles especÌficos estÈn ocultos
-        currentPanelIndex = 0;
+        // Ocultar todos los paneles del tutorial
         foreach (GameObject panel in panels)
         {
             panel.SetActive(false);
         }
+
+        // Mantener el HealthBar activo
+        if (healthBar != null)
+        {
+            healthBar.SetActive(true);
+        }
+
+        // Reiniciar el √≠ndice del panel
+        currentPanelIndex = 0;
     }
 
     private void NextPanel()
