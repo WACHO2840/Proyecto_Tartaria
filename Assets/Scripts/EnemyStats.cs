@@ -10,7 +10,7 @@ public class EnemyStats : MonoBehaviour
     [SerializeField] public float attackSpeed = 1.0f;
     [SerializeField] public int dmg = 10;
     private int hp;
-    #endregion
+    # endregion
 
     void Start()
     {

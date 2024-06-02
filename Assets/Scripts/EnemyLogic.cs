@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -197,6 +198,14 @@ public class EnemyLogic : MonoBehaviour
         {
             sr.flipX = false;
         }
+    }
+
+    private void TakeDamage()
+    {
+
+        Debug.Log("Enemigo muerto");
+
+
     }
 }
 
