@@ -1,6 +1,7 @@
 /*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PickUp : MonoBehaviour
 {
@@ -49,6 +50,7 @@ public class PickUp : MonoBehaviour
         {
             playerCollider = null; // Clear player collider reference when leaving the trigger zone
             interactKeyUI.SetActive(false); // Hide UI when player exits the trigger zone
+            itemPickupConfirmation.HideAllDialogs(); // Hide all dialogs
         }
     }
 
@@ -390,6 +392,8 @@ public class PickUp : MonoBehaviour
             mochila[randomIndex] = newItem;
             ApplyItemEffect(newItem);
             LogMochilaContents();
+
+            MakeInvisibleAndUninteractable(); // Hacer el objeto recogido invisible e invulnerable
         }
     }
 
@@ -416,11 +420,11 @@ public class PickUp : MonoBehaviour
     {
         List<Item> allPossibleItems = new List<Item>
         {
-            new Item("Toroide", "Aumenta el da�o"),
+            new Item("Toroide", "Aumenta el daño"),
             new Item("Electron", "Aumenta la velocidad de ataque"),
             new Item("Lengua de Fuego", "Aumenta la velocidad de ataque"),
-            new Item("Roca Volc�nica", "Incrementa el da�o"),
-            new Item("Palanca", "Aumenta el da�o"),
+            new Item("Roca Volcánica", "Incrementa el daño"),
+            new Item("Palanca", "Aumenta el daño"),
             new Item("Durum Doble", "Aumenta la salud"),
             new Item("Crocks", "Permite doble salto")
         };
@@ -453,7 +457,7 @@ public class PickUp : MonoBehaviour
             case "Lengua de Fuego":
                 playerAttack.IncreaseAttackSpeed(1);
                 break;
-            case "Roca Volc�nica":
+            case "Roca Volcánica":
                 playerAttack.IncreaseDamage(10);
                 break;
             case "Palanca":
@@ -485,7 +489,7 @@ public class PickUp : MonoBehaviour
             case "Lengua de Fuego":
                 playerAttack.IncreaseAttackSpeed(-1);
                 break;
-            case "Roca Volc�nica":
+            case "Roca Volcánica":
                 playerAttack.IncreaseDamage(-10);
                 break;
             case "Palanca":
@@ -500,7 +504,7 @@ public class PickUp : MonoBehaviour
         }
     }
 
-    private void MakeInvisibleAndUninteractable()
+    public void MakeInvisibleAndUninteractable()
     {
         GetComponent<Collider2D>().enabled = false;
         if (GetComponent<Renderer>() != null)
@@ -530,7 +534,7 @@ public class PickUp : MonoBehaviour
 
         if (isToroide)
         {
-            newItem = new Item("Toroide", "Aumenta el da�o");
+            newItem = new Item("Toroide", "Aumenta el daño");
             playerAttack.IncreaseDamage(15);
         }
         else if (isElectron)
@@ -545,12 +549,12 @@ public class PickUp : MonoBehaviour
         }
         else if (isRocaVolcanica)
         {
-            newItem = new Item("Roca Volc�nica", "Incrementa el da�o");
+            newItem = new Item("Roca Volcánica", "Incrementa el daño");
             playerAttack.IncreaseDamage(10);
         }
         else if (isPalanca)
         {
-            newItem = new Item("Palanca", "Aumenta el da�o");
+            newItem = new Item("Palanca", "Aumenta el daño");
             playerAttack.IncreaseDamage(20);
         }
         else if (isDurumDoble)
@@ -583,3 +587,4 @@ public class PickUp : MonoBehaviour
         return itemsCollected;
     }
 }
+

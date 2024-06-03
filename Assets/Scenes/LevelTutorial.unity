@@ -334,7 +334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ff68ec11ca9e644184c8a53536c8ec4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 2005683188}
   canvas: {fileID: 0}
 --- !u!114 &59394740
 MonoBehaviour:
@@ -3040,6 +3040,7 @@ MonoBehaviour:
   nextButtons:
   - {fileID: 2129835024}
   interactText: {fileID: 643758495}
+  healthBar: {fileID: 0}
 --- !u!61 &402327199
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4982,6 +4983,7 @@ MonoBehaviour:
   nextButtons:
   - {fileID: 656899940}
   interactText: {fileID: 1565265717}
+  healthBar: {fileID: 0}
 --- !u!61 &808827953
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6546,6 +6548,7 @@ MonoBehaviour:
   - {fileID: 852336071}
   - {fileID: 961255128}
   interactText: {fileID: 1121859060}
+  healthBar: {fileID: 0}
 --- !u!61 &938678606
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7221,6 +7224,7 @@ MonoBehaviour:
   nextButtons:
   - {fileID: 656505150}
   interactText: {fileID: 1580821170}
+  healthBar: {fileID: 0}
 --- !u!61 &1005894209
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -62187,6 +62191,7 @@ MonoBehaviour:
   - {fileID: 247118755}
   - {fileID: 613328092}
   interactText: {fileID: 820764929}
+  healthBar: {fileID: 0}
 --- !u!1 &1935455867
 GameObject:
   m_ObjectHideFlags: 0
@@ -62896,6 +62901,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1365945758}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &2005683188 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8992575377603255644, guid: 31cbb2ad2fa9b4e4682afbbb634c412e, type: 3}
+  m_PrefabInstance: {fileID: 523659205}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2039841892
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -63255,6 +63265,7 @@ MonoBehaviour:
   nextButtons:
   - {fileID: 520171181}
   interactText: {fileID: 87647451}
+  healthBar: {fileID: 0}
 --- !u!61 &2095208748
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -63758,6 +63769,7 @@ MonoBehaviour:
   - {fileID: 914087827}
   - {fileID: 2072502987}
   interactText: {fileID: 210736898}
+  healthBar: {fileID: 0}
 --- !u!61 &2134219612
 BoxCollider2D:
   m_ObjectHideFlags: 0
