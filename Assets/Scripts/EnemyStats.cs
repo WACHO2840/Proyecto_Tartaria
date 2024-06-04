@@ -44,6 +44,11 @@ public class EnemyStats : MonoBehaviour
         return hp;
     }
 
+    public float GetMovementSpeed()
+    {
+        return movementSpeed;
+    }
+
     public void ReduceHp(float damage)
     {
         hp -= (int)damage;

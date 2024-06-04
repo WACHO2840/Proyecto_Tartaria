@@ -104,7 +104,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -156,7 +156,7 @@ Rigidbody2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -175,7 +175,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 100
   movementSpeed: 5
-  attackSpeed: 0
   dmg: 10
 --- !u!114 &1409119381942151171
 MonoBehaviour:
@@ -196,6 +195,7 @@ MonoBehaviour:
   player: {fileID: 0}
   sr: {fileID: 315792859132854614}
   horizontal: 1
+  detectionRange: 5
 --- !u!70 &2717657097898733031
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

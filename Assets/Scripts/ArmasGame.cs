@@ -17,7 +17,7 @@ public class ArmasGame : MonoBehaviour
     private float weaponRange = 0;
 
     public GameObject interactText;
-    private bool isPlayerInRange = false;
+    public bool isPlayerInRange = false;
 
     void Start()
     {
