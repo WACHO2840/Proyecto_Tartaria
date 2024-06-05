@@ -36,6 +36,8 @@ public class WinGame : MonoBehaviour
         {
             screen.SetActive(true);
             StartCoroutine(WaitAndReloadScenes());
+            PickUp.mochila.Clear();
+            PickUp.itemsCollected = 0;
         }
     }
 

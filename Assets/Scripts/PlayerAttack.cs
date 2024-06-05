@@ -12,14 +12,13 @@ public class PlayerAttack : MonoBehaviour
     private float additionalAttackSpeed = 0;
     private float additionalRange = 0;
 
-    public bool isKatana = false;
-    public bool isMazo = false;
+    private ArmasGame equippedWeapon;
 
     public float BasicAttackSpeed // Propiedad pública para acceder y modificar la velocidad de ataque
     {
         get
         {
-            return baseAttackSpeed + additionalAttackSpeed;
+            return (equippedWeapon != null ? equippedWeapon.GetWeaponAttackSpeed() : baseAttackSpeed) + additionalAttackSpeed;
         }
     }
 
@@ -27,7 +26,7 @@ public class PlayerAttack : MonoBehaviour
     {
         get
         {
-            return baseDamage + additionalDamage;
+            return (equippedWeapon != null ? equippedWeapon.GetWeaponDamage() : baseDamage) + additionalDamage;
         }
     }
 
@@ -35,40 +34,46 @@ public class PlayerAttack : MonoBehaviour
     {
         get
         {
-            return baseRange + additionalRange;
+            return (equippedWeapon != null ? equippedWeapon.GetWeaponRange() : baseRange) + additionalRange;
         }
     }
 
     void Start()
     {
-        // Inicialización si es necesario
+        LogCurrentStats(); // Mostrar estadísticas iniciales
     }
 
     void Update()
     {
-        UpdateBaseStats();
+        // Este método se puede utilizar para actualizar la lógica si es necesario
     }
 
-    private void UpdateBaseStats()
+    public void EquipWeapon(GameObject weapon)
     {
-        if (isKatana)
+        if (weapon.CompareTag("Katana"))
         {
-            baseDamage = 10;
-            baseAttackSpeed = 6;
-            baseRange = 3f;
+            equippedWeapon = weapon.GetComponent<ArmasGame>();
+            Debug.Log("Katana equipada.");
         }
-        else if (isMazo)
+        else if (weapon.CompareTag("Mazo"))
         {
-            baseDamage = 15;
-            baseAttackSpeed = 4;
-            baseRange = 2f;
+            equippedWeapon = weapon.GetComponent<ArmasGame>();
+            Debug.Log("Mazo equipado.");
         }
         else
         {
-            baseDamage = 5;
-            baseAttackSpeed = 3;
-            baseRange = 3f; // Cambiado a 1.5 para el ataque sin arma
+            equippedWeapon = null;
+            Debug.Log("Sin arma equipada.");
         }
+
+        LogCurrentStats();
+    }
+
+    public void UnequipWeapon()
+    {
+        equippedWeapon = null;
+        Debug.Log("Arma desequipada.");
+        LogCurrentStats();
     }
 
     public void IncreaseDamage(float amount)
@@ -88,7 +93,25 @@ public class PlayerAttack : MonoBehaviour
         additionalRange += amount; // Incrementa el rango adicional
         Debug.Log("Rango incrementado. Nuevo rango: " + Range);
     }
-}*/
+
+    private void LogCurrentStats()
+    {
+        Debug.Log("Estadísticas actuales del personaje:");
+        Debug.Log("Daño: " + BasicDamage);
+        Debug.Log("Velocidad de Ataque: " + BasicAttackSpeed);
+        Debug.Log("Rango: " + Range);
+    }
+    public void ResetStats()
+    {
+        additionalDamage = 0;
+        additionalAttackSpeed = 0;
+        additionalRange = 0;
+        equippedWeapon = null;
+        Debug.Log("Estadísticas reiniciadas.");
+        LogCurrentStats();
+    }
+}
+*/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -179,12 +202,6 @@ public class PlayerAttack : MonoBehaviour
         Debug.Log("Velocidad de Ataque incrementada. Nueva velocidad: " + BasicAttackSpeed);
     }
 
-    public void IncreaseRange(float amount)
-    {
-        additionalRange += amount; // Incrementa el rango adicional
-        Debug.Log("Rango incrementado. Nuevo rango: " + Range);
-    }
-
     private void LogCurrentStats()
     {
         Debug.Log("Estadísticas actuales del personaje:");
@@ -192,5 +209,13 @@ public class PlayerAttack : MonoBehaviour
         Debug.Log("Velocidad de Ataque: " + BasicAttackSpeed);
         Debug.Log("Rango: " + Range);
     }
+    public void ResetStats()
+    {
+        additionalDamage = 0;
+        additionalAttackSpeed = 0;
+        additionalRange = 0;
+        equippedWeapon = null;
+        Debug.Log("Estadísticas reiniciadas.");
+        LogCurrentStats();
+    }
 }
-
