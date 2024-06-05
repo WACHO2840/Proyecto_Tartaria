@@ -199,8 +199,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void IncreaseHealth(int increaseAmountPickUp)
     {
-        maxHealth += increaseAmountPickUp;
-        health += increaseAmountPickUp;
+        health = maxHealth;
         hpBar.HpSet(health);
     }
     public void ResetHealth()
