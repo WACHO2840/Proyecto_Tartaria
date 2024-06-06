@@ -1143,11 +1143,11 @@ PrefabInstance:
       objectReference: {fileID: 773837620}
     - target: {fileID: 8400754498504226201, guid: 45206aabbe05a95469cfb4975919b800, type: 3}
       propertyPath: parallaxEffectMultiplierX
-      value: 0.9
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8400754498504226201, guid: 45206aabbe05a95469cfb4975919b800, type: 3}
       propertyPath: parallaxEffectMultiplierY
-      value: 0.6
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 9048810165581603040, guid: 45206aabbe05a95469cfb4975919b800, type: 3}
       propertyPath: m_LocalPosition.x

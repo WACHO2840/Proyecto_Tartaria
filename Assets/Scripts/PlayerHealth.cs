@@ -102,4 +102,9 @@ public class PlayerHealth : MonoBehaviour
         hpBar.HpSet(health);
         Debug.Log("Salud reiniciada a " + maxHealth);
     }
+
+    public float GetCurrentHealth()
+    {
+        return health;
+    }
 }

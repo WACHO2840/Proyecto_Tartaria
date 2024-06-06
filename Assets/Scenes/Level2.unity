@@ -693,6 +693,10 @@ PrefabInstance:
       propertyPath: farBackGround
       value: 
       objectReference: {fileID: 373647078}
+    - target: {fileID: 8400754498504226201, guid: 45206aabbe05a95469cfb4975919b800, type: 3}
+      propertyPath: parallaxEffectMultiplierX
+      value: 0.9
+      objectReference: {fileID: 0}
     - target: {fileID: 9048810165581603040, guid: 45206aabbe05a95469cfb4975919b800, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10.9
