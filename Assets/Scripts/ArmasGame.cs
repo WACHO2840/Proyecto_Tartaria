@@ -140,14 +140,14 @@ public class ArmasGame : MonoBehaviour
             isKatana = true;
             weaponDamage = 5;
             weaponAttackSpeed = 1.5f;
-            weaponRange = 1f;
+            weaponRange = 1.5f;
         }
         else if (gameObject.CompareTag("Mazo"))
         {
             isMazo = true;
             weaponDamage = 2;
             weaponAttackSpeed = 2;
-            weaponRange = 0.7f;
+            weaponRange = 1.2f;
         }
     }
 

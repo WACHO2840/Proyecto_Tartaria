@@ -123,7 +123,7 @@ public class PlayerAttack : MonoBehaviour
 {
     private float baseDamage = 5;
     private float baseAttackSpeed = 3;
-    private float baseRange = 3f;
+    private float baseRange = 0.7f;
 
     private float additionalDamage = 0;
     private float additionalAttackSpeed = 0;
