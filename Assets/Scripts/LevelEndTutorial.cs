@@ -12,4 +12,5 @@ public class LevelEndTutorial : MonoBehaviour
                 SceneManager.LoadScene(0); // Vuelta al menu principal
         }
     }
+    
 }

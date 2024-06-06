@@ -1183,6 +1183,10 @@ PrefabInstance:
       propertyPath: patrolPoints.Array.data[1]
       value: 
       objectReference: {fileID: 1466619961}
+    - target: {fileID: 4506071056407907628, guid: 52256376be88e784d98727d111d0aa5c, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
     - target: {fileID: 6686569566047387775, guid: 52256376be88e784d98727d111d0aa5c, type: 3}
       propertyPath: m_Name
       value: Rat Variant (1)
@@ -1506,6 +1510,10 @@ PrefabInstance:
       propertyPath: patrolPoints.Array.data[1]
       value: 
       objectReference: {fileID: 946291490}
+    - target: {fileID: 4506071056407907628, guid: 52256376be88e784d98727d111d0aa5c, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
     - target: {fileID: 6686569566047387775, guid: 52256376be88e784d98727d111d0aa5c, type: 3}
       propertyPath: m_Name
       value: Rat Variant

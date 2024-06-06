@@ -10,7 +10,12 @@ public class WinGame : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(transform.root.gameObject);
+        string currentSceneName = SceneManager.GetActiveScene().name;
+
+        if (currentSceneName != "LevelTutorial") 
+        {
+            DontDestroyOnLoad(transform.root.gameObject);
+        }
 
         if (screen == null)
         {

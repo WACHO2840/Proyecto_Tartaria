@@ -22,10 +22,15 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null)
+        string currentSceneName = SceneManager.GetActiveScene().name;
+
+        if (instance == null )
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
+            if (currentSceneName != "LevelTutorial")
+            {
+                DontDestroyOnLoad(gameObject);
+            }
         }
         else
         {
