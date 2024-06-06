@@ -242,7 +242,7 @@ public class PickUp : MonoBehaviour
         if (isToroide)
         {
             newItem = new Item("Toroide", "Aumenta el daño");
-            playerAttack.IncreaseDamage(15);
+            playerAttack.IncreaseDamage(5);
         }
         else if (isElectron)
         {
@@ -257,17 +257,17 @@ public class PickUp : MonoBehaviour
         else if (isRocaVolcanica)
         {
             newItem = new Item("Roca Volcánica", "Incrementa el daño");
-            playerAttack.IncreaseDamage(10);
+            playerAttack.IncreaseDamage(5);
         }
         else if (isPalanca)
         {
             newItem = new Item("Palanca", "Aumenta el daño");
-            playerAttack.IncreaseDamage(20);
+            playerAttack.IncreaseDamage(10);
         }
         else if (isDurumDoble)
         {
             newItem = new Item("Durum Doble", "Aumenta la salud");
-            playerHealth.IncreaseHealth(100);
+            playerHealth.IncreaseHealth(70);
         }
         else if (isCrocks)
         {

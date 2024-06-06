@@ -46,7 +46,6 @@ public class ItemPickupConfirmation : MonoBehaviour
         currentPickUpItem = pickUpItem;
         confirmationText.text = "¿Quieres recoger el objeto?";
         confirmationDialog.SetActive(true);
-        PlayerMovement.instance.canMove = false; // Deshabilitar movimiento
     }
 
     public void ShowFullMochilaDialog()
