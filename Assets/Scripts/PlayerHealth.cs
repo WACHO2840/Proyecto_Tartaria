@@ -69,9 +69,9 @@ public class PlayerHealth : MonoBehaviour
     {
         if (iFrames <= 0)
         {
-            health -= dmg; // Bajamos la vida del jugador
-            hpBar.HpSet(health); // Actualizamos la barra de vida
-            if (health > 0) // Comprobamos que el jugador siga teniendo vida
+            health -= dmg; 
+            hpBar.HpSet(health);
+            if (health > 0) 
             {
                 iFrames = iFramesCountdown; // Le volvemos invulnerable
 

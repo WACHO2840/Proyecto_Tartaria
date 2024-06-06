@@ -13,7 +13,6 @@ public class EndGame : MonoBehaviour
     {
         if (screen == null)
         {
-            //            screen = transform.Find("MainMenu").gameObject;
             screen = transform.Find("EndGame").gameObject;
             if (screen == null)
             {
