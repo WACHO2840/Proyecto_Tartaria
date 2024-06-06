@@ -451,7 +451,7 @@ public class PickUp : MonoBehaviour
         switch (item.Name)
         {
             case "Toroide":
-                playerAttack.IncreaseDamage(15);
+                playerAttack.IncreaseDamage(5);
                 break;
             case "Electron":
                 playerAttack.IncreaseAttackSpeed(1);
@@ -460,13 +460,13 @@ public class PickUp : MonoBehaviour
                 playerAttack.IncreaseAttackSpeed(1);
                 break;
             case "Roca Volcánica":
-                playerAttack.IncreaseDamage(10);
+                playerAttack.IncreaseDamage(5);
                 break;
             case "Palanca":
-                playerAttack.IncreaseDamage(20);
+                playerAttack.IncreaseDamage(10);
                 break;
             case "Durum Doble":
-                playerHealth.IncreaseHealth(100);
+                playerHealth.IncreaseHealth(70);
                 break;
             case "Crocks":
                 playerMovement.EnableDoubleJump();
@@ -483,7 +483,7 @@ public class PickUp : MonoBehaviour
         switch (item.Name)
         {
             case "Toroide":
-                playerAttack.IncreaseDamage(-15);
+                playerAttack.IncreaseDamage(-5);
                 break;
             case "Electron":
                 playerAttack.IncreaseAttackSpeed(-1);
@@ -492,13 +492,13 @@ public class PickUp : MonoBehaviour
                 playerAttack.IncreaseAttackSpeed(-1);
                 break;
             case "Roca Volcánica":
-                playerAttack.IncreaseDamage(-10);
+                playerAttack.IncreaseDamage(-5);
                 break;
             case "Palanca":
-                playerAttack.IncreaseDamage(-20);
+                playerAttack.IncreaseDamage(-10);
                 break;
             case "Durum Doble":
-                playerHealth.IncreaseHealth(-100);
+                playerHealth.IncreaseHealth(-70);
                 break;
             case "Crocks":
                 playerMovement.DisableDoubleJump();
