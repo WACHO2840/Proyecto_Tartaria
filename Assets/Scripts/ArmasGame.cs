@@ -145,7 +145,7 @@ public class ArmasGame : MonoBehaviour
         else if (gameObject.CompareTag("Mazo"))
         {
             isMazo = true;
-            weaponDamage = 2;
+            weaponDamage = 12;
             weaponAttackSpeed = 2;
             weaponRange = 1.2f;
         }

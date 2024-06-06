@@ -104,49 +104,6 @@ public class PickUp : MonoBehaviour
         }
     }
 
-    public void ExchangeRandomItem()
-    {
-        if (mochila.Count > 0)
-        {
-            int randomIndex = Random.Range(0, mochila.Count);
-            Item oldItem = mochila[randomIndex];
-
-            RemoveItemEffect(oldItem);
-            Item newItem = GetRandomNewItem();
-            if (newItem != null)
-            {
-                mochila[randomIndex] = newItem;
-                ApplyItemEffect(newItem);
-            }
-
-            LogMochilaContents();
-        }
-    }
-
-    public Item GetRandomNewItem()
-    {
-        List<Item> allPossibleItems = new List<Item>
-        {
-            new Item("Toroide", "Aumenta el daño"),
-            new Item("Electron", "Aumenta la velocidad de ataque"),
-            new Item("Lengua de Fuego", "Aumenta la velocidad de ataque"),
-            new Item("Roca Volcánica", "Incrementa el daño"),
-            new Item("Palanca", "Aumenta el daño"),
-            new Item("Durum Doble", "Aumenta la salud"),
-            new Item("Crocks", "Permite doble salto")
-        };
-
-        allPossibleItems.RemoveAll(item => mochila.Exists(m => m.Name == item.Name));
-
-        if (allPossibleItems.Count > 0)
-        {
-            int randomIndex = Random.Range(0, allPossibleItems.Count);
-            return allPossibleItems[randomIndex];
-        }
-
-        return null;
-    }
-
     public void ApplyItemEffect(Item item)
     {
         PlayerAttack playerAttack = playerCollider.GetComponent<PlayerAttack>();
@@ -159,10 +116,10 @@ public class PickUp : MonoBehaviour
                 playerAttack.IncreaseDamage(5);
                 break;
             case "Electron":
-                playerAttack.IncreaseAttackSpeed(1);
+                playerAttack.IncreaseAttackSpeed(-0.5f);
                 break;
             case "Lengua de Fuego":
-                playerAttack.IncreaseAttackSpeed(1);
+                playerAttack.IncreaseAttackSpeed(-0.5f);
                 break;
             case "Roca Volcánica":
                 playerAttack.IncreaseDamage(5);
@@ -191,10 +148,10 @@ public class PickUp : MonoBehaviour
                 playerAttack.IncreaseDamage(-5);
                 break;
             case "Electron":
-                playerAttack.IncreaseAttackSpeed(-1);
+                playerAttack.IncreaseAttackSpeed(0.5f);
                 break;
             case "Lengua de Fuego":
-                playerAttack.IncreaseAttackSpeed(-1);
+                playerAttack.IncreaseAttackSpeed(0.5f);
                 break;
             case "Roca Volcánica":
                 playerAttack.IncreaseDamage(-5);
@@ -247,12 +204,12 @@ public class PickUp : MonoBehaviour
         else if (isElectron)
         {
             newItem = new Item("Electron", "Aumenta la velocidad de ataque");
-            playerAttack.IncreaseAttackSpeed(1);
+            playerAttack.IncreaseAttackSpeed(-0.5f);
         }
         else if (isLenguaDeFuego)
         {
             newItem = new Item("Lengua de Fuego", "Aumenta la velocidad de ataque");
-            playerAttack.IncreaseAttackSpeed(1);
+            playerAttack.IncreaseAttackSpeed(-0.5f);
         }
         else if (isRocaVolcanica)
         {
@@ -276,31 +233,5 @@ public class PickUp : MonoBehaviour
         }
 
         return newItem;
-    }
-
-    public void ReplaceItem(int index)
-    {
-        if (index >= 0 && index < mochila.Count)
-        {
-            Item oldItem = mochila[index];
-            RemoveItemEffect(oldItem);
-            mochila.RemoveAt(index);
-            AddItemToInventory();
-        }
-    }
-
-    public int GetNumberItems()
-    {
-        return itemsCollected;
-    }
-
-    public static void ResetMochila()
-    {
-        itemsCollected = 0;
-        for (int i = 0; i < mochila.Count; i++)
-        {
-            mochila[i] = null;
-        }
-        mochila.Clear();
     }
 }
