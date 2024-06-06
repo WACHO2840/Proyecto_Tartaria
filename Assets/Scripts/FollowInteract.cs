@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class FollowPlayerUI : MonoBehaviour
 {
-    public Transform player; // Arrastra aqu� el Transform del jugador
-    public Canvas canvas;    // Arrastra aqu� el Canvas
-    // Start is called before the first frame update
-    void Start()
-    {
+    public Transform player; // GameObject Jugador
+    public Canvas canvas;    // GameObject Canvas
 
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if (player != null && canvas != null)

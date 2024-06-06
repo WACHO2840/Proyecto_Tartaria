@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PickUp : MonoBehaviour
 {
     public static int itemsCollected = 0;
-    public static int maxItems = 3; // Maximum number of items that can be collected
+    public static int maxItems = 3; // Objetos maximos
     public static List<Item> mochila = new List<Item>();
 
     public bool isToroide;
@@ -16,15 +16,16 @@ public class PickUp : MonoBehaviour
     public bool isPalanca;
     public bool isCrocks;
     public bool isDurumDoble;
+
     private bool isCollected = false;
     private Collider2D playerCollider;
 
-    public GameObject interactKeyUI; // Drag your UI object here through the inspector
-    public ItemPickupConfirmation itemPickupConfirmation; // Drag the ItemPickupConfirmation object here through the inspector
+    public GameObject interactKeyUI; 
+    public ItemPickupConfirmation itemPickupConfirmation; 
 
     void Start()
     {
-        interactKeyUI.SetActive(false); // Make sure UI is turned off on start
+        interactKeyUI.SetActive(false);
     }
 
     void Update()
@@ -39,8 +40,8 @@ public class PickUp : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            playerCollider = other; // Store player collider reference to use in Update method
-            interactKeyUI.SetActive(true); // Show UI when player enters the trigger zone
+            playerCollider = other; 
+            interactKeyUI.SetActive(true); 
         }
     }
 
@@ -48,9 +49,9 @@ public class PickUp : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            playerCollider = null; // Clear player collider reference when leaving the trigger zone
-            interactKeyUI.SetActive(false); // Hide UI when player exits the trigger zone
-            itemPickupConfirmation.HideAllDialogs(); // Hide all dialogs
+            playerCollider = null; 
+            interactKeyUI.SetActive(false); 
+            itemPickupConfirmation.HideAllDialogs(); 
         }
     }
 
@@ -58,7 +59,7 @@ public class PickUp : MonoBehaviour
     {
         if (isCollected)
         {
-            return; // Avoid re-collecting the same item
+            return; 
         }
 
         if (itemsCollected < maxItems)
@@ -67,14 +68,14 @@ public class PickUp : MonoBehaviour
         }
         else
         {
-            itemPickupConfirmation.ShowFullMochilaDialog(); // Show dialog to replace an item
+            itemPickupConfirmation.ShowFullMochilaDialog();
         }
     }
 
     public void AddItemToInventory()
     {
-        itemsCollected++; // Increment the number of items collected
-        isCollected = true; // Mark this object as collected to prevent re-collection
+        itemsCollected++; 
+        isCollected = true; 
 
         Item newItem = GetItem(); // Obtener el nuevo objeto basado en el tipo
         if (newItem != null)

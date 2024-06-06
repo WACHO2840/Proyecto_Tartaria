@@ -66,10 +66,6 @@ public class Randomizer : MonoBehaviour
                 selectedObjects[stages - 2].SetActive(false);
             }
         }
-        else
-        {
-            Debug.Log("El jugador no puede pasar todavía");
-        }
     }
 
     private void GenerateScenes()
@@ -174,9 +170,6 @@ public class Randomizer : MonoBehaviour
 
         PickUp.itemsCollected = 0;
         PickUp.mochila.Clear();
-
-        
-
     }
 
     // Método para manejar la muerte del jugador

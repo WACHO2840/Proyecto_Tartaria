@@ -50,10 +50,10 @@ public class NPCExchange : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("La mochila est� vac�a.");
+                    Debug.Log("La mochila esta vacia.");
                 }
 
-                pickUp.LogMochilaContents(); // Mostrar el contenido de la mochila despu�s de la eliminaci�n
+                pickUp.LogMochilaContents(); // Mostrar el contenido de la mochila despues de la eliminacion
             }
         }
     }
