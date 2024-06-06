@@ -115,6 +115,7 @@ public class PlayerAttack : MonoBehaviour
 {
     private float baseDamage = 5;
     private float baseAttackSpeed = 3;
+
     private float baseRange = 0.5f;
 
     private float additionalDamage = 0;
@@ -122,6 +123,7 @@ public class PlayerAttack : MonoBehaviour
     private float additionalRange = 0;
 
     private ArmasGame equippedWeapon;
+
 
     public float BasicAttackSpeed // Propiedad pública para acceder y modificar la velocidad de ataque
     {
@@ -154,7 +156,6 @@ public class PlayerAttack : MonoBehaviour
 
     void Update()
     {
-        // Este método se puede utilizar para actualizar la lógica si es necesario
     }
 
     public void EquipWeapon(GameObject weapon)
@@ -189,6 +190,7 @@ public class PlayerAttack : MonoBehaviour
     {
         additionalDamage += amount; // Incrementa el daño adicional
         Debug.Log("Daño incrementado. Nuevo daño: " + BasicDamage);
+
     }
 
     public void IncreaseAttackSpeed(float amount)
@@ -210,14 +212,13 @@ public class PlayerAttack : MonoBehaviour
         Debug.Log("Velocidad de Ataque: " + BasicAttackSpeed);
         Debug.Log("Rango: " + Range);
     }
-
     public void ResetStats()
     {
         additionalDamage = 0;
         additionalAttackSpeed = 0;
         additionalRange = 0;
         equippedWeapon = null;
-        Debug.Log("Estadísticas reiniciadas.");
+        Debug.Log("Estadï¿½sticas reiniciadas.");
         LogCurrentStats();
     }
 }
