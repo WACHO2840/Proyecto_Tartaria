@@ -30,7 +30,7 @@ public class PlayerStatsUI : MonoBehaviour
     {
         if (playerAttack != null && playerHealth != null)
         {
-            statsText.text = $"Daño: {playerAttack.BasicDamage + armasGame.GetWeaponDamage()}\n" +
+            statsText.text = $"Daño: {playerAttack.BasicDamage}\n" +
                              $"Velocidad de ataque: {playerAttack.BasicAttackSpeed}\n" +
                              $"Rango: {playerAttack.Range}\n" +
                              $"Vida: {playerHealth.GetCurrentHealth()}"; // Asegúrate de que 'health' sea accesible

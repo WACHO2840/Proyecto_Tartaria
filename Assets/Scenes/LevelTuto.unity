@@ -237,10 +237,10 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: "Bienvenido aventurero. Est\xE1s a punto de empezar tu aventura de venganza
     hacia aquelos que destruyeron tu pueblo. Sin embargo, para hacertelo m\xE1s facil,
-    te voy a hacer un regalo. Podr'as elegir un arma de las dos que te ofrezco. Ten
-    en cuenta, que cuando elijas una de las dos armas, la otra desaparecer\xE1. Tambi\xE9n
-    puedes embarcarte en esta aventura sin ayuda alguna. \xA1Pero las pasar\xE1s
-    canutas! Mucha suerte aventurero"
+    te voy a hacer un regalo. Podr\xE1s elegir un arma de las dos que te ofrezco.
+    Ten en cuenta, que cuando elijas una de las dos armas, la otra desaparecer\xE1.
+    Tambi\xE9n puedes embarcarte en esta aventura sin ayuda alguna. \xA1Pero las
+    pasar\xE1s canutas! Mucha suerte aventurero"
 --- !u!222 &236326323
 CanvasRenderer:
   m_ObjectHideFlags: 0
