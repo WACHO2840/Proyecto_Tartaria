@@ -23,7 +23,7 @@ Para consultar información de como escribir un Readme consulte [este enlace](ht
 > El jugador es el único personaje que el usuario puede controlar. Una vez comienzas la partida tienes que elegir el arma que te acompañara durante toda la partida, avanzando en la misma se encuentran diferentes objetos que proporcionan un extra a este personaje.
 > Dependiendo de los objetos elegidos por el usuario durante el transcurso del juego este acabara con diferentes estadísticas/habilidades, pero tiene limitaciones, esta incluye un máximo de 3 objetos a la vez.
 
-![->](/img/mapaMental2.png)
+![->](/img/NPC.png)
 
 ## INDICE.
 
