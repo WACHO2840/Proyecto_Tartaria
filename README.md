@@ -18,12 +18,26 @@ Para consultar información de como escribir un Readme consulte [este enlace](ht
 
 # Notas varias
 
-> [Jugador]
+> [JUGADOR]
 >
 > El jugador es el único personaje que el usuario puede controlar. Una vez comienzas la partida tienes que elegir el arma que te acompañara durante toda la partida, avanzando en la misma se encuentran diferentes objetos que proporcionan un extra a este personaje.
 > Dependiendo de los objetos elegidos por el usuario durante el transcurso del juego este acabara con diferentes estadísticas/habilidades, pero tiene limitaciones, esta incluye un máximo de 3 objetos a la vez.
-
+>
 >![->](NPC.png)
+
+> [NPC]
+>
+> Los personajes no jugables (NPC) son una parte importante dentro de la arquitectura de un juego, ya que es responsable de proporcionar orientación y aprendizaje necesario al jugador. Estos personajes son útiles en la comprensión de las mecánicas del juego y el entorno en general, aparte de tener un papel fundamental en la entrega de la narrativa y la dinámica del juego.
+>![->](NPC2.png)
+
+> [ENEMIGO]
+>
+> Los enemigos son los antagonistas del jugador. Equipados para el combate cuerpo a cuerpo, estos enemigos siguen rutas predefinidas de patrulla y exhiben una variedad de comportamientos durante el juego, ofreciendo diferentes desafíos y enfrentamientos para dificultar el progreso al jugador.
+>
+>![->](Enemigo1.png)
+>![->](EnemigoVolador1.png)
+>![->](Rata.png)
+>![->](Glovo.png)
 
 ## INDICE.
 
