@@ -39,11 +39,6 @@ public class EnemyStats : MonoBehaviour
         }
     }
 
-    public int GetHp()
-    {
-        return hp;
-    }
-
     public float GetMovementSpeed()
     {
         return movementSpeed;

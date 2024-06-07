@@ -102,16 +102,4 @@ public class FlyingEnemy : MonoBehaviour
         }
     }
 
-   
-
-
-    
-
-    public void GetDamage(float damage)
-    {
-        if (enemyStats != null)
-        {
-            enemyStats.ReduceHp(damage);
-        }
-    }
 }
