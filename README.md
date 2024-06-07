@@ -46,9 +46,10 @@ Esta idea implica un aprendizaje continuo en todos los aspectos técnicos, los d
 
 ## Requisitos del Proyecto
 
-| Objetos | Nombre | Descripcion |
-|![->](Enemigo1.png)|Toroide|Toroide|
-|![->](Enemigo1.png)|Toroide|Toroide|
+| Imagen | Nombre   | Descripción |
+|--------|----------|-------------|
+| ![Enemigo1](Enemigo1.png) | Toroide | Toroide |
+| ![Enemigo1](Enemigo1.png) | Toroide | Toroide |
 
 
 ## INDICE.
