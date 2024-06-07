@@ -16,11 +16,14 @@ Esta idea implica un aprendizaje continuo en todos los aspectos técnicos, los d
 
 Para consultar información de como escribir un Readme consulte [este enlace](https://docs.github.com/es/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#links)
 
-# Proyecto_Tartaria
+# Notas varias
 
-> [Nota]
+> [Jugador]
 >
-> Aqui se desarrollara la descripción del proyecto :+1:
+> El jugador es el único personaje que el usuario puede controlar. Una vez comienzas la partida tienes que elegir el arma que te acompañara durante toda la partida, avanzando en la misma se encuentran diferentes objetos que proporcionan un extra a este personaje.
+> Dependiendo de los objetos elegidos por el usuario durante el transcurso del juego este acabara con diferentes estadísticas/habilidades, pero tiene limitaciones, esta incluye un máximo de 3 objetos a la vez.
+
+![->](/img/mapaMental2.png)
 
 ## INDICE.
 
