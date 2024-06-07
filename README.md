@@ -2,9 +2,9 @@
 ## INDICE.
 
 - [Introduccióón](#Introducción)
-- [Mapa mental](#Mapamental)
-- [Notas del los personajes](#Notasdelospersonajes)
-- [Armas](##Armas)
+- [Mapa mental](#mapa-mental)
+- [Notas del los personajes](#notas-de-los-personajes)
+- [Armas](#armas)
 
 # Introducción
 
