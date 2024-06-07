@@ -12,11 +12,7 @@ Esta idea implica un aprendizaje continuo en todos los aspectos técnicos, los d
 
 ![->](mapaMental2.png)
 
-# Enlace
-
-Para consultar información de como escribir un Readme consulte [este enlace](https://docs.github.com/es/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#links)
-
-# Notas varias
+# Notas del los personajes
 
 > [JUGADOR]
 >
@@ -28,6 +24,7 @@ Para consultar información de como escribir un Readme consulte [este enlace](ht
 > [NPC]
 >
 > Los personajes no jugables (NPC) son una parte importante dentro de la arquitectura de un juego, ya que es responsable de proporcionar orientación y aprendizaje necesario al jugador. Estos personajes son útiles en la comprensión de las mecánicas del juego y el entorno en general, aparte de tener un papel fundamental en la entrega de la narrativa y la dinámica del juego.
+>
 >![->](NPC2.png)
 
 > [ENEMIGO]
@@ -38,6 +35,14 @@ Para consultar información de como escribir un Readme consulte [este enlace](ht
 >![->](EnemigoVolador1.png)
 >![->](Rata.png)
 >![->](Glovo.png)
+
+
+## Tabla de Contenidos
+- [Descripción](#descripción)
+- [Instalación](#instalación)
+- [Uso](#uso)
+- [Contribución](#contribución)
+- [Licencia](#licencia)
 
 ## INDICE.
 
