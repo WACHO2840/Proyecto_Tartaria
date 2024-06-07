@@ -16,6 +16,7 @@ public class LadderMovement : MonoBehaviour
 
     private void Start()
     {
+        // Obtener GameObject del jugador y rigidbody
         playerMovement = FindObjectOfType<PlayerMovement>();
         player = playerMovement.rb;
     }
@@ -23,6 +24,7 @@ public class LadderMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Detectar si esta en la escalera y subir
         vertical = Input.GetAxis("Vertical"); // ALMACENO LA VELOCIDAD DEL EJE Y
 
         if (isLadder && math.abs(vertical) > 0f) // SI ES MAYOR DE 0 SIGNIFICA QUE SE PRESIONA W
@@ -33,6 +35,7 @@ public class LadderMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // Si escala gravedad a 0 si no restaurarla
         if (isClimbing)
         {
             player.gravityScale = 0f;
@@ -44,6 +47,7 @@ public class LadderMovement : MonoBehaviour
         }
     }
 
+    // Comprobar si esta en la escalera
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))

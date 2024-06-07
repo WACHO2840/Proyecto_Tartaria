@@ -22,8 +22,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
+        // Obtener escena
         string currentSceneName = SceneManager.GetActiveScene().name;
-
+        // Comprobar el nivel para volver el personaje permanente
         if (instance == null )
         {
             instance = this;
@@ -41,12 +42,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        // Almacenar sprite
         sr = GetComponent<SpriteRenderer>();
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     void Update()
     {
+        // Comprobar knockback, si el jugador esta tocando suelo, movimiento y si tiene doble salto.
         if (SceneManager.GetActiveScene().buildIndex != 0) // Si no estamos en la escena del menú
         {
             if (knockbackCounter <= 0)
@@ -88,7 +91,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
-
+    // Doble salto
     public void EnableDoubleJump()
     {
         hasCrocks = true;
@@ -100,10 +103,11 @@ public class PlayerMovement : MonoBehaviour
         hasCrocks = false;
         canDoubleJump = false;
     }
-
+    // Retroceso
     public void Knockback(Vector2 direction)
     {
         knockbackCounter = knockbackDistance;
+        // Dependiendo de donde se vea atacado empujar a otra dirreccion
         rb.velocity = new Vector2(direction.x * knockbackPower, knockbackPower / 2);
     }
 
@@ -121,11 +125,4 @@ public class PlayerMovement : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
-    public void ResetMovement()
-    {
-        canDoubleJump = false;
-        hasCrocks = false;
-        doubleJumpAvailable = false;
-        Debug.Log("Movimiento reiniciado.");
-    }
 }

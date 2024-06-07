@@ -20,11 +20,13 @@ public class Randomizer : MonoBehaviour
 
     private void Awake()
     {
+        //Almacenar la posicion del inicio del nivel
         levelStart = transform.position;
     }
 
     private void Start()
     {
+        //Generar juego
         GenerateScenes();
         GenerateObjects();
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -32,6 +34,7 @@ public class Randomizer : MonoBehaviour
 
     private void Update()
     {
+        // Comprobar cooldown de niveles y avanzar
         if (nextScene)
         {
             sceneTimer += Time.deltaTime;
@@ -43,12 +46,14 @@ public class Randomizer : MonoBehaviour
         }
     }
 
+   
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        // Comprobar que se esta en el final del nivel
         if (collision.gameObject.CompareTag("LevelEnd") && !nextScene)
         {
             nextScene = true;
-
+            // Comprobar que nivel es el siguiente
             if (stages < 5)
             {
                 SceneManager.LoadScene(scenesCheck[stages]);
@@ -58,6 +63,7 @@ public class Randomizer : MonoBehaviour
             {
                 SceneManager.LoadScene(16); // Escena del jefe
             }
+            // Teletransportar jugador a posicion inicial
             this.transform.position = levelStart;
 
             // Desactivar el objeto de la escena anterior
@@ -68,10 +74,11 @@ public class Randomizer : MonoBehaviour
         }
     }
 
+    //Generar escenas
     private void GenerateScenes()
     {
         HashSet<int> usedIndices = new HashSet<int>();
-
+        // Generar 3 escenas de exterior
         for (int i = 0; i < 3; i++)
         {
             int index = UnityEngine.Random.Range(2, 11);
@@ -83,7 +90,7 @@ public class Randomizer : MonoBehaviour
             usedIndices.Add(index);
             Debug.Log("Scene: " + index);
         }
-
+        // Generar 3 escenas de interior
         for (int i = 3; i < 5; i++)
         {
             int index = UnityEngine.Random.Range(11, 16);
@@ -96,7 +103,7 @@ public class Randomizer : MonoBehaviour
             Debug.Log("Scene: " + index);
         }
     }
-
+    //generar objetos
     private void GenerateObjects()
     {
         List<int> availableIndexes = Enumerable.Range(0, objects.Length).ToList();
@@ -117,12 +124,12 @@ public class Randomizer : MonoBehaviour
         {
             string positionName = positionNames[UnityEngine.Random.Range(0, positionNames.Length)];
             GameObject positionObject = GameObject.Find(positionName);
-
+            // Posicionar objeto en una de las 3 posibles ubicaciones
             if (positionObject != null && selectedObjects[sceneIndex] != null)
             {
                 GameObject instantiatedObject = Instantiate(selectedObjects[sceneIndex], positionObject.transform.position, Quaternion.identity);
                 instantiatedObject.SetActive(true);
-                selectedObjects[sceneIndex] = instantiatedObject; // Actualiza el array con la instancia activada
+                selectedObjects[sceneIndex] = instantiatedObject; // Actualiza el array de objetos usados
             }
             else
             {
@@ -137,7 +144,7 @@ public class Randomizer : MonoBehaviour
             }
         }
     }
-
+    
     private void OnDestroy()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;

@@ -8,6 +8,8 @@ public class WinGame : MonoBehaviour
     [SerializeField] private GameObject screen;
     [SerializeField] private List<int> scenesToReload;
 
+    //Es identico a EndGame
+
     private void Awake()
     {
         string currentSceneName = SceneManager.GetActiveScene().name;

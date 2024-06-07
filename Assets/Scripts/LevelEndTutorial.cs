@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelEndTutorial : MonoBehaviour
 {
+    // Detectar final del nivel tutorial 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("LevelEnd"))

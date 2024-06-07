@@ -20,6 +20,7 @@ public class CameraController : MonoBehaviour
 
     private void Start()
     {
+        // Buscar el GameObject del jugador y guardar su posicion
         playerMovement = FindObjectOfType<PlayerMovement>();
         if (playerMovement != null)
         {
@@ -35,6 +36,7 @@ public class CameraController : MonoBehaviour
         // Comprobar que el jugador exista
         if (player != null)
         {
+            // Anclar la camara a la posicion del jugador y añadirle los limites
             Vector3 newCameraPosition = new Vector3(
                 Mathf.Clamp(player.position.x, minWidth, maxWidth),
                 Mathf.Clamp(player.position.y, minHeight, maxHeight),

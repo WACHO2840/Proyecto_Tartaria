@@ -21,6 +21,7 @@ public class FlyingEnemy : MonoBehaviour
 
     private void Awake()
     {
+        // Instanciar enemigo y estadsticas
         Instance = this;
         enemyStats = GetComponent<EnemyStats>();
         if (enemyStats == null)
@@ -31,6 +32,7 @@ public class FlyingEnemy : MonoBehaviour
 
     void Start()
     {
+        // Iniciar sprite
         sr = GetComponent<SpriteRenderer>();
     }
 

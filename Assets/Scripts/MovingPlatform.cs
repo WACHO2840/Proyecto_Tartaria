@@ -12,6 +12,7 @@ public class MovingPlatform : MonoBehaviour
 
     void Update()
     {
+        // Mover plataforma entre puntos
         if (patrolOrder && nextPatrolPoint + 1 >= patrolPoints.Length)
         {
             patrolOrder = false;
@@ -24,6 +25,7 @@ public class MovingPlatform : MonoBehaviour
 
         if (horizontal)
         {
+            // Comprobar distancia para cambiar siguiente punto
             if (Vector2.Distance(transform.position, patrolPoints[nextPatrolPoint].position) < 0.1f)
             {
                 if (patrolOrder)

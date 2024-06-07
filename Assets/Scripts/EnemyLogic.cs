@@ -25,6 +25,7 @@ public class EnemyLogic : MonoBehaviour
 
     private void Awake()
     {
+        // Instanciar clase y estadisticas
         Instance = this;
         enemyStats = GetComponent<EnemyStats>();
         if (enemyStats == null)
@@ -35,6 +36,7 @@ public class EnemyLogic : MonoBehaviour
 
     void Start()
     {
+        // Obtener sprites, rigidbody, GameObject (Jugador) y posicion (Jugador)
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         playerMovement = FindObjectOfType<PlayerMovement>();
@@ -43,10 +45,9 @@ public class EnemyLogic : MonoBehaviour
 
     void Update()
     {
-        Flip();
-        velocidadEnemigo = rb.velocity; // BORRAR, SIRVE PARA PRUEBAS
+        Flip(); // Voltear sprite
 
-        AttackPlayer();
+        AttackPlayer(); // Comprobar modo de ataque
 
         if (rb.velocity.x < 0)
         {
@@ -60,6 +61,7 @@ public class EnemyLogic : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // Si no esta atacando volver a patrullar
         if (!attacking)
         {
             Patrol();
@@ -76,6 +78,7 @@ public class EnemyLogic : MonoBehaviour
             // COMPROBAMOS QUE TENGA ENLAZADO EL SCRIPT
             if (enemyStats != null)
             {
+                // Hacer daño al jugador
                 PlayerHealth.instance.DealMonsterDamage(enemyStats.dmg, transform.position);
             }
             else
@@ -169,7 +172,7 @@ public class EnemyLogic : MonoBehaviour
             }
         }
     }
-
+    // Recibir daño del jugador
     public void GetDamage(float damage)
     {
         if (enemyStats != null)
@@ -177,7 +180,7 @@ public class EnemyLogic : MonoBehaviour
             enemyStats.ReduceHp(damage);
         }
     }
-
+    // Voltear jugador dependiendo de la posicion x del punto de patrulla
     private void Flip()
     {
         if (transform.position.x < patrolPoints[nextPatrolPoint].position.x)

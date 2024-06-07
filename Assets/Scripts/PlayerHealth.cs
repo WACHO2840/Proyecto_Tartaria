@@ -19,6 +19,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void Awake()
     {
+        // instanciar GameObjects y sprite
         instance = this;
         sr = GetComponent<SpriteRenderer>();
 
@@ -31,25 +32,30 @@ public class PlayerHealth : MonoBehaviour
 
     void Start()
     {
+        // Inicializar la vida
         health = maxHealth;
         hpBar.Bar(health);
     }
 
     void Update()
     {
+        // Invulnerabilidad
         if (iFrames > 0)
         {
             iFrames -= Time.deltaTime;
             if (iFrames <= 0)
             {
+                // Invulnerabilidad visual
                 sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1f);
             }
         }
+        //Comprobar vida del personaje
         if (health <= 0)
         {
             gameObject.SetActive(false); // Hacer desaparecer el jugador
             if (endGame != null)
             {
+                // Activar escena de muertes
                 endGame.FinalScreenSet();
             }
             if (randomizer != null)
@@ -58,17 +64,19 @@ public class PlayerHealth : MonoBehaviour
             }
         }
     }
-
+    // Recibir daño de los pinchos
     public void DealDamageSpikes()
     {
         health = 0;
         hpBar.HpSet(health);
     }
-
+    // Recibir daño de los enemigos
     public void DealMonsterDamage(int dmg, Vector3 enemyPosition)
     {
+        // Comprobar que no haya invulnerabilidad 
         if (iFrames <= 0)
         {
+            // Restar vida y actualizar UI
             health -= dmg; 
             hpBar.HpSet(health);
             if (health > 0) 
@@ -84,23 +92,11 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    public int MaxHealth // Propiedad pública para acceder y modificar el daño básico
-    {
-        get { return (int)maxHealth; }
-        set { maxHealth = value; }
-    }
-
+    // Curar al personaje
     public void IncreaseHealth(int increaseAmountPickUp)
     {
         health = maxHealth;
         hpBar.HpSet(health);
-    }
-    public void ResetHealth()
-    {
-        maxHealth = 100;
-        health = maxHealth;
-        hpBar.HpSet(health);
-        Debug.Log("Salud reiniciada a " + maxHealth);
     }
 
     public float GetCurrentHealth()

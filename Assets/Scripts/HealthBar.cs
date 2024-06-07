@@ -10,6 +10,7 @@ public class HealthBar : MonoBehaviour
 
     private void Awake()
     {
+        // Inicializar progreso
         slider = GetComponent<Slider>();
     }
     
@@ -19,6 +20,7 @@ public class HealthBar : MonoBehaviour
         HpSet(hp);
     }
 
+    // Actualizar barra
     public void MaxHp(float maxhp)
     {
         slider.maxValue = maxhp;

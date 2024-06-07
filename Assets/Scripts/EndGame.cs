@@ -13,6 +13,7 @@ public class EndGame : MonoBehaviour
     {
         if (screen == null)
         {
+            // Almacenar el GameObject de la pantalla final
             screen = transform.Find("EndGame").gameObject;
             if (screen == null)
             {
@@ -25,6 +26,7 @@ public class EndGame : MonoBehaviour
     {
         if (screen != null)
         {
+            // Desactivar el GameObject al iniciar 
             screen.SetActive(false);
         }
     }
@@ -33,8 +35,10 @@ public class EndGame : MonoBehaviour
     {
         if (screen != null)
         {
+            // Activar el GameObject y reiniciar el juego
             screen.SetActive(true);
             StartCoroutine(WaitAndReloadScenes());
+            //Limpiar la mochila
             PickUp.mochila.Clear();
             PickUp.itemsCollected = 0;
         }
@@ -44,12 +48,14 @@ public class EndGame : MonoBehaviour
     {
         if (screen != null)
         {
+            // Desactivar GameObject
             screen.SetActive(false);
         }
     }
 
     private IEnumerator WaitAndReloadScenes()
     {
+        // Iniciar contador y reiniciar escenas
         yield return new WaitForSeconds(5);
         yield return StartCoroutine(ReloadScenes());
         FinalScreenUnset();
@@ -59,19 +65,17 @@ public class EndGame : MonoBehaviour
 
     private IEnumerator ReloadScenes()
     {
-        // Buscar el objeto llamado "UI" y almacenarlo para que no sea destruido
         foreach (int sceneIndex in scenesToReload)
         {
             SceneManager.LoadScene(sceneIndex, LoadSceneMode.Single);
             yield return null; // Esperar un frame para asegurarse de que la escena se haya cargado completamente
         }
-
     }
 
     public void MainMenu()
     {
         SceneManager.LoadScene(0); // Cambiar a la escena de men� principal
-        KeepOnLoad[] keepOnLoadObjects = FindObjectsOfType<KeepOnLoad>();
+        KeepOnLoad[] keepOnLoadObjects = FindObjectsOfType<KeepOnLoad>(); // Array de GameObjects a borrar
 
         // Buscar el GameObject "Player"
         GameObject playerObject = GameObject.FindWithTag("Player");
