@@ -56,7 +56,11 @@ Esta idea implica un aprendizaje continuo en todos los aspectos técnicos, los d
 | ![->](Enemigo1.png) | Palanca | Aumenta el daño en 10 puntosAumenta el daño en 10 puntos |
 | ![->](Enemigo1.png) | Durum | Duplica la vida del jugadorDuplica la vida del jugador |
 | ![->](Enemigo1.png) | Katana | Daño = 5 Velocidad de ataque = 1.5 Rango = 1.5Daño = 5 Velocidad de ataque = 1.5 Rango = 1.5 |
-| ![->](Enemigo1.png) | Mazo | Daño = 12 Velocidad de ataque = 2 Rango = 1.2Daño = 12 Velocidad de ataque = 2 Rango = 1.2 |
+| ![->](Enemigo1.png) | Mazo | Daño = 12 
+Velocidad de ataque = 2 
+Rango = 1.2Daño = 12 
+Velocidad de ataque = 2 Rango = 1.2 |
+
 
 
 ## INDICE.
