@@ -160,7 +160,6 @@ public class PickUp : MonoBehaviour
                 playerAttack.IncreaseDamage(-10);
                 break;
             case "Durum Doble":
-                playerHealth.IncreaseHealth(-70);
                 break;
             case "Crocks":
                 playerMovement.DisableDoubleJump();
