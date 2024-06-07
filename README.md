@@ -5,10 +5,16 @@ Tartaria es un juego basado en el género “roguelike”, el cual dentro de los
 Se consideró hacer este proyecto en el motor de Unreal Engine 5 (UE 5), pero se acabó descartando debido a la complejidad de este, por lo que el otro motor disponible es Unity, el cual es más claro y sencillo en comparación.
 Todo el juego está desarrollado en C #, se utiliza una estructura básica del código, pero es necesario aprender los nuevos conceptos que se enfocan específicamente en el desarrollo de videojuegos. Se puede crear y examinar varias funcionalidades para el personaje principal y los NPC, incluidos los enemigos que se encuentran a lo largo del recorrido, y los objetos que nos ayudan a mejorar las estadísticas del jugador, lo cual será de ayuda durante el recorrido. Los enemigos tienen la misión de complicar todo lo posible el camino por los diferentes niveles, algunos se pueden ver venir y se puede estar listo para actuar, pero otros estarán esperando para atacar en el momento menos esperado
 Esta idea implica un aprendizaje continuo en todos los aspectos técnicos, los diferentes diseños aplicados en los objetos, mapas, personajes, enemigos, plataformas… La implementación de los niveles, unión y corrección de errores que no se habían experimentado antes. La imaginación y la puesta en escena para el decorado de los sprite que aparecen en el videojuego.
+
+# Mapa mental
+
+Para ver el mapa del proyecto aga click [aqui](DOCUMENTATION_PROYECT\mapaMental.html)
+
 # Enlace
 Para consultar información de como escribir un Readme consulte [este enlace](https://docs.github.com/es/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#links)
 # Proyecto_Tartaria
 >[Nota]
+>
 >
 >Aqui se desarrollara la descripción del proyecto :+1:
 
