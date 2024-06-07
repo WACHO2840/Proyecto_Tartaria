@@ -7,9 +7,7 @@ Todo el juego está desarrollado en C #, se utiliza una estructura básica del c
 Esta idea implica un aprendizaje continuo en todos los aspectos técnicos, los diferentes diseños aplicados en los objetos, mapas, personajes, enemigos, plataformas… La implementación de los niveles, unión y corrección de errores que no se habían experimentado antes. La imaginación y la puesta en escena para el decorado de los sprite que aparecen en el videojuego.
 
 # Mapa mental
-
-Para ver el mapa del proyecto aga click [aqui](mapaMental.png)
-Para ver el mapa del proyecto aga click [aqui](mapaMental2.png)
+(mapaMental2.png)
 
 # Enlace
 Para consultar información de como escribir un Readme consulte [este enlace](https://docs.github.com/es/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#links)
