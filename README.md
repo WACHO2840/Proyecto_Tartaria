@@ -1,4 +1,10 @@
 ![logo](/img/image.png)
+## INDICE.
+
+- [Introduccióón](#Introducción)
+- [Mapa mental](#Mapamental)
+- [Notas del los personajes](#Notasdelospersonajes)
+- [Armas](##Armas)
 
 # Introducción
 
@@ -12,7 +18,7 @@ Esta idea implica un aprendizaje continuo en todos los aspectos técnicos, los d
 
 ![->](/img/mapaMental2.png)
 
-# Notas del los personajes
+# Notas de los personajes
 
 > [JUGADOR]
 >
@@ -36,53 +42,9 @@ Esta idea implica un aprendizaje continuo en todos los aspectos técnicos, los d
 >![->](/img/Rata.png)
 >![->](/img/Glovo.png)
 
-
-## Tabla de Contenidos
-- [Descripción](/img/#descripción)
-- [Instalación](/img/#instalación)
-- [Uso](/img/#uso)
-- [Contribución](/img/#contribución)
-- [Licencia](/img/#licencia)
-
-## Requisitos del Proyecto
+## Armas
 
 | Imagen | Nombre   | Descripción |
 |--------|----------|-------------|
-| ![->](/img/1_Toroide.png) | Toroide | Aumenta el daño en 5 puntosAumenta el daño en 5 puntos |
-| ![->](/img/11_ToroideElectromagnetico.png) | Electrón | Aumenta la velocidad de ataque en 1 puntoAumenta la velocidad de ataque en 1 punto |
-| ![->](/img/3_LenguaDeFuego.png) | Lengua de Fuego | Aumenta la velocidad de ataque en 1 puntoAumenta la velocidad de ataque en 1 punto |
-| ![->](/img/4_RocaVolcanica.png) | Roca volcánica | Aumenta el daño en 5 puntosAumenta el daño en 5 puntos |
-| ![->](/img/5_LlaveCorroida.png) | Llave corroída | Proporciona un doble salto al jugador.Proporciona un doble salto al jugador. |
-| ![->](/img/6_Palanca.png) | Palanca | Aumenta el daño en 10 puntosAumenta el daño en 10 puntos |
-| ![->](/img/10_durum.png) | Durum | Duplica la vida del jugadorDuplica la vida del jugador |
 | ![->](/img/Katana.png) | Katana | Daño = 5 - Velocidad de ataque = 1.5 - Rango = 1.5Daño = 5 - Velocidad de ataque = 1.5 - Rango = 1.5 |
 | ![->](/img/Mazo.png) | Mazo | Daño = 12 - Velocidad de ataque = 2 - Rango = 1.2 - Daño = 12 - Velocidad de ataque = 2 - Rango = 1.2 |
-
-
-
-## INDICE.
-
-### 1. Diseño
-
-- Fondos.
-- Armas.
-- Personajes.
-- Enemigos.
-- Boss.
-
-### 2. Diseño
-
-### 3. Diseño
-
-Marzo
-Recus
-#viernes 8 - acceso a datos - exm Serigio -> empresa - Jose Luis -> entrega de practica y examen
-
-#Viernes 15 - Interfaces -> examen, entrega modelos de examenes - Chema
-
-#Viernes 22 - Festivo, no se va a la empresa - Entrega proyecto sergio practica tocha
-
-Abril
-#Vienes 5 - Excursion
-
-#Viernes 19 - Entrega parcial del proyecto
