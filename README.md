@@ -48,8 +48,15 @@ Esta idea implica un aprendizaje continuo en todos los aspectos técnicos, los d
 
 | Imagen | Nombre   | Descripción |
 |--------|----------|-------------|
-| ![Enemigo1](Enemigo1.png) | Toroide | Toroide |
-| ![Enemigo1](Enemigo1.png) | Toroide | Toroide |
+| ![->](Enemigo1.png) | Toroide | Aumenta el daño en 5 puntosAumenta el daño en 5 puntos |
+| ![->](Enemigo1.png) | Electrón | Aumenta la velocidad de ataque en 1 puntoAumenta la velocidad de ataque en 1 punto |
+| ![->](Enemigo1.png) | Lengua de Fuego | Aumenta la velocidad de ataque en 1 puntoAumenta la velocidad de ataque en 1 punto |
+| ![->](Enemigo1.png) | Roca volcánica | Aumenta el daño en 5 puntosAumenta el daño en 5 puntos |
+| ![->](Enemigo1.png) | Llave corroída | Proporciona un doble salto al jugador.Proporciona un doble salto al jugador. |
+| ![->](Enemigo1.png) | Palanca | Aumenta el daño en 10 puntosAumenta el daño en 10 puntos |
+| ![->](Enemigo1.png) | Durum | Duplica la vida del jugadorDuplica la vida del jugador |
+| ![->](Enemigo1.png) | Katana | Daño = 5 Velocidad de ataque = 1.5 Rango = 1.5Daño = 5 Velocidad de ataque = 1.5 Rango = 1.5 |
+| ![->](Enemigo1.png) | Mazo | Daño = 12 Velocidad de ataque = 2 Rango = 1.2Daño = 12 Velocidad de ataque = 2 Rango = 1.2 |
 
 
 ## INDICE.
