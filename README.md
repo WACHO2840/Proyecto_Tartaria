@@ -44,6 +44,14 @@ Esta idea implica un aprendizaje continuo en todos los aspectos técnicos, los d
 - [Contribución](#contribución)
 - [Licencia](#licencia)
 
+## Requisitos del Proyecto
+
+| Requisitos     | Descripción                         |
+|----------------|-------------------------------------|
+| Requisitos mínimos | Sistema de Movimiento, Sistema de combate, Sistema de salud, Gráficos propios, Objetos, Interfaz gráfica, Aleatorización de los niveles y objetos, Reiniciar juego |
+| Requisitos medios  | Pantalla de inicio, Tutorial, Pantallas de fin del juego, Detección del jugador, Plataformas en movimiento, Escaleras de mano, Retroceso, Batalla contra el jefe, Conversación con NPC |
+| Requisitos Opcionales | Pantalla de ajustes, Pantalla directa al jefe, Comercio con NPC, Sonido, Selección de arma, Plataformas bidireccionales, Interfaz de objetos, Historia, Dash |
+
 ## INDICE.
 
 ### 1. Diseño
