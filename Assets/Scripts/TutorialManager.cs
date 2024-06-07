@@ -77,7 +77,7 @@ public class TutorialManager : MonoBehaviour
         // Reiniciar el índice del panel
         currentPanelIndex = 0;
     }
-
+    //controla el paso entre los paneles de los npc del tutorial
     private void NextPanel()
     {
         if (currentPanelIndex < panels.Length - 1)

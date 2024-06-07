@@ -40,7 +40,7 @@ public class ItemPickupConfirmation : MonoBehaviour
         exangeYesButton.onClick.AddListener(OnExangeYesButtonClicked);
         exangeNoButton.onClick.AddListener(OnExangeNoButtonClicked);
     }
-
+    //La clase en general controla la aparicion y desaparicion de los paneles de eleccion de item, y llama a las funciones necesarias en cada uno
     public void ShowConfirmationDialog(PickUp pickUpItem)
     {
         currentPickUpItem = pickUpItem;
@@ -69,8 +69,8 @@ public class ItemPickupConfirmation : MonoBehaviour
         }
         else
         {
-            confirmationDialog.SetActive(false); // Ocultar la primera dialog
-            ShowFullMochilaDialog(); // Mostrar el diálogo de mochila llena
+            confirmationDialog.SetActive(false); 
+            ShowFullMochilaDialog(); 
         }
     }
 
@@ -81,28 +81,28 @@ public class ItemPickupConfirmation : MonoBehaviour
 
     private void OnFullMochilaYesButtonClicked()
     {
-        fullMochilaDialog.SetActive(false); // Ocultar la dialog de mochila llena
-        ShowExangeDialog(); // Mostrar la dialog de intercambio
+        fullMochilaDialog.SetActive(false); 
+        ShowExangeDialog();
     }
 
     private void OnFullMochilaNoButtonClicked()
     {
-        fullMochilaDialog.SetActive(false); // Ocultar la dialog de mochila llena
-        HideConfirmationDialog(); // Restaurar el estado original
+        fullMochilaDialog.SetActive(false); 
+        HideConfirmationDialog(); 
     }
 
     private void OnExangeYesButtonClicked()
     {
         currentPickUpItem.ReplaceRandomItemInMochila();
-        currentPickUpItem.MakeInvisibleAndUninteractable(); // Hacer el objeto recogido invisible e invulnerable
-        exangeDialog.SetActive(false); // Ocultar la dialog de intercambio
-        HideConfirmationDialog(); // Restaurar el estado original
+        currentPickUpItem.MakeInvisibleAndUninteractable(); 
+        exangeDialog.SetActive(false); 
+        HideConfirmationDialog(); 
     }
 
     private void OnExangeNoButtonClicked()
     {
-        exangeDialog.SetActive(false); // Ocultar la dialog de intercambio
-        HideConfirmationDialog(); // Restaurar el estado original
+        exangeDialog.SetActive(false); 
+        HideConfirmationDialog();
     }
 
     public void HideAllDialogs()
@@ -110,7 +110,7 @@ public class ItemPickupConfirmation : MonoBehaviour
         confirmationDialog.SetActive(false);
         fullMochilaDialog.SetActive(false);
         exangeDialog.SetActive(false);
-        PlayerMovement.instance.canMove = true; // Habilitar movimiento
+        PlayerMovement.instance.canMove = true; 
         currentPickUpItem = null;
     }
 
@@ -119,7 +119,7 @@ public class ItemPickupConfirmation : MonoBehaviour
         confirmationDialog.SetActive(false);
         fullMochilaDialog.SetActive(false);
         exangeDialog.SetActive(false);
-        PlayerMovement.instance.canMove = true; // Habilitar movimiento
+        PlayerMovement.instance.canMove = true;
         currentPickUpItem = null;
     }
 }

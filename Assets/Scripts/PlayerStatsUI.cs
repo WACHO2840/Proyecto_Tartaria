@@ -25,7 +25,7 @@ public class PlayerStatsUI : MonoBehaviour
     {
         UpdateStatsText();
     }
-
+    //enseña en el canvas las estadisticas actuales del jugador
     void UpdateStatsText()
     {
         if (playerAttack != null && playerHealth != null)

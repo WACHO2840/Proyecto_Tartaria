@@ -69,7 +69,7 @@ public class ArmasGame : MonoBehaviour
     {
         StartCoroutine(Animate());
     }
-
+    //Animacion de ataque
     IEnumerator Animate()
     {
         isAttacking = true;

@@ -37,7 +37,7 @@ public class CombatCaC : MonoBehaviour
             canHit = true;
         }
     }
-
+    //Controla el golpe del jugador al enemigo
     private void Hit()
     {
         float hitRadius = playerAttack.Range;
@@ -71,7 +71,7 @@ public class CombatCaC : MonoBehaviour
             }
         }
     }
-
+    //Dibuja el rango del arma/juagor en unity de manera visual
     private void OnDrawGizmos()
     {
         if (HitContoler != null)

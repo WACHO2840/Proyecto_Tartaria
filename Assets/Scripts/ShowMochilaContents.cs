@@ -29,7 +29,7 @@ public class ShowMochilaContents : MonoBehaviour
             playerCollider = null;
         }
     }
-
+    //enseña por el log el contenido de la mochila
     private void DisplayMochilaContents()
     {
         Debug.Log("Contenido actual de la mochila:");

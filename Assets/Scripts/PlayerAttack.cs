@@ -46,7 +46,7 @@ public class PlayerAttack : MonoBehaviour
     void Update()
     {
     }
-
+    //detecta el arma equipada y recoge el daño de esta
     public void EquipWeapon(GameObject weapon)
     {
         ArmasGame newWeapon = weapon.GetComponent<ArmasGame>();
@@ -71,19 +71,19 @@ public class PlayerAttack : MonoBehaviour
         Debug.Log("Arma desequipada.");
         LogCurrentStats();
     }
-
+    //funcion para aumnentar el daño dependiendo de los items
     public void IncreaseDamage(float amount)
     {
         additionalDamage += amount;
         Debug.Log("Daño incrementado. Nuevo daño: " + BasicDamage);
     }
-
+    //funcion para aumnentar la velocidad de ataque dependiendo de los items
     public void IncreaseAttackSpeed(float amount)
     {
         additionalAttackSpeed += amount;
         Debug.Log("Velocidad de Ataque incrementada. Nueva velocidad: " + BasicAttackSpeed);
     }
-
+    //funcion para aumnentar el rango dependiendo de los items
     public void IncreaseRange(float amount)
     {
         additionalRange += amount;
@@ -96,15 +96,5 @@ public class PlayerAttack : MonoBehaviour
         Debug.Log("Daño: " + BasicDamage);
         Debug.Log("Velocidad de Ataque: " + BasicAttackSpeed);
         Debug.Log("Rango: " + Range);
-    }
-
-    public void ResetStats()
-    {
-        additionalDamage = 0;
-        additionalAttackSpeed = 0;
-        additionalRange = 0;
-        equippedWeapon = null;
-        Debug.Log("Estadísticas reiniciadas.");
-        LogCurrentStats();
     }
 }

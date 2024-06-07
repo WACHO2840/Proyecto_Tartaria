@@ -35,7 +35,7 @@ public class FlyingEnemy : MonoBehaviour
         // Iniciar sprite
         sr = GetComponent<SpriteRenderer>();
     }
-
+    //Funcion equivalente de la clase MovingPlataform
     void Update()
     {
         if (patrolOrder && nextPatrolPoint + 1 >= patrolPoints.Length)

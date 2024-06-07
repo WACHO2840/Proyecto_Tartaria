@@ -83,7 +83,7 @@ public class GrabController : MonoBehaviour
             CancelPickUp(); // Ocultar paneles de confirmación si el jugador sale del rango
         }
     }
-
+    //Recoger el arma elegida y que este pegada al personaje
     public void PickUpWeapon(string weaponTag)
     {
         if (weaponInRange != null && weaponInRange.CompareTag(weaponTag))
@@ -91,31 +91,22 @@ public class GrabController : MonoBehaviour
             GameObject weapon = weaponInRange;
             weaponInRange = null;
 
-            // Desactivar el collider del arma para que no cause más colisiones
             weapon.GetComponent<Collider2D>().enabled = false;
 
-            // Hacer que el arma sea hija del weaponHolder
             weapon.transform.SetParent(weaponHolder);
 
-            // Establecer la posición, rotación y escala del arma relativa al weaponHolder
             weapon.transform.localPosition = new Vector3(0.48f, 0.44f, 0f);
             weapon.transform.localRotation = Quaternion.Euler(0, 0, 0);
             weapon.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
 
-            // Guardar la referencia del arma actual
             currentWeapon = weapon;
-
-            // Equipar el arma en PlayerAttack
             playerAttack.EquipWeapon(weapon);
 
-            // Hacer invisible e invulnerable el arma no elegida
             MakeOtherWeaponInvisible(weapon);
         }
-
-        // Ocultar los paneles de confirmación después de recoger el arma
         CancelPickUp();
     }
-
+    //Hace invisible el arma no elegida
     private void MakeOtherWeaponInvisible(GameObject pickedWeapon)
     {
         if (pickedWeapon.CompareTag("Katana"))

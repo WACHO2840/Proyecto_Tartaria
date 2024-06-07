@@ -54,7 +54,7 @@ public class PickUp : MonoBehaviour
             itemPickupConfirmation.HideAllDialogs(); 
         }
     }
-
+    //controla de manera general el añadir el item a la mochila
     public void CollectItem()
     {
         if (isCollected)
@@ -71,7 +71,7 @@ public class PickUp : MonoBehaviour
             itemPickupConfirmation.ShowFullMochilaDialog();
         }
     }
-
+    //añade el item a la mochila y suma en 1 el numero de objetos
     public void AddItemToInventory()
     {
         itemsCollected++; 
@@ -86,7 +86,7 @@ public class PickUp : MonoBehaviour
 
         MakeInvisibleAndUninteractable();
     }
-
+    //Cambia un objeto aleatorio de la mochila por otro que quieras coger cuando la mochila está llena
     public void ReplaceRandomItemInMochila()
     {
         if (mochila.Count > 0)
@@ -103,7 +103,7 @@ public class PickUp : MonoBehaviour
             MakeInvisibleAndUninteractable(); // Hacer el objeto recogido invisible e invulnerable
         }
     }
-
+    //Aplica el efecto del item llamando a la funcion necesaria para subir las estadisticas respectivas
     public void ApplyItemEffect(Item item)
     {
         PlayerAttack playerAttack = playerCollider.GetComponent<PlayerAttack>();
@@ -135,7 +135,7 @@ public class PickUp : MonoBehaviour
                 break;
         }
     }
-
+    //Retira el efecto del juagdor cuando se elimina un objeto de la mochila
     public void RemoveItemEffect(Item item)
     {
         PlayerAttack playerAttack = playerCollider.GetComponent<PlayerAttack>();
@@ -166,7 +166,7 @@ public class PickUp : MonoBehaviour
                 break;
         }
     }
-
+    //Hace invisible y deshabilita el objeto recogido
     public void MakeInvisibleAndUninteractable()
     {
         GetComponent<Collider2D>().enabled = false;
@@ -177,7 +177,7 @@ public class PickUp : MonoBehaviour
 
         interactKeyUI.SetActive(false);
     }
-
+    //Para ver el el log el contenido de la mochila
     public void LogMochilaContents()
     {
         Debug.Log("Contenido actual de la mochila:");
@@ -186,7 +186,7 @@ public class PickUp : MonoBehaviour
             Debug.Log(item.Name);
         }
     }
-
+    //Crea el objeto de item para despues guardarlo en el array de mochila
     public Item GetItem()
     {
         Item newItem = null;
