@@ -9,6 +9,7 @@ Esta idea implica un aprendizaje continuo en todos los aspectos técnicos, los d
 # Mapa mental
 
 Para ver el mapa del proyecto aga click [aqui](mapaMental.png)
+Para ver el mapa del proyecto aga click [aqui](mapaMental2.png.png)
 
 # Enlace
 Para consultar información de como escribir un Readme consulte [este enlace](https://docs.github.com/es/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#links)
